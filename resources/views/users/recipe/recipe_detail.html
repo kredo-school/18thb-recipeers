@@ -4,9 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://kit.fontawesome.com/dbc5b98639.js" crossorigin="anonymous"></script>
+
+    <title>Recipe Detail | Recipe Title</title> <!-- * Change to variable -->
 </head>
 <body>
-    
+    <div class="container p-5">
+        <div class="row justify-content-center">
+        <!-- * change above to @extend for navbar and layout -->
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-auto me-3">
+                            <h2>Spring Salad Bowl</h2> <!-- * Change to variable -->
+                        </div>
+                        <div class="col-auto text-center">
+                            <!-- * add if statement (if the user has alreadybookmarked this recipe)  -->
+                            <i class="fa-regular fa-bookmark"></i>
+                            <!-- @else
+                            <i class="fa-solid fa-bookmark"></i> -->
+                            <p class="small">9</p>
+                        </div>
+                        <div class="col-auto text-center">
+                            <!-- * add if statement (if the user has alreadybookmarked this recipe)  -->
+                            <i class="fa-regular fa-heart"></i>
+                            <!-- @else
+                            <i class="fa-solid fa-heart"></i> -->
+                            <p class="small">15</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 text-end">
+                    <button class="btn btn-success w-50">Edit</button>  <!-- * Change class -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <!-- * change later -->
+                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                </div>
+                <!-- * change each detail to variable -->
+                <div class="col">
+                    <div class="row mb-2">
+                        <div class="col-3">
+                            <h6>Preparation Time</h6>
+                        </div>
+                        <div class="col">
+                            <p>20 min.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-3">
+                            <h6>Category</h6>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-sm btn-outline-success rounded-pill">Salad</button>
+                            <button class="btn btn-sm btn-outline-success rounded-pill">Gluten Free</button>
+                            <button class="btn btn-sm btn-outline-success rounded-pill">Low Calorie</button>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-3">
+                            <h6>Preferences</h6>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-sm btn-outline-success rounded-pill">Vegan</button>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-3">
+                            <h6>Meal Type</h6>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-sm btn-outline-success rounded-pill">Lunch</button>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-3">
+                            <h6>Occasion</h6>
+                        </div>
+                        <div class="col">
+                            <h4>
+                            <span class="badge rounded-pill bg-success">Easter</span>
+                        </h4>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-3">
+                            <h6>Summary</h6>
+                        </div>
+                        <div class="col">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores hic earum eius saepe, totam velit accusamus reprehenderit esse dolorem ipsam quaerat aperiam et minima perspiciatis doloribus ullam voluptate iste mollitia.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-3">
+                            <h6>Country of Origin</h6>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-sm btn-outline-success rounded-pill">Canada</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            
+                        </div>
+                        <div class="col">
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <!-- * change to row/column -->
+                <h3>Ingredients</h3>
+                <table>
+                    <tr>
+                        <th>ingredient</th>
+                        <th>amount</th>
+                    </tr>
+                    <tr>
+                        <td>fresh spinach</td>
+                        <td>1 package</td>
+                    </tr>
+                    <tr>
+                        <td>radishes</td>
+                        <td>3/4</td>
+                    </tr>
+                    <tr>
+                        <td>green onion</td>
+                        <td>1/2</td>
+                    </tr>
+                    <tr>
+                        <td>carrot</td>
+                        <td>1/2</td>
+                    </tr>
+                    <tr>
+                        <td>cucumber</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>tomato</td>
+                        <td>1/2</td>
+                    </tr>
+                    <tr>
+                        <td>Dressing</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>vegetable oil</td>
+                        <td>1/2 cup</td>
+                    </tr>
+
+                </table>
+            </div>
+        <!-- * delete below after adding @exdends -->
+        </div>
+    </div>
 </body>
 </html>
