@@ -1,0 +1,16 @@
+.ad-image {
+    width: 100%;
+    margin: 30px;
+}
+
+.main {
+    color: #FFFDFA;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Varela Round';
+}
+
+p, button {
+    font-family: 'Noto Sans', sans-serif;
+}
