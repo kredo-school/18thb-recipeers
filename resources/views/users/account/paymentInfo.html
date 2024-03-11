@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Title</title>
+        <title>Payment Information</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -27,38 +27,62 @@
         </header>
         <main>
 
-            <div class="container">
-                <h1 class="text-center">Edit Your Payment Method</h1>
-                <br>
-                <form action="" method="">
+            <div class="container w-50 mx-auto">
+                <h1 class="text-center mt-5 mb-5 color1">Edit Your Payment Method</h1>
 
-                    <label for="cc-number">Credit Card Number</label>
-                    <input type="text" name="cc_number1" id="cc_number1" placeholder="0000" class="form-control">
-                    <span>-</span>
-                    <input type="text" name="cc_number2" id="cc_number2" placeholder="0000" class="form-control">
-                    <span>-</span>
-                    <input type="text" name="cc_number3" id="cc_number3" placeholder="0000" class="form-control">
-                    <span>-</span>
-                    <input type="text" name="cc_number4" id="cc_number4" placeholder="0000" class="form-control">
+                <form action="" method="post">
 
-                    <label for="cardholder">Cardholder</label>
-                    <input type="text" name="cardholder_fname" id="cardholder_fname" placeholder="First Name" class="form-control">
-                    <input type="text" name="cardholder_lname" id="cardholder_lname" placeholder="Last Name" class="form-control">
+                    <div class="credit-card">
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="cc-number">Credit Card Number</label>
+                            </div>
+                            <div class="col number multifield">
+                                <input type="text" name="cc_number1" id="cc_number1" placeholder="0000" class="form-control input-color1 d-inline" maxlength="4" inputmode='numeric' pattern="\d+" required d-inline>
+                                <input type="text" name="cc_number2" id="cc_number2" placeholder="0000" class="form-control input-color1 d-inline" maxlength="4" inputmode="numeric" pattern="\d+" required d-inline>
+                                <input type="text" name="cc_number3" id="cc_number3" placeholder="0000" class="form-control input-color1 d-inline" maxlength="4" inputmode="numeric" pattern="\d+" required d-inline>
+                                <input type="text" name="cc_number4" id="cc_number4" placeholder="0000" class="form-control input-color1 d-inline" maxlength="4" inputmode="numeric" pattern="\d+" required d-inline>
+                            </div>
+                        </div>
 
-                    <label for="cc-exp">Date of Expiration</label>
-                    <input type="cc-exp" name="cc-exp" placeholder="MM/YY" class="form-control">
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="cardholder">Cardholder</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" name="cardholder_fname" id="cardholder_fname" placeholder="First Name" class="form-control input-color1" required>
+                                <input type="text" name="cardholder_lname" id="cardholder_lname" placeholder="Last Name" class="form-control input-color1 mt-3" required>
+                            </div>
+                        </div>
 
-                    <label for="cc-cvv">CVV</label>
-                    <input type="text" name="cc-csc" class="form-control">
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="cc-exp">Date of Expiration</label>
+                            </div>
+                            <div class="col date mutifield">
+                                <input type="text" name="cc-exp-month" maxlength="2" inputmode="numeric" placeholder="MM" class="form-control input-color1" required d-inline>
+                                <span>/</span>
+                                <input type="text" name="cc-exp-year" placeholder="YY" class="form-control input-color1" required d-inline>
+                            </div>
+                        </div>
 
-                    <div class="text-center">
-                        <button class="btn btn-md">Cancel</button>
-                        <button class="btn btn-md">Save</button>
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="cc-cvv">CVV</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" name="cc-csc" class="form-control input-color1" required>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <input type="reset" value="Cancel" class="btn btn-md btn-sub me-3">
+                            <input type="submit" value="Save" class="btn btn-md btn-main">
+                        </div>
                     </div>
+
                 </form>
             </div>
-
-
 
 
         </main>
