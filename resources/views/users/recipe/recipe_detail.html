@@ -16,7 +16,7 @@
     <div class="container p-5">
         <div class="row justify-content-center">
         <!-- * change above to @extend for navbar and layout -->
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col">
                     <div class="row">
                         <div class="col-auto me-3">
@@ -42,6 +42,7 @@
                     <button class="btn btn-success w-50">Edit</button>  <!-- * Change class -->
                 </div>
             </div>
+            <!-- RECIPE INFO -->
             <div class="row">
                 <div class="col-4">
                     <!-- * change later -->
@@ -51,7 +52,7 @@
                 <div class="col">
                     <div class="row mb-2">
                         <div class="col-3">
-                            <h6>Preparation Time</h6>
+                            <p class="h6">Preparation Time</p>
                         </div>
                         <div class="col">
                             <p>20 min.</p>
@@ -59,7 +60,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-3">
-                            <h6>Category</h6>
+                            <p class="h6">Category</p>
                         </div>
                         <div class="col">
                             <button class="btn btn-sm btn-outline-success rounded-pill">Salad</button>
@@ -69,7 +70,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-3">
-                            <h6>Preferences</h6>
+                            <p class="h6">Preferences</p>
                         </div>
                         <div class="col">
                             <button class="btn btn-sm btn-outline-success rounded-pill">Vegan</button>
@@ -77,7 +78,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-3">
-                            <h6>Meal Type</h6>
+                            <p class="h6">Meal Type</p>
                         </div>
                         <div class="col">
                             <button class="btn btn-sm btn-outline-success rounded-pill">Lunch</button>
@@ -85,17 +86,15 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-3">
-                            <h6>Occasion</h6>
+                            <p class="h6">Occasion</p>
                         </div>
                         <div class="col">
-                            <h4>
-                            <span class="badge rounded-pill bg-success">Easter</span>
-                        </h4>
+                            <button class="btn btn-sm btn-outline-success rounded-pill">Easter</button>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-3">
-                            <h6>Summary</h6>
+                            <p class="h6">Summary</p>
                         </div>
                         <div class="col">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores hic earum eius saepe, totam velit accusamus reprehenderit esse dolorem ipsam quaerat aperiam et minima perspiciatis doloribus ullam voluptate iste mollitia.</p>
@@ -103,7 +102,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-3">
-                            <h6>Country of Origin</h6>
+                            <p class="h6">Country of Origin</p>
                         </div>
                         <div class="col">
                             <button class="btn btn-sm btn-outline-success rounded-pill">Canada</button>
@@ -119,48 +118,188 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-4">
-                <!-- * change to row/column -->
-                <h3>Ingredients</h3>
-                <table>
-                    <tr>
-                        <th>ingredient</th>
-                        <th>amount</th>
-                    </tr>
-                    <tr>
-                        <td>fresh spinach</td>
-                        <td>1 package</td>
-                    </tr>
-                    <tr>
-                        <td>radishes</td>
-                        <td>3/4</td>
-                    </tr>
-                    <tr>
-                        <td>green onion</td>
-                        <td>1/2</td>
-                    </tr>
-                    <tr>
-                        <td>carrot</td>
-                        <td>1/2</td>
-                    </tr>
-                    <tr>
-                        <td>cucumber</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>tomato</td>
-                        <td>1/2</td>
-                    </tr>
-                    <tr>
-                        <td>Dressing</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>vegetable oil</td>
-                        <td>1/2 cup</td>
-                    </tr>
+            <!-- INGREDIENTS -->
+            <div class="mt-5">
+                <h3 class="mb-4">Ingredients</h3>
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <p class="h5">Ingredient</p>
+                            </div>
+                            <div class="col">
+                                <p class="h5">Amount</p>
+                            </div>
+                        </div>
+                        <!-- * change to foreach loop -->
+                        <div class="row">
+                            <div class="col-6">
+                                <p>spinach</p>
+                            </div>
+                            <div class="col">
+                                <p>1 package</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>onion</p>
+                            </div>
+                            <div class="col">
+                                <p>1/2</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>radishes</p>
+                            </div>
+                            <div class="col">
+                                <p>3/4 cup</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>carrot</p>
+                            </div>
+                            <div class="col">
+                                <p>1/2</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>DRESSING</p>
+                            </div>
+                            <div class="col">
+                                <p></p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>vegetable oil</p>
+                            </div>
+                            <div class="col">
+                                <p>1/2 cup</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>cider vinegar</p>
+                            </div>
+                            <div class="col">
+                                <p>2 tablespoons</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>honey</p>
+                            </div>
+                            <div class="col">
+                                <p>2 tablespoons</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>black pepper</p>
+                            </div>
+                            <div class="col">
+                                <p>1/2 teaspoons</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>salt</p>
+                            </div>
+                            <div class="col">
+                                <p>1/4 teaspoons</p>
+                            </div>
+                            <hr class="border-success">
+                        </div>
 
-                </table>
+                    </div>
+                </div>
+            </div>
+            <!-- STEPS -->
+            <h3 class="mt-5">Steps</h3>
+            <!-- * change to foreach loop -->
+            <p class="h5 m-3">Step 1</p>
+            <div class="row">
+                <div class="col-4">
+                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
+                </div>
+            </div>
+            <p class="h5 m-3">Step 2</p>
+            <div class="row">
+                <div class="col-4">
+                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
+                </div>
+            </div>
+            <p class="h5 m-3">Step 3</p>
+            <div class="row">
+                <div class="col-4">
+                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
+                </div>
+            </div>
+            <p class="h5 m-3">Step 4</p>
+            <div class="row">
+                <div class="col-4">
+                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
+                </div>
+            </div>
+            <p class="h5 m-3">Step 5</p>
+            <div class="row">
+                <div class="col-4">
+                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
+                </div>
+            </div>
+            <!-- COMMENTS -->
+            <h3 class="mt-5 mb-4">Comments</h3>
+            <div class="card">
+                <div class="card-header">
+                    <div class="input-group">
+                        <!-- * add form elements and variables -->
+                        <textarea name="comment" id="comment" rows="1" class="form-control form-control-sm" placeholder="Add a comment..."></textarea>
+                        <button class="btn btn-warning btn-sm px-4">Post</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-auto">
+                            <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="avatar" class="icon-sm">
+                        </div>
+                        <div class="col">
+
+                        </div>
+                        <div class="col-2">
+                            
+                        </div>
+                        <div class="col-1">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         <!-- * delete below after adding @exdends -->
         </div>
