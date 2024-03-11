@@ -23,50 +23,131 @@
         <div class="row">
             <div class="col-8">
                 <div class="new_recipes">
-                        <div class="row">
-                            <div class="col-4 mt-3">
-                                <div class="card bg-white">
-                                    <div class="card-header">
-                                        <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="Recipe1_image" class="card-img-top">
+                    <div class="row">
+                        <div class="col mt-3">
+                            <div class="card bg-white">
+                                <div class="card-header">
+                                    <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="Recipe1_image" class="card-img-top">
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <span class="badge text-warning border rounded-pill border-warning">Vegan</span>
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col-1 text-center d-none d-lg-block">
+                                            <div class="row">
+                                                <i class="fa-regular fa-bookmark"></i>
+                                            </div>
+                                            <div class="row">
+                                                <p>1</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-1 text-center d-none d-lg-block">
+                                            <div class="row">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </div>
+                                            <div class="row">
+                                                <p>1</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <span class="btn btn-sm btn-outline-warning card-tag">Vegan</span>
+                                    <div class="row">
+                                        <h3>Recipe Title</h3>
+                                    </div>
+                                    <div class="row">
+                                        <p class="d-none d-lg-block">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, tempora.</p>
+                                    </div>
+                                    <button class="btn btn-warning text-white">View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mt-3">
+                            <div class="card bg-white">
+                                <div class="card-header">
+                                    <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="Recipe1_image" class="card-img-top">
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <span class="badge text-warning border rounded-pill border-warning">Vegan</span>
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col-1 text-center d-none d-lg-block">
+                                            <div class="row">
+                                                <i class="fa-regular fa-bookmark"></i>
                                             </div>
-                                            <div class="col-2 text-center">
-                                                <div class="row">
-                                                    <i class="fa-regular fa-bookmark"></i>
-                                                </div>
-                                                <div class="row">
-                                                    <p>1</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-2 text-center">
-                                                <div class="row">
-                                                    <i class="fa-regular fa-heart"></i>
-                                                </div>
-                                                <div class="row">
-                                                    <p>1</p>
-                                                </div>
+                                            <div class="row">
+                                                <p>1</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <h3>Recipe Title</h3>
+                                        <div class="col-1 text-center d-none d-lg-block">
+                                            <div class="row">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </div>
+                                            <div class="row">
+                                                <p>1</p>
+                                            </div>
                                         </div>
-                                        <div class="row">
-                                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, tempora.</p>
+                                    </div>
+                                    <div class="row">
+                                        <h3>Recipe Title</h3>
+                                    </div>
+                                    <div class="row">
+                                        <p class="d-none d-lg-block">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, tempora.</p>
+                                    </div>
+                                    <button class="btn btn-warning text-white">View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mt-3">
+                            <div class="card bg-white">
+                                <div class="card-header">
+                                    <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="Recipe1_image" class="card-img-top">
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <span class="badge text-warning border rounded-pill border-warning">Vegan</span>
                                         </div>
+                                        <div class="col"></div>
+                                        <div class="col-1 text-center d-none d-lg-block">
+                                            <div class="row">
+                                                <i class="fa-regular fa-bookmark"></i>
+                                            </div>
+                                            <div class="row">
+                                                <p>1</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-1 text-center d-none d-lg-block">
+                                            <div class="row">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </div>
+                                            <div class="row">
+                                                <p>1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <h3>Recipe Title</h3>
+                                    </div>
+                                    <div class="row">
+                                        <p class="d-none d-lg-block">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, tempora.</p>
+                                    </div>
                                     <button class="btn btn-warning text-white">View Detail</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-end">
-                        <a href="" class="text-decoration-none text-success">See more...</a>
-                    </div>
+
+
                 </div>
+
             </div>
+            <div class="text-end">
+                <a href="" class="text-decoration-none text-success">See more...</a>
+            </div>
+        </div>
             <div class="col-4">
                 <div class="row">
                     <a href="">
