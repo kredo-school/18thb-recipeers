@@ -33,7 +33,6 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -41,6 +40,27 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="checkbox" id="checkPassword">
+                                <div class="togglePassword">
+                                  <input type="password" class="hideText" value="password123">
+                                  <input type="text" class="showText" value="password123">
+                                  <label for="checkPassword" class="fa-regular fa-eye"></label>
+                                  <label for="checkPassword" class="fa-regular fa-eye-slash"></label>
+                                </div>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
+
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
@@ -61,9 +81,15 @@
                                 </button>
                                 <br>
 
-
+                                Don’t have an account? 
+                                @if (Route::has('register'))
+                                    <a class="btn btn-link" href="{{ route('register') }}">
+                                        {{ __('Sign up here.') }}
+                                    </a>
+                                @endif
+                                <br>
+                                Did you forget your password? 
                                 @if (Route::has('password.request'))
-                                    Did you forget your password? 
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Reset here.') }}
                                     </a>
