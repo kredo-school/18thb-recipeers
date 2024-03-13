@@ -31,7 +31,7 @@
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
+    
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -90,8 +90,6 @@
                 </div>
             </div>
         </nav>
-
-        <main class="">
             @yield('content')
         </main>
     </div>
