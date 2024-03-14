@@ -33,7 +33,9 @@
 			<nav class="navbar navbar-expand-md navbar-light bg-white">
 					<div class="container">
 							<a class="navbar-brand" href="#">
-									<img src="../assets/images/logo.png" alt="logo" class="logo img-fluid">
+									{{-- <img src="../assets/images/logo.png" alt="logo" class="logo img-fluid"> --}}
+                                    <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="logo img-fluid">
+
 							</a>
 							<!-- hamburger button for responsive -->
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -91,9 +93,9 @@
             <div class="container">
                     <div class="footer-widgets">
                       <a class="navbar-brand" href="#">
-                        <img src="../assets/images/logo.png" alt="logo" class="logo img-fluid">
-                            </a>
-                        </div>
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="logo img-fluid">
+                      </a>
+                    </div>
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Contact Us</a>
