@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
+    <!-- Style -->
+    <link rel="stylesheet" href="public/assets/css/style.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -20,17 +23,17 @@
                 <div class="col">
                     <div class="row">
                         <div class="col-auto me-3">
-                            <h2>Spring Salad Bowl</h2> <!-- * Change to variable -->
+                            <h2 class="color1">Spring Salad Bowl</h2> <!-- * Change to variable -->
                         </div>
                         <div class="col-auto text-center">
-                            <!-- * add if statement (if the user has alreadybookmarked this recipe)  -->
+                            <!-- * add if statement (if the user has already bookmarked this recipe)  -->
                             <i class="fa-regular fa-bookmark"></i>
                             <!-- @else
                             <i class="fa-solid fa-bookmark"></i> -->
                             <p class="small">9</p>
                         </div>
                         <div class="col-auto text-center">
-                            <!-- * add if statement (if the user has alreadybookmarked this recipe)  -->
+                            <!-- * add if statement (if the user has already liked this recipe)  -->
                             <i class="fa-regular fa-heart"></i>
                             <!-- @else
                             <i class="fa-solid fa-heart"></i> -->
@@ -39,14 +42,14 @@
                     </div>
                 </div>
                 <div class="col-2 text-end">
-                    <button class="btn btn-success w-50">Edit</button>  <!-- * Change class -->
+                    <button class="btn btn-main w-50">Edit</button>
                 </div>
             </div>
             <!-- RECIPE INFO -->
             <div class="row">
                 <div class="col-4">
                     <!-- * change later -->
-                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                    <img src="{{assets('images/nadine-primeau--ftWfohtjNw-unsplash.jpg')}}" alt="sample recipe" class="img-cover">
                 </div>
                 <!-- * change each detail to variable -->
                 <div class="col">
@@ -230,45 +233,45 @@
             <h3 class="mt-5">Steps</h3>
             <!-- * change to foreach loop -->
             <p class="h5 m-3">Step 1</p>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-4">
-                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                    <img src="/public/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
                 </div>
                 <div class="col">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
                 </div>
             </div>
             <p class="h5 m-3">Step 2</p>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-4">
-                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                    <img src="/public/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
                 </div>
                 <div class="col">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
                 </div>
             </div>
             <p class="h5 m-3">Step 3</p>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-4">
-                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                    <img src="/public/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
                 </div>
                 <div class="col">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
                 </div>
             </div>
             <p class="h5 m-3">Step 4</p>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-4">
-                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                    <img src="/public/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
                 </div>
                 <div class="col">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
                 </div>
             </div>
             <p class="h5 m-3">Step 5</p>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-4">
-                    <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
+                    <img src="/public/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="sample recipe" class="w-100">
                 </div>
                 <div class="col">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
@@ -277,26 +280,58 @@
             <!-- COMMENTS -->
             <h3 class="mt-5 mb-4">Comments</h3>
             <div class="card">
-                <div class="card-header">
-                    <div class="input-group">
+                    <div class="input-group my-3">
                         <!-- * add form elements and variables -->
                         <textarea name="comment" id="comment" rows="1" class="form-control form-control-sm" placeholder="Add a comment..."></textarea>
                         <button class="btn btn-warning btn-sm px-4">Post</button>
                     </div>
-                </div>
                 <div class="card-body">
+                    <!-- * change to foreach loop -->
                     <div class="row">
                         <div class="col-auto">
-                            <img src="/public/build/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="avatar" class="icon-sm">
+                            <img src="/public/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="avatar" class="icon-sm">
                         </div>
                         <div class="col">
-
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, iusto?</p>
                         </div>
-                        <div class="col-2">
-                            
+                        <div class="col-2 text-end">
+                            <p class="small fw-lighter">2024/03/13 20:01:43</p>
                         </div>
-                        <div class="col-1">
-
+                        <div class="col-auto">
+                            <!-- * change to button -->
+                            <i class="fa-solid fa-trash-can text-secondary"></i>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <img src="/public/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="avatar" class="icon-sm">
+                        </div>
+                        <div class="col">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, iusto?</p>
+                        </div>
+                        <div class="col-2 text-end">
+                            <p class="small fw-lighter">2024/03/13 20:11:23</p>
+                        </div>
+                        <div class="col-auto">
+                            <!-- * change to button -->
+                            <i class="fa-solid fa-trash-can text-secondary"></i>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <img src="/public/assets/images/nadine-primeau--ftWfohtjNw-unsplash.jpg" alt="avatar" class="icon-sm">
+                        </div>
+                        <div class="col">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, iusto?</p>
+                        </div>
+                        <div class="col-2 text-end">
+                            <p class="small fw-lighter">2024/03/13 21:07:32</p>
+                        </div>
+                        <div class="col-auto">
+                            <!-- * change to button -->
+                            <i class="fa-solid fa-trash-can text-secondary"></i>
                         </div>
                     </div>
                 </div>
