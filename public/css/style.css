@@ -1,18 +1,18 @@
 /* ---------------共通---------------------------------------------- */
 main{
-	background-color: #FFFDFA;
+background-color: #FFFDFA;
 }
 
 /* font */
 h1,h2,h3,h4,h5,h6{
 font-family: "Varela Round", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-	color: #050505;
+font-weight: 400;
+font-style: normal;
+color: #050505;
 }
 
 h1{
-	font-size: 64px;
+font-size: 64px;
 }
 
 h2{
@@ -59,6 +59,9 @@ color:#C1F2B0;
 	color: #fff6a0;
 }
 
+.color5{
+	color: #FFB534;
+}
 /* icon	 */
 .icon-sm {
     font-size: 2rem;
@@ -97,16 +100,15 @@ color:#C1F2B0;
 
 .img-step{
 	object-fit: cover;
-	height: 6.5rem;
-	width: 6.5rem;
+	height: 12rem;
+	width: 80%;
 }
 
 .img-cover{
 	object-fit: cover;
-	height: 15rem;
-	width: 15rem;
+	height: 20rem;
+	width: 100%;
 }
-
 
 /* button */
 .btn{
@@ -181,8 +183,8 @@ color: #65B741;
 
 /* footer */
 small{
-		font-family: 'noto-sans','sans-serif';
-	color: #050505;
+font-family: 'noto-sans','sans-serif';
+color: #050505;
 }
 
 .box {
