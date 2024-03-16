@@ -24,7 +24,8 @@
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 {{-- css --}}
-<link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+
 </head>
 
 <body>
@@ -79,7 +80,7 @@
     <div class="horizontal-line4"></div>
 
 
-    <main class="py-4">
+    <main>
         @yield('content')
     </main>
 
