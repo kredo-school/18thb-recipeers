@@ -78,7 +78,7 @@
     <div class="horizontal-line3"></div>
     <div class="horizontal-line4"></div>
 
-    <main class="container">
+    <main>
         @yield('content')
     </main>
 
