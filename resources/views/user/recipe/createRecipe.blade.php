@@ -27,50 +27,42 @@
                 </div>
 
                 {{-- Adding Category Tag --}}
-                <div class="row">
+                <div class="row mt-1">
                     <div class="col-6">
                         <h6>Category</h6>
                     </div>
-                    <div class="col">
-                        <span class="badge border border-success rounded-pill text-success me-2">Cate1</span>
-                        <span class="badge border border-success rounded-pill text-success me-2">Cate1</span>
-                        <button class="badge border border-success rounded-circle text-success me-2"><i class="fa-solid fa-plus"></i></button>
+                    <div id="tagContainer1" class="col d-flex flex-wrap align-item-center">
+                        <input type="text" id="tagInput1" class="form-control form-control-sm border-success">
                     </div>
                 </div>
 
                 {{-- Adding Preferences --}}
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-6">
                         <h6>Preference</h6>
                     </div>
-                    <div class="col">
-                        <span class="badge border border-success rounded-pill text-success me-2">Pre1</span>
-                        <span class="badge border border-success rounded-pill text-success me-2">Pre1</span>
-                        <button class="badge border border-success rounded-circle text-success me-2"><i class="fa-solid fa-plus"></i></button>
+                    <div id="tagContainer2" class="col d-flex flex-wrap align-item-center">
+                        <input type="text" id="tagInput2" class="form-control form-control-sm border-success">
                     </div>
                 </div>
 
                 {{-- Adding Meal Types --}}
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-6">
                         <h6>Meal Type</h6>
                     </div>
-                    <div class="col">
-                        <span class="badge border border-success rounded-pill text-success me-2">Meal1</span>
-                        <span class="badge border border-success rounded-pill text-success me-2">Meal2</span>
-                        <button class="badge border border-success rounded-circle text-success me-2"><i class="fa-solid fa-plus"></i></button>
+                    <div id="tagContainer3" class="col d-flex flex-wrap align-item-center">
+                        <input type="text" id="tagInput3" class="form-control form-control-sm border-success">
                     </div>
                 </div>
 
-                {{-- Adding Meal Types --}}
-                <div class="row">
+                {{-- Adding Occasion --}}
+                <div class="row mt-2">
                     <div class="col-6">
                         <h6>Occasion</h6>
                     </div>
-                    <div class="col">
-                        <span class="badge border border-success rounded-pill text-success me-2">Occa1</span>
-                        <span class="badge border border-success rounded-pill text-success me-2">Occa2</span>
-                        <button class="badge border border-success rounded-circle text-success me-2"><i class="fa-solid fa-plus"></i></button>
+                    <div id="tagContainer4" class="col d-flex flex-wrap align-item-center">
+                        <input type="text" id="tagInput4" class="form-control form-control-sm border-success">
                     </div>
                 </div>
 
@@ -94,4 +86,163 @@
         </div>
     </form>
 </div>
+
+{{-- Create Tag js --}}
+<script>
+    // Category Tag Function js
+    document.addEventListener("DOMContentLoaded", function() {
+        const tagInput = document.getElementById("tagInput1");
+        const tagContainer = document.getElementById("tagContainer1");
+
+        // If push Enter
+        tagInput.addEventListener("keypress", function(event) {
+            if(event.key == "Enter") {
+                event.preventDefault(); // Cancel to Enter Button
+                const tagText = tagInput.value.trim();
+                if(tagText !== "") {
+                    createTag(tagText, tagContainer);
+                    tagInput.value = "";
+                }
+            }
+        });
+
+        // Create Tag Function
+        function createTag(tagText) {
+            const tag = document.createElement("span");
+            tag.classList.add("badge", "border", "border-success", "rounded-pill", "text-success", "m-1");
+            tag.textContent = tagText;
+
+            // Adding delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("btn", "btn-sm", "p-0", "ps-1");
+            deleteButton.innerHTML = `<i class="fas fa-times"></i>`;
+            deleteButton.addEventListener("click", function() {
+                tag.remove();
+            });
+
+            // Adding Tag to Container
+            tagContainer.appendChild(tag);
+            tag.appendChild(deleteButton);
+
+            tagInput.parentNode.insertBefore(tag, tagInput.nextSibling);
+        }
+    });
+
+    // Preference Tag Function js
+    document.addEventListener("DOMContentLoaded", function() {
+        const tagInput = document.getElementById("tagInput2");
+        const tagContainer = document.getElementById("tagContainer2");
+
+        // If push Enter
+        tagInput.addEventListener("keypress", function(event) {
+            if(event.key == "Enter") {
+                event.preventDefault(); // Cancel to Enter Button
+                const tagText = tagInput.value.trim();
+                if(tagText !== "") {
+                    createTag(tagText, tagContainer);
+                    tagInput.value = "";
+                }
+            }
+        });
+
+        // Create Tag Function
+        function createTag(tagText) {
+            const tag = document.createElement("span");
+            tag.classList.add("badge", "border", "border-success", "rounded-pill", "text-success", "m-1");
+            tag.textContent = tagText;
+
+            // Adding delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("btn", "btn-sm", "p-0", "ps-1");
+            deleteButton.innerHTML = `<i class="fas fa-times"></i>`;
+            deleteButton.addEventListener("click", function() {
+                tag.remove();
+            });
+
+            // Adding Tag to Container
+            tagContainer.appendChild(tag);
+            tag.appendChild(deleteButton);
+
+            tagInput.parentNode.insertBefore(tag, tagInput.nextSibling);
+        }
+    });
+
+    // Meal Type Tag Function js
+    document.addEventListener("DOMContentLoaded", function() {
+        const tagInput = document.getElementById("tagInput3");
+        const tagContainer = document.getElementById("tagContainer3");
+
+        // If push Enter
+        tagInput.addEventListener("keypress", function(event) {
+            if(event.key == "Enter") {
+                event.preventDefault(); // Cancel to Enter Button
+                const tagText = tagInput.value.trim();
+                if(tagText !== "") {
+                    createTag(tagText, tagContainer);
+                    tagInput.value = "";
+                }
+            }
+        });
+
+        // Create Tag Function
+        function createTag(tagText) {
+            const tag = document.createElement("span");
+            tag.classList.add("badge", "border", "border-success", "rounded-pill", "text-success", "m-1");
+            tag.textContent = tagText;
+
+            // Adding delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("btn", "btn-sm", "p-0", "ps-1");
+            deleteButton.innerHTML = `<i class="fas fa-times"></i>`;
+            deleteButton.addEventListener("click", function() {
+                tag.remove();
+            });
+
+            // Adding Tag to Container
+            tagContainer.appendChild(tag);
+            tag.appendChild(deleteButton);
+
+            tagInput.parentNode.insertBefore(tag, tagInput.nextSibling);
+        }
+    });
+
+    // Occasion Tag Function js
+    document.addEventListener("DOMContentLoaded", function() {
+        const tagInput = document.getElementById("tagInput4");
+        const tagContainer = document.getElementById("tagContainer4");
+
+        // If push Enter
+        tagInput.addEventListener("keypress", function(event) {
+            if(event.key == "Enter") {
+                event.preventDefault(); // Cancel to Enter Button
+                const tagText = tagInput.value.trim();
+                if(tagText !== "") {
+                    createTag(tagText, tagContainer);
+                    tagInput.value = "";
+                }
+            }
+        });
+
+        // Create Tag Function
+        function createTag(tagText) {
+            const tag = document.createElement("span");
+            tag.classList.add("badge", "border", "border-success", "rounded-pill", "text-success", "m-1");
+            tag.textContent = tagText;
+
+            // Adding delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("btn", "btn-sm", "p-0", "ps-1");
+            deleteButton.innerHTML = `<i class="fas fa-times"></i>`;
+            deleteButton.addEventListener("click", function() {
+                tag.remove();
+            });
+
+            // Adding Tag to Container
+            tagContainer.appendChild(tag);
+            tag.appendChild(deleteButton);
+
+            tagInput.parentNode.insertBefore(tag, tagInput.nextSibling);
+        }
+    });
+</script>
 @endsection
