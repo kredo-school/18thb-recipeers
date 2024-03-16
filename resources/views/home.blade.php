@@ -16,7 +16,7 @@
 </div>
 
 <div class="home pt-5">
-    <div class="container">
+    <div class="container px-5">
         <div class="row">
             <h1 class="text-success fw-bold">New Recipes</h1>
         </div>
@@ -40,7 +40,7 @@
 
                                     {{-- Tag --}}
                                     <div class="col-10 col-sm-10 col-md-9">
-                                        <span class="badge border border-success rounded-pill text-success">Vegan</span>
+                                        <span class="badge border rounded-pill badge-pref">Vegan</span>
                                     </div>
 
                                     {{-- Bookmark --}}
@@ -89,5 +89,11 @@
             </div>
         </div>
     </div>
+</div>
+<div class="box">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
 </div>
 @endsection
