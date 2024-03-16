@@ -33,7 +33,7 @@
     {{-- RECIPE INFO --}}
     <div class="row">
         <div class="col-4 me-5">
-            <img src="/assets/images/sample_recipe.jpg" alt="sample recipe" class="img-cover ">
+            <img src="{{ asset('assets/images/sample_recipe.jpg') }}" alt="sample recipe" class="img-cover ">
         </div>
         <!-- * change each detail to variable -->
         <div class="col">
@@ -219,7 +219,7 @@
     <p class="h5 my-3">Step 1</p>
     <div class="row mb-5">
         <div class="col-4">
-            <img src="/assets/images/sample_recipe.jpg" alt="sample step1" class="img-step">
+            <img src="{{ asset('assets/images/sample_recipe.jpg') }}" alt="sample step1" class="img-step">
         </div>
         <div class="col">
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
@@ -228,7 +228,7 @@
     <p class="h5 my-3">Step 2</p>
     <div class="row mb-5">
         <div class="col-4">
-            <img src="/assets/images/sample_recipe.jpg" alt="sample step2" class="img-step">
+            <img src="{{ asset('assets/images/sample_recipe.jpg') }}" alt="sample step2" class="img-step">
         </div>
         <div class="col">
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
@@ -237,7 +237,7 @@
     <p class="h5 my-3">Step 3</p>
     <div class="row mb-5">
         <div class="col-4">
-            <img src="/assets/images/sample_recipe.jpg" alt="sample step3" class="img-step">
+            <img src="{{ asset('assets/images/sample_recipe.jpg') }}" alt="sample step3" class="img-step">
         </div>
         <div class="col">
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
@@ -246,7 +246,7 @@
     <p class="h5 my-3">Step 4</p>
     <div class="row mb-5">
         <div class="col-4">
-            <img src="/assets/images/sample_recipe.jpg" alt="sample step4" class="img-step">
+            <img src="{{ asset('assets/images/sample_recipe.jpg') }}" alt="sample step4" class="img-step">
         </div>
         <div class="col">
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
@@ -255,7 +255,7 @@
     <p class="h5 my-3">Step 5</p>
     <div class="row mb-5">
         <div class="col-4">
-            <img src="/assets/images/sample_recipe.jpg" alt="sample step5" class="img-step">
+            <img src="{{ asset('assets/images/sample_recipe.jpg') }}" alt="sample step5" class="img-step">
         </div>
         <div class="col">
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti quasi deserunt distinctio molestiae esse similique eius aliquid minus voluptatibus, provident nemo nihil doloremque ipsum beatae? Quas magnam amet odit quos!</p>
@@ -263,59 +263,56 @@
     </div>
     {{-- COMMENTS --}}
     <h3 class="mt-5 mb-4 color1">Comments</h3>
-    <div class="card bg-white px-3">
-            <div class="input-group my-3">
+    <div class="card bg-white px-5">
+            <div class="input-group py-4">
                 {{-- * add form elements and variables --}}
-                <textarea name="comment" id="comment" rows="1" class="form-control form-control-sm" placeholder="Add a comment..."></textarea>
+                <textarea name="comment" id="comment" rows="1" class="form-control form-control" placeholder="Add a comment..."></textarea>
                 <button class="btn btn-main btn-sm px-4">Post</button>
             </div>
         <div class="card-body">
             {{-- @foreach --}}
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-auto mb-2">
-                    <img src="/assets/images/user.jpg" alt="avatar" class="img-sm rounded-circle">
+                    <img src="{{ asset('assets/images/user.jpg') }}" alt="avatar" class="img-sm rounded-circle">
                 </div>
                 <div class="col">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, iusto?</p>
                 </div>
                 <div class="col-2 text-end">
-                    <p class="small fw-lighter">2024/03/13 20:01:43</p>
-                </div>
-                <div class="col-auto">
-                    {{-- * change to button --}}
-                    <i class="fa-solid fa-trash-can text-secondary"></i>
+                    <p class="small fw-lighter">2024/03/13 20:01:43
+                        {{-- * change to button --}}
+                        <i class="fa-solid fa-trash-can text-secondary ms-2"></i>
+                    </p>
                 </div>
                 <hr>
             </div>
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-auto mb-2">
-                    <img src="/assets/images/user.jpg" alt="avatar" class="img-sm rounded-circle">
+                    <img src="{{ asset('assets/images/user.jpg') }}" alt="avatar" class="img-sm rounded-circle">
                 </div>
                 <div class="col">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, iusto?</p>
                 </div>
                 <div class="col-2 text-end items-align">
-                    <p class="small fw-lighter">2024/03/13 20:11:23</p>
-                </div>
-                <div class="col-auto">
-                    {{-- * change to button --}}
-                    <i class="fa-solid fa-trash-can text-secondary"></i>
+                    <p class="small fw-lighter">2024/03/13 20:11:23
+                        {{-- * change to button --}}
+                        <i class="fa-solid fa-trash-can text-secondary ms-2"></i>
+                    </p>
                 </div>
                 <hr>
             </div>
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-auto mb-2">
-                    <img src="/assets/images/user.jpg" alt="avatar" class="img-sm rounded-circle">
+                    <img src="{{ asset('assets/images/user.jpg') }}" alt="avatar" class="img-sm rounded-circle">
                 </div>
                 <div class="col">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, iusto?</p>
                 </div>
                 <div class="col-2 text-end">
-                    <p class="small fw-lighter">2024/03/13 21:07:32</p>
-                </div>
-                <div class="col-auto">
-                    {{-- * change to button --}}
-                    <i class="fa-solid fa-trash-can text-secondary"></i>
+                    <p class="small fw-lighter">2024/03/13 21:07:32
+                        {{-- * change to button --}}
+                        <i class="fa-solid fa-trash-can text-secondary ms-2"></i>
+                    </p>
                 </div>
             </div>
         </div>
