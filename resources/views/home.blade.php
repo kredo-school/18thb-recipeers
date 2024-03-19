@@ -1,24 +1,26 @@
 @extends('layouts.app')
 
+@section('title', 'Recipeers')
+
 @section('content')
 <div class="home-top text-center">
     <div class="card">
         <img src="{{ asset('/assets/images/home_top.jpeg') }}" alt="home top image" class="home-top-img">
         <div class="card-img-overlay d-flex">
             <div class="m-auto">
-                <h1 class="Welcome-text text-success fw-bold display-1">Welcome to Recipeers!</h1>
+                <h1 class="Welcome-text color1 fw-bold display-1">Welcome to Recipeers!</h1>
                 <p class="top-text h5">Recipe sharing platform for Vegans, Vegetarians and people with religious dietary restrictions.</p>
-                <p class="text-success h5 mt-5">Start now for free!</p>
-                <button type="submit" class="btn btn-lg btn-warning text-white w-25 shadow">Sign Up</button>
+                <p class="color1 h5 mt-5">Start now for free!</p>
+                <button type="submit" class="btn btn-lg btn-main w-25">Sign Up</button>
             </div>
         </div>
     </div>
 </div>
 
 <div class="home pt-5">
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
-            <h1 class="text-success fw-bold">New Recipes</h1>
+            <h1 class="color1 fw-bold">New Recipes</h1>
         </div>
         <div class="row">
             {{-- cards index --}}
@@ -40,7 +42,7 @@
 
                                     {{-- Tag --}}
                                     <div class="col-10 col-sm-10 col-md-9">
-                                        <span class="badge border border-success rounded-pill text-success">Vegan</span>
+                                        <span class="badge border input-color1 color1 rounded-pill text-success">Vegan</span>
                                     </div>
 
                                     {{-- Bookmark --}}
@@ -92,6 +94,7 @@
 </div>
 
 <div class="box">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
