@@ -25,3 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // RecipeController
 Route::get('/recipe/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
 
+// UserController
+Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
+
