@@ -65,6 +65,7 @@
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
 </div>
 
 @endsection
