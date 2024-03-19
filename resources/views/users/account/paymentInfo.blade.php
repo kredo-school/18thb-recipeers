@@ -60,4 +60,11 @@
     </div>
 </div>
 
+<div class="box">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
+</div>
+
 @endsection

@@ -12,7 +12,7 @@
 {{-- google font --}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap" rel="stylesheet">
 
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -31,54 +31,53 @@
 <body>
   <div id="app">
     <header>
-			<nav class="navbar navbar-expand-md navbar-light bg-white">
-					<div class="container">
-							<a class="navbar-brand" href="#">
-									{{-- <img src="../assets/images/logo.png" alt="logo" class="logo img-fluid"> --}}
-                                    <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="logo img-fluid">
-
-							</a>
-							<!-- hamburger button for responsive -->
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-							<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
-									<form action="#" method="get" class="form-inline mx-auto d-flex ">
-									<input type="text" name="search" placeholder="Search for..." class="form-control form-control-sm input-color1">
-									</form>
-									<ul class="navbar-nav ml-auto">
-											<li class="nav-item">
-													<a class="nav-link" href="">Home</a>
-											</li>
-											<div class="dropdown">
-													<button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-													Recipe
-													</button>
-													<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-															<li><a class="dropdown-item" href="#">Posts</a></li>
-															<li><a class="dropdown-item" href="#">Bookmarks</a></li>
-															<li><a class="dropdown-item" href="#">Liked Recipes</a></li>
-													</ul>
-											</div>
-											<li class="nav-item">
-													<a href="#" class="nav-link">
-															<i class="fa-solid fa-circle-user icon-sm color1"></i>
-													</a>
-											</li>
-					<!-- * add Translate API-->
-											<li>
-													<a href="#" class="nav-link">En</a>
-											</li>
-									</ul>
-							</div>
+		<nav class="navbar navbar-expand-md navbar-light bg-white">
+			<div class="container">
+				<a class="navbar-brand" href="#">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="logo img-fluid">
+				</a>
+				<!-- hamburger button for responsive -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<form action="#" method="get" class="form-inline mx-auto d-flex ">
+					<input type="text" name="search" placeholder="Search for..." class="form-control form-control-sm input-color1">
+					</form>
+				  <ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="">Home</a>
+					</li>
+					<div class="dropdown">
+						<button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						Recipe
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li>
+                        <a class="dropdown-item" href="#">Posts</a>
+                        </li>
+						<li><a class="dropdown-item" href="#">Bookmarks</a></li>
+						<li><a class="dropdown-item" href="#">Liked Recipes</a></li>
+					</ul>
 					</div>
+					<li class="nav-item">
+					 <a href="#" class="nav-link">
+					 <i class="fa-solid fa-circle-user icon-sm color1"></i>
+					 </a>
+                    </li>
+					<!-- * add Translate API-->
+					<li>
+					 <a href="#" class="nav-link">En</a>
+					</li>
+				  </ul>
+				</div>
+			  </div>
 			</nav>
 		</header>
 
     <div class="horizontal-line2"></div>
     <div class="horizontal-line3"></div>
     <div class="horizontal-line4"></div>
-
 
     <main>
         @yield('content')
