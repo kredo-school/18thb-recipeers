@@ -8,6 +8,6 @@ class RecipeController extends Controller
 {
     public function create()
     {
-        return view('user.recipe.createRecipe');
+        return view('users.recipe.createRecipe');
     }
 }
