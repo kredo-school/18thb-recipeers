@@ -10,4 +10,9 @@ class RecipeController extends Controller
     {
         return view('users.recipe.createRecipe');
     }
+
+    public function edit()
+    {
+        return view('users.recipe.editRecipe');
+    }
 }
