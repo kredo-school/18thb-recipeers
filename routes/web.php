@@ -30,3 +30,5 @@ Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'
 // UserController
 Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
 
+// AdminController
+Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('Admin.home');

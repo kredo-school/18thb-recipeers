@@ -20,7 +20,7 @@
 
     <div class="home pt-5">
         <div class="container mb-5">
-            <div class="row">
+            <div class="row mb-3">
                 <h1 class="color1 fw-bold">New Recipes</h1>
             </div>
             <div class="row">
@@ -30,11 +30,11 @@
 
                         {{-- Card --}}
                         <div class="col">
-                            <div class="card bg-white d-flex flex-column col-12 col-sm-12 col-md-6 col-xl-4">
+                            <div class="card bg-white d-flex flex-column col-12 col-sm-12 col-md-6 col-xl-4 p-2">
 
                                 {{-- Card Header --}}
                                 <div class="card-header">
-                                    <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="" class="w-100">
+                                    <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="" class="w-100 img-card img-fluid">
                                 </div>
 
                                 {{-- Card Body --}}
