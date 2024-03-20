@@ -150,22 +150,53 @@
 
         {{-- Save & Cancel Button --}}
         <div class="row justify-content-center mt-5">
+
             <div class="col"></div>
+
+            {{-- Cancel Button --}}
             <div class="col-2 d-flex justify-content-between">
                 <button class="btn btn-sub flex-grow-1">Cancel</button>
             </div>
+
+            {{-- Edit Button --}}
             <div class="col-2 d-flex justify-content-between">
                 <input type="submit" value="Edit" class="btn btn-main flex-grow-1">
             </div>
+
             <div class="col"></div>
+
+            {{-- Delete Button --}}
             <div class="col-1">
-                <button class="btn btn-trash">
+                <button type="button" class="btn btn-trash" data-bs-toggle="modal" data-bs-target="#recipeTrashModal">
                     <i class="fas fa-trash"></i>
                 </button>
+
+                {{-- Delete Modal --}}
+                <div class="modal fade" id="recipeTrashModal" aria-labelledby="recipeTrashModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title h5" id="recipeTrashModal">
+                                    Recipe Title
+                                </h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Recipe Title will Delete.</p>
+                                <p>Are you sure?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sub" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-main">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 </div>
+
 
 {{-- Bottom Image --}}
 <div class="box">
