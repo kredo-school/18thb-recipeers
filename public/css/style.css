@@ -1,0 +1,201 @@
+/* ---------------共通---------------------------------------------- */
+main{
+background-color: #FFFDFA;
+}
+
+/* font */
+h1,h2,h3,h4,h5,h6{
+font-family: "Varela Round", sans-serif;
+font-weight: 400;
+font-style: normal;
+color: #050505;
+}
+
+h1{
+font-size: 64px;
+}
+
+h2{
+	font-size: 48px;
+}
+
+h3{
+	font-size: 32px;
+}
+
+h4{
+font-size: 24px;
+}
+
+h5{
+	font-size: 18px;
+}
+
+li,p{
+ font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:"wdth" 100;
+	/* color: #050505; */
+	/* text-decoration-color: #050505; */
+}
+
+.input-color1{
+outline:solid 0.5px #65B741;
+}
+.color1{
+color: #65B741;
+}
+
+.color2{
+color: #93D579;
+}
+
+.color3{
+color:#C1F2B0;
+}
+
+.color4{
+	color: #fff6a0;
+}
+
+.color5{
+	color: #FFB534;
+}
+/* icon	 */
+.icon-sm {
+    font-size: 2rem;
+}
+
+.icon-md {
+    font-size: 3.5rem;
+}
+
+.icon-lg {
+    font-size: 9rem;
+}
+
+/* img */
+.img-sm {
+    object-fit: cover;
+    height: 3rem;
+    width: 3rem;
+}
+.img-md {
+    object-fit: cover;
+    height: 6rem;
+    width: 6rem;
+}
+.img-lg {
+    object-fit: cover;
+    height: 9rem;
+    width: 9rem;
+}
+
+.img-card{
+	object-fit: cover;
+	height: 8.5rem;
+	width: 10rem;
+}
+
+.img-step{
+	object-fit: cover;
+	height: 12rem;
+	width: 80%;
+}
+
+.img-cover{
+	object-fit: cover;
+	height: 20rem;
+	width: 100%;
+}
+
+/* button */
+.btn{
+ font-family: "Noto Sans", sans-serif;
+}
+
+.btn-main{
+background: #FFB534;
+color: #FFFFFF;
+box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+ font-family: "Noto Sans", sans-serif;
+ font-weight: bold;
+}
+
+.btn-main:hover{
+	background-color: #fff6a0 !important;
+	color: #FFB534 !important;
+}
+.btn-sub{
+	background: #FFFFFF;
+	color: #FFB534;
+	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+ font-family: "Noto Sans", sans-serif;
+ font-weight: bold;
+}
+
+.btn-sub:hover{
+	background-color: #fff6a0 !important;
+	color: #FFB534 !important;
+}
+
+.btn-outline{
+border: 1px solid #65B741;
+/* color: #FFB534; */
+}
+
+.badge-pref{
+	background-color: #C1F2B0;
+	border-color: #C1F2B0 !important;
+	color: #050505;
+    font-weight: normal;
+}
+
+/* -----------------navbar-------------------------------------------- */
+.nav-link{
+	color: #050505;
+}
+
+.logo{
+width: 150px;
+margin: 0 auto;
+}
+
+.horizontal-line2{
+padding-bottom: 2px;
+border-bottom: 1px solid #65B741;
+}
+.horizontal-line3{
+padding-bottom: 2px;
+border-bottom: 1px solid #C1F2B0;
+}
+.horizontal-line4{
+padding-bottom: 2px;
+border-bottom: 1px solid #fff6a0;
+}
+
+.searchbox i{
+position: absolute;
+left: 15px;
+top: 40px;
+color: #65B741;
+}
+
+/* footer */
+small{
+font-family: 'noto-sans','sans-serif';
+color: #050505;
+}
+
+.box {
+display: flex;
+max-width: 100%;
+overflow-x: hidden;
+}
+
+.box img {
+max-width: 100%; /* 画像が親要素を超えないようにする */
+margin: 0; /* 余白をなくす */
+height: 120px;
+}

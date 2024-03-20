@@ -19,4 +19,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// HomeController
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// RecipeController
+Route::get('/recipe/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
+Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'])->name('edit');
+
+
+// UserController
+Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
+
