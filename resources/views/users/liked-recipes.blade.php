@@ -7,17 +7,17 @@
     <div class="row">
         <div class="col-auto mx-2">
             <div class="list-group">
-                <button class="btn btn-main list-group-item mb-3">
+                <button class="btn btn-sub list-group-item mb-3">
                     Bookmarked Recipes
                 </button>
-                <button class="btn btn-sub list-group-item mb-3">
+                <button class="btn btn-main list-group-item mb-3">
                     Liked Recipes
                 </button>
             </div>
         </div>
         {{-- CARDS INDEX --}}
         <div class="col">
-            <h3 class="color1 mb-4">Bookmarked Recipes</h2>
+            <h3 class="color1 mb-4">Liked Recipes</h2>
             <div class="row">
 
                 {{-- CARD --}}
