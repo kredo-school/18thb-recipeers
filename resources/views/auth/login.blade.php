@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Login")
+
 @section('content')
 
 <div class="container w-50 py-5">
@@ -11,12 +13,12 @@
 
             <div class="row my-3 mx-auto">
                 <div class="col-4 text-end">
-                    <label for="username" class="h5 form-label">{{ __('Username') }}</label>
+                    <label for="email" class="h5 form-label">{{ __('email') }}</label>
                 </div>
                 <div class="col-8">
-                    <input id="username" type="username" class="form-control w-50" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                    <input id="email" type="email" class="form-control w-50" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                    @error('username')
+                    @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -71,6 +73,7 @@
 </div>
 
 <div class="box">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
