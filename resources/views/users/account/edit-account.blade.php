@@ -26,7 +26,7 @@
                         <label for="avatar" class="form-label h5 mt-1">Avatar</label>
                     </div>
                     <div class="col-8">
-                        <input type="file" name="image" id="image" class="form-control">
+                        <input type="file" name="image" id="image" class="form-control input-color1">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -34,7 +34,7 @@
                         <label for="username" class="form-label h5 mt-1">Username</label>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="">
+                        <input type="text" name="username" id="username" class="form-control input-color1" placeholder="Username" value="">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -42,7 +42,7 @@
                         <label for="email" class="form-label h5 mt-1">Email</label>
                     </div>
                     <div class="col-8">
-                        <input type="email" name="email" id="email" class="form-control" placeholder="user@email.com" value="">
+                        <input type="email" name="email" id="email" class="form-control input-color1" placeholder="user@email.com" value="">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -50,7 +50,7 @@
                         <label for="password" class="form-label h5 mt-1">Password</label>
                     </div>
                     <div class="col-8">
-                        <input type="password" name="password" id="password" class="form-control">
+                        <input type="password" name="password" id="password" class="form-control input-color1">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -58,7 +58,7 @@
                         <label for="password-confirm" class="form-label h5 mt-1">Confirm Password</label>
                     </div>
                     <div class="col-8">
-                        <input type="password" name="password-confirm" id="password-confirm" class="form-control">
+                        <input type="password" name="password-confirm" id="password-confirm" class="form-control input-color1">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -66,7 +66,7 @@
                         <label for="birthday" class="form-label h5 mt-1">Birthday</label>
                     </div>
                     <div class="col-8">
-                        <input type="date" name="birthday" id="birthday" class="form-control" placeholder="YYYY/MM/DD" value="">
+                        <input type="date" name="birthday" id="birthday" class="form-control input-color1" placeholder="YYYY/MM/DD" value="">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -74,7 +74,7 @@
                         <label for="gender" class="form-label h5 mt-1">Gender</label>
                     </div>
                     <div class="col-8">
-                        <select class="form-select" name="gender" id="gender" class="form-control">
+                        <select name="gender" id="gender" class="form-select input-color1">
                             <option value="" selected>Select your gender</option>
                             <option value="female">Female</option>
                             <option value="male">Male</option>
@@ -87,7 +87,7 @@
                         <label for="eating_pref" class="form-label h5 mt-1">Eating Preference</label>
                     </div>
                     <div class="col-8">
-                        <select class="form-select" name="eating_pref" id="eating_pref">
+                        <select class="form-select input-color1" name="eating_pref" id="eating_pref">
                             {{-- * if preference is null null --}}
                             <option value="" selected>Choose your preference</option>
                             {{-- * else pre-select an option --}}
@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the countries --}}
-                        <select class="form-select" name="nationality" id="nationality" class="form-control" value="">
+                        <select name="nationality" id="nationality" class="form-select input-color1" value="">
                             <option value="" selected>Select your nationality</option>
                             <option value="Japan">Japan</option>
                             <option value="Canada">Canada</option>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the major cities --}}
-                        <select class="form-select" name="residence_city" id="residence_city" class="form-control">
+                        <select name="residence_city" id="residence_city" class="form-select input-color1">
                             <option value="" selected>Select your city of residence</option>
                             <option value="Tokyo">Tokyo</option>
                             <option value="Ottawa">Ottawa</option>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the major cities --}}
-                        <select class="form-select" name="job_status" id="job_status" class="form-control">
+                        <select class="form-select input-color1" name="job_status" id="job_status" class="form-control">
                             <option value="" selected>Select your job status</option>
                             <option value="Full-time">Full-time</option>
                             <option value="Part-time">Part-time</option>
@@ -152,7 +152,7 @@
                         <label for="introduction" class="form-label h5 mt-1">Introduction</label>
                     </div>
                     <div class="col-8">
-                        <textarea name="introduction" id="introduction" rows="8" class="form-control" placeholder="Please introduce yourself."></textarea>
+                        <textarea name="introduction" id="introduction" rows="8" class="form-control input-color1" placeholder="Please introduce yourself."></textarea>
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -160,7 +160,7 @@
                         <label for="business_info" class="form-label">Do you want to switch to a business account?</label>
                     </div>
                     <div class="col-2 mb-2 text-end">
-                        <input type="checkbox" name="business_info" id="business_info" class="form-check-input me-1" onchange="toggleBusinessInfo()"> Yes
+                        <input type="checkbox" name="business_info" id="business_info" class="form-check-input input-color1 me-1" onchange="toggleBusinessInfo()"> Yes
                     </div>
                 </div>
             </div>
@@ -180,7 +180,7 @@
                                 <label for="business_name" class="form-label h5 mt-1">Business Name</label>
                             </div>
                             <div class="col-8">
-                                <input type="text" name="business_name" id="business_name" class="form-control" placeholder="Name of your company/restaurant" value="">
+                                <input type="text" name="business_name" id="business_name" class="form-control input-color1" placeholder="Name of your company/restaurant" value="">
                             </div>
                         </div>
                         <div class="row align-items-center mb-3">
@@ -188,7 +188,7 @@
                                 <label for="location" class="form-label h5 mt-1">Location</label>
                             </div>
                             <div class="col-8">
-                                <input type="text" name="location" id="location" class="form-control" placeholder="Location" value="">
+                                <input type="text" name="location" id="location" class="form-control input-color1" placeholder="Location" value="">
                             </div>
                         </div>
                         <div class="row align-items-center mb-3">
@@ -196,7 +196,7 @@
                                 <label for="pic" class="form-label h5 mt-1">Person in Charge</label>
                             </div>
                             <div class="col-8">
-                                <input type="text" name="pic" id="pic" class="form-control" placeholder="Name of person in charge" value="">
+                                <input type="text" name="pic" id="pic" class="form-control input-color1" placeholder="Name of person in charge" value="">
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                                 <label for="hp_url" class="form-label h5 mt-1">Website</label>
                             </div>
                             <div class="col-8">
-                                <input type="url" name="hp_url" id="hp_url" class="form-control" placeholder="URL of your business website" value="">
+                                <input type="url" name="hp_url" id="hp_url" class="form-control input-color1" placeholder="URL of your business website" value="">
                             </div>
                         </div>
                         <div class="row align-items-center mb-3">
@@ -215,7 +215,7 @@
                                 <label for="delivery_url" class="form-label h5 mt-1">Delivery Service</label>
                             </div>
                             <div class="col-8">
-                                <input type="url" name="delivery_url" id="delivery_url" class="form-control" placeholder="Link to your delivery service webpage" value="">
+                                <input type="url" name="delivery_url" id="delivery_url" class="form-control input-color1" placeholder="Link to your delivery service webpage" value="">
                             </div>
                         </div>
                     </div>
