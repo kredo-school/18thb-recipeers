@@ -12,7 +12,7 @@
 
             {{-- Input Recipe Title --}}
             <div class="row">
-                <input type="text" name="Recipe_name" id="Recipe_name" class="form-control w-100 input-color1" placeholder="Enter the recipe title.">
+                <input type="text" name="Recipe_name" id="Recipe_name" class="form-control w-100 input-color1" placeholder="Enter the recipe title." value="Sukiyaki">
             </div>
 
             <div class="row mt-3">
@@ -20,7 +20,7 @@
                 {{-- Input Image --}}
                 <div class="col-4 previews">
                     <p>Select recipe image</p>
-                    <input type="file" onchange="imgPreView(event)" name="recipe_top_image" id="recipe_top_image preview">
+                    <input type="file" onchange="imgPreView(event)" name="recipe_top_image" id="recipe_top_image">
                 </div>
 
                 {{-- Recipe Input form --}}
@@ -32,7 +32,7 @@
                             <h6>Preparation Time[min]:</h6>
                         </div>
                         <div class="col-3">
-                            <input type="number" name="pre_time" id="pre_time" placeholder="00" class="form-control form-control-sm input-color1">
+                            <input type="number" name="pre_time" id="pre_time" placeholder="00" class="form-control form-control-sm input-color1" value="30">
                         </div>
                     </div>
 
@@ -43,7 +43,7 @@
                             <h6>Category:</h6>
                         </div>
                         <div id="tagContainer1" class="col-3 d-flex flex-wrap align-item-center">
-                            <input type="text" id="tagInput1" class="form-control form-control-sm input-color1">
+                            <input type="text" id="tagInput1" class="form-control form-control-sm input-color1" value="Dessert">
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                             <h6>Preference:</h6>
                         </div>
                         <div id="tagContainer2" class="col-3 d-flex flex-wrap align-item-center">
-                            <input type="text" id="tagInput2" class="form-control form-control-sm input-color1">
+                            <input type="text" id="tagInput2" class="form-control form-control-sm input-color1" value="Vegan">
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@
                             <h6>Meal Type:</h6>
                         </div>
                         <div id="tagContainer3" class="col-3 d-flex flex-wrap ">
-                            <input type="text" id="tagInput3" class="form-control form-control-sm input-color1">
+                            <input type="text" id="tagInput3" class="form-control form-control-sm input-color1" value="Morning">
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                             <h6>Occasion:</h6>
                         </div>
                         <div id="tagContainer4" class="col-3 d-flex flex-wrap align-item-center">
-                            <input type="text" id="tagInput4" class="form-control form-control-sm input-color1">
+                            <input type="text" id="tagInput4" class="form-control form-control-sm input-color1" value="Occasion">
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="recipe_summary" class="h6">Summary:</label>
-                            <textarea type="text" name="recipe_summary" id="recipe_summary" class="form-control input-color1"></textarea>
+                            <textarea type="text" name="recipe_summary" id="recipe_summary" class="form-control input-color1">This is Japanese food.</textarea>
                         </div>
                     </div>
 
@@ -95,8 +95,8 @@
                             <select name="country_select" id="country_select" class="form-select input-color1">
                                 <option selected>Select Country of Origin</option>
                                 <option value="1">USA</option>
-                                <option value="1">Japan</option>
-                                <option value="1">China</option>
+                                <option value="2">Japan</option>
+                                <option value="3">China</option>
                             </select>
                         </div>
                     </div>
@@ -115,10 +115,10 @@
             {{-- Input Form --}}
             <div class="row">
                 <div class="col-4">
-                    <input type="text" name="ing_input1" id="ing_input0" placeholder="Ingredient" class="form-control input-color1">
+                    <input type="text" name="ing_input1" id="ing_input0" placeholder="Ingredient" class="form-control input-color1" value="Beef">
                 </div>
                 <div class="col-4">
-                    <input type="text" name="ammount_input" id="ammount_input0" placeholder="ammount" class="form-control input-color1">
+                    <input type="text" name="ammount_input" id="ammount_input0" placeholder="ammount" class="form-control input-color1" value="300g">
                 </div>
             </div>
 
@@ -141,7 +141,7 @@
                     <input type="file" id="step_file">
                 </div>
                 <div class="col-8">
-                    <textarea rows="5" id="step_text" class="form-control input-color1"></textarea>
+                    <textarea rows="5" id="step_text" class="form-control input-color1">First, Gather all of the ingredients.</textarea>
                 </div>
             </div>
 
@@ -150,14 +150,20 @@
 
         {{-- Save & Cancel Button --}}
         <div class="row justify-content-center mt-5">
+            <div class="col"></div>
             <div class="col-2 d-flex justify-content-between">
                 <button class="btn btn-sub flex-grow-1">Cancel</button>
             </div>
             <div class="col-2 d-flex justify-content-between">
-                <input type="submit" value="Save" class="btn btn-main flex-grow-1">
+                <input type="submit" value="Edit" class="btn btn-main flex-grow-1">
+            </div>
+            <div class="col"></div>
+            <div class="col-1">
+                <button class="btn btn-trash">
+                    <i class="fas fa-trash"></i>
+                </button>
             </div>
         </div>
-
     </form>
 </div>
 

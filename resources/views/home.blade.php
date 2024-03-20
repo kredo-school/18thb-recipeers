@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Recipeers')
+@section('title', 'Home')
 
 @section('content')
 <div class="home-top text-center">
