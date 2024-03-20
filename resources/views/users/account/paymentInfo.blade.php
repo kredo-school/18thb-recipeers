@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Payment Information")
+@section('title', "Payment Information | Recipeers")
 
 @section('content')
 
