@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <!-- admin menu -->
-            <div class="col-lg-2 col-md-2 col-12 my-5 mr-2">
+            <div class="col-2 my-5 pe-4">
                 <div class="list-group">
                     <button class="btn btn-main list-group-item mb-3">
                         Admin Home
@@ -27,43 +27,43 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 col-md-10 col-12 my-5">
+            <div class="col-10 my-5">
                 {{-- Display total number --}}
                 <div class="top_contents mb-5">
-                    <h6 class="color1">
+                    <h6 class="color1 h4">
                         <i class="fa-solid fa-person mx-2"></i>
                         Total number of ...
                     </h6>
 
                     {{-- Number Contents --}}
-                    <div class="num-contents d-flex">
+                    <div class="num-contents d-flex justify-content-between">
                         {{-- Users number --}}
-                        <div class="card input-color1 w-25 text-center rounded-0 p-1 my-2 ms-4">
-                            <div class="card-header bg-white border-0 p-0">
-                                <span class="fs-4 fw-bold">1111</span>Users
+                        <div class="card input-color1 w-25 text-center rounded-0 p-1 my-2 ms-4 py-3">
+                            <div class="card-header bg-white border-0 p-0 mb-1">
+                                <span class="fs-4 fw-bold">1111</span> Users
                             </div>
                             <div class="card-body p-0">
-                                <i class="fa-solid fa-people-group fa-3x"></i>
+                                <i class="fa-solid fa-people-group fa-3x color1"></i>
                             </div>
                         </div>
 
                         {{-- Recipes number --}}
-                        <div class="card input-color1 w-25 text-center rounded-0 p-1 my-2 ms-4">
-                            <div class="card-header bg-white border-0 p-0">
-                                <span class="fs-4 fw-bold">1111</span>Recipes
+                        <div class="card input-color1 w-25 text-center rounded-0 p-1 my-2 ms-4 py-3">
+                            <div class="card-header bg-white border-0 p-0 mb-1">
+                                <span class="fs-4 fw-bold">1111</span> Recipes
                             </div>
                             <div class="card-body p-0">
-                                <i class="fa-solid fa-utensils fa-3x"></i>
+                                <i class="fa-solid fa-utensils fa-3x color1"></i>
                             </div>
                         </div>
 
                         {{-- Inquiries number --}}
-                        <div class="card input-color1 w-25 text-center rounded-0 p-1 my-2 ms-4">
-                            <div class="card-header bg-white border-0 p-0">
-                                <span class="fs-4 fw-bold">1111</span>Inquiries
+                        <div class="card input-color1 w-25 text-center rounded-0 p-1 my-2 ms-4 py-3">
+                            <div class="card-header bg-white border-0 p-0 mb-1">
+                                <span class="fs-4 fw-bold">1111</span> Inquiries
                             </div>
                             <div class="card-body p-0">
-                                <i class="fa-regular fa-envelope fa-3x"></i>
+                                <i class="fa-regular fa-envelope fa-3x color1"></i>
                             </div>
                         </div>
 
@@ -75,7 +75,7 @@
                 <div class="row">
 
                     {{-- Sales --}}
-                    <div class="col color1">
+                    <div class="col color1 h4">
                         <i class="fa-solid fa-chart-line mx-2"></i>
                         Sales
                         <div class="img ms-4 my-2">
@@ -84,9 +84,9 @@
                     </div>
 
                     {{-- Map --}}
-                    <div class="col color1">
+                    <div class="col color1 h4">
                         <i class="fa-solid fa-map mx-2"></i>
-                        Sales
+                        Map
                         <div class="img ms-4 my-2">
                             <img src="{{ asset('/assets/images/World_Map.png') }}" alt="world map" class="img-fluid">
                         </div>
