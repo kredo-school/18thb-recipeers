@@ -18,23 +18,21 @@
         </div>
     </div>
 
-    <div class="home pt-5">
-        <div class="container mb-5">
-            <div class="row">
-                <h1 class="color1 fw-bold">New Recipes</h1>
-            </div>
+    <div class="home container p-5">
+
+            <h2 class="color1 mb-4">New Recipes</h2>
             <div class="row">
                 {{-- cards index --}}
                 <div class="col-lg-8 col-12 mb-5">
                     <div class="row d-flex flex-wrap">
 
                         {{-- Card --}}
-                        <div class="col">
-                            <div class="card bg-white d-flex flex-column col-12 col-sm-12 col-md-6 col-xl-4">
+                        <div class="col col-12 col-sm-12 col-md-6 col-xl-4">
+                            <div class="card d-flex flex-columnmb-4 mb-4 p-2">
 
                                 {{-- Card Header --}}
-                                <div class="card-header">
-                                    <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="" class="w-100">
+                                <div class="card-header bg-white mx-auto" style="border-bottom: none;">
+                                    <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="" class="img-card img-fluid">
                                 </div>
 
                                 {{-- Card Body --}}
@@ -42,44 +40,37 @@
                                     <div class="row">
 
                                         {{-- Tag --}}
-                                        <div class="col-10 col-sm-10 col-md-9">
-                                            <span
-                                                class="badge border input-color1 color1 rounded-pill text-success">Vegan</span>
+                                        <div class="col-auto">
+                                            <span class="badge badge-pref border rounded-pill">Vegan</span>
                                         </div>
 
-                                        {{-- Bookmark --}}
-                                        <div class="col-1">
-                                            <span class="fa-layers">
-                                                <i class="fa-regular fa-bookmark"></i><br>
-                                                <span class="fa-layers-counter">1</span>
-                                            </span>
+                                        <div class="col">
+                                            <div class="row justify-content-end">
+                                                {{-- Bookmark --}}
+                                                <div class="col-auto">
+                                                    <div class="fa-layers d-flex flex-column align-items-center">
+                                                        <i class="fa-regular fa-bookmark"></i>
+                                                        <span class="fa-layers-counter">1</span>
+                                                    </div>
+                                                </div>
+                                                {{-- Heart --}}
+                                                <div class="col-auto">
+                                                    <div class="fa-layers d-flex flex-column align-items-center">
+                                                        <i class="fa-regular fa-heart"></i>
+                                                        <span class="fa-layers-counter">1</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        {{-- Heart --}}
-                                        <div class="col-1">
-                                            <span class="fa-layers">
-                                                <i class="fa-regular fa-heart"></i><br>
-                                                <span class="fa-layers-counter">1</span>
-                                            </span>
-                                        </div>
-
                                     </div>
 
                                     {{-- Recipe Title --}}
-                                    <div class="row">
-                                        <h3>Recipe Title</h3>
-                                    </div>
+                                    <h4>Recipe Title</h4>
 
                                     {{-- Recipe Over View --}}
-                                    <div class="row">
-                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <button type="button" class="btn btn-warning">View Details</button>
-                                        </div>
-                                    </div>
+                                    <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
+ 
+                                    <button type="button" class="btn btn-main">View Details</button>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +79,7 @@
                 </div>
 
                 {{-- Ads index --}}
-                <div class="col-12 col-lg-4 mt-5 mt-md-2">
+                <div class="col-lg-4 mt-5 mt-md-2 col-12">
                     <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="" class="w-100">
                 </div>
             </div>
