@@ -5,6 +5,8 @@
 @section('content')
 <div class="container w-75">
     <form action="" class="pt-5 pb-5" id="create_recipe">
+        @csrf
+        @method('PATCH')
 
         {{-- Input Top Input Form --}}
         <div class="top_form">
@@ -150,22 +152,34 @@
 
         {{-- Save & Cancel Button --}}
         <div class="row justify-content-center mt-5">
+
             <div class="col"></div>
+
+            {{-- Cancel Button --}}
             <div class="col-2 d-flex justify-content-between">
                 <button class="btn btn-sub flex-grow-1">Cancel</button>
             </div>
+
+            {{-- Edit Button --}}
             <div class="col-2 d-flex justify-content-between">
                 <input type="submit" value="Edit" class="btn btn-main flex-grow-1">
             </div>
+
             <div class="col"></div>
+
+            {{-- Delete Button --}}
             <div class="col-1">
-                <button class="btn btn-trash">
+                <button type="button" class="btn btn-trash" data-bs-toggle="modal" data-bs-target="#recipeTrashModal">
                     <i class="fas fa-trash"></i>
                 </button>
+
+                {{-- Import Modal --}}
+                @include('modals.editRecipeDelete')
             </div>
         </div>
     </form>
 </div>
+
 
 {{-- Bottom Image --}}
 <div class="box">
