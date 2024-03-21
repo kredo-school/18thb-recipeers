@@ -31,7 +31,7 @@
                             <div class="card d-flex flex-columnmb-4 mb-4 p-2">
 
                                 {{-- Card Header --}}
-                                <div class="card-header bg-white mx-auto" style="border-bottom: none;">
+                                <div class="card-header bg-white mx-auto">
                                     <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="" class="img-card img-fluid">
                                 </div>
 

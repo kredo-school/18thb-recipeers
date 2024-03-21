@@ -22,7 +22,7 @@
 					<div class="col-4 col-lg-4 col-md-4 col-12">
 						<div class="card d-flex flex-column mb-4 p-2">
 							<!-- card header -->
-							<div class="card-header bg-white mx-auto" style="border-bottom: none;">
+							<div class="card-header bg-white mx-auto">
 								<img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
 							</div>
 							<!-- card body -->
@@ -63,7 +63,7 @@
 					<div class="col-4 col-lg-4 col-md-4 col-12">
 						<div class="card d-flex flex-column mb-4 p-2">
 							<!-- card header -->
-							<div class="card-header bg-white mx-auto" style="border-bottom: none;">
+							<div class="card-header bg-white mx-auto">
 								<img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
 							</div>
 							<!-- card body -->
@@ -104,7 +104,7 @@
 					<div class="col-4 col-lg-4 col-md-4 col-12">
 						<div class="card d-flex flex-column mb-4 p-2">
 							<!-- card header -->
-							<div class="card-header bg-white mx-auto" style="border-bottom: none;">
+							<div class="card-header bg-white mx-auto">
 								<img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
 							</div>
 							<!-- card body -->
