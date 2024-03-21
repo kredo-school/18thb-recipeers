@@ -36,8 +36,6 @@ li,p{
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings:"wdth" 100;
-	/* color: #050505; */
-	/* text-decoration-color: #050505; */
 }
 
 .input-color1{
@@ -65,7 +63,7 @@ color:#C1F2B0;
 }
 
 .icon-md {
-    font-size: 3.5rem;
+    font-size: 3rem;
 }
 
 .icon-lg {
@@ -140,13 +138,16 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
 
 .btn-outline{
 border: 1px solid #65B741;
-/* color: #FFB534; */
 }
 
 .badge-pref{
 	background-color: #C1F2B0;
 	border-color: #C1F2B0 !important;
 	color: #050505;
+}
+
+a{
+text-decoration: none;
 }
 
 /* -----------------navbar-------------------------------------------- */
@@ -195,4 +196,34 @@ overflow-x: hidden;
 max-width: 100%; /* 画像が親要素を超えないようにする */
 margin: 0; /* 余白をなくす */
 height: 120px;
+}
+
+/* table */
+table{
+font-family: 'Noto Sans', sans-serif;
+color: #050505;
+}
+
+/* thead th{
+	background: #C1F2B0 !important;
+} */
+
+th{
+	font-weight: normal;
+		background: #fff6a0 !important;
+
+}
+
+.badge-active{
+	background-color: #C1F2B0;
+	border-color: #C1F2B0 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-deactive{
+	background-color: #E0E0E0;
+	border-color: #E0E0E0 !important;
+	color: #050505;
+	font-weight: normal;
 }
