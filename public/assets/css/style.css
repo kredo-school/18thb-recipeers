@@ -107,6 +107,10 @@ color:#C1F2B0;
 	width: 15rem;
 }
 
+/* card  */
+.card-header{
+	border: none;
+}
 
 /* button */
 .btn{

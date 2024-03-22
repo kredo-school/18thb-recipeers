@@ -19,12 +19,12 @@
         <div class="col">
             <h3 class="color1 mb-4">Bookmarked Recipes</h2>
             <div class="row">
-
+                
                 {{-- CARD --}}
                 <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="card d-flex flex-column mb-4 p-2">
                         {{-- card header --}}
-                        <div class="card-header bg-white mx-auto">
+                        <div class="card-header bg-white mx-auto" >
                             <img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
                         </div>
                         {{-- card body --}}
@@ -54,18 +54,10 @@
                                 </div>
                             </div>
                             {{-- Recipe Title --}}
-                            <div class="row">
-                                <h4>Recipe Title</h4>
-                            </div>
+                            <h4>Recipe Title</h4>
                             {{-- Recipe Over View --}}
-                            <div class="row">
-                                <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button" class="btn btn-main">View Details</button>
-                                </div>
-                            </div>
+                            <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
+                            <button type="button" class="btn btn-main">View Details</button>
                         </div>
                     </div>
                 </div>

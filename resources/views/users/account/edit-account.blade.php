@@ -21,7 +21,7 @@
             {{-- * put variables to the old helpers and values --}}
             {{-- LEFT SIDE --}}
             <div class="col-6 me-5">
-                <div class="row align-items-cente mb-3">
+                <div class="row align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="avatar" class="form-label h5 mt-1">Avatar</label>
                     </div>
