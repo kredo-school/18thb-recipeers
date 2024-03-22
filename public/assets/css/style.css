@@ -233,46 +233,18 @@ color: #050505
 border-bottom: none;
 }
 
-/* profile detail 用 */
-
-.text-align-right {
-text-align: right;
-}
-
-.business-info-box {
-padding: 0.5em 1em;
-margin: 0 0 2em 0;
-background: white;
-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-}
-
-.url-display {
-display: block;
-word-wrap: break-word;
-max-width: 300px
-}
-
-.sns-icon {
-text-decoration: none;
-color: #050505
-}
-
-.border-bottom-none {
-border-bottom: none;
-}
-
 /* table */
 table{
 	font-family: 'Noto Sans', sans-serif;
 	color: #050505;
 }
-	
+
 th{
 	font-weight: normal;
 	background: #fff6a0 !important;
 
 }
-	
+
 .badge-active{
 	background-color: #C1F2B0;
 	border-color: #C1F2B0 !important;
