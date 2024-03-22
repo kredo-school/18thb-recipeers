@@ -232,9 +232,16 @@
             </div>
         </div>
 
-        <div class="text-end h5">
-            <i class="fa-solid fa-trash-can"></i>
+        {{-- Delete Button --}}
+        <div class="col-1">   {{-- class="text-end h5 --}}  {{--<i class="fa-solid fa-trash-can"></i>--}}
+            <button type="button" class="btn btn-trash" data-bs-toggle="modal" data-bs-target="#accountTrashModal">
+                <i class="fas fa-trash"></i>
+            </button>
+
+            {{-- Import Modal --}}
+            @include('modals.edit-account-delete')
         </div>
+
     </form>
 
 </div>
