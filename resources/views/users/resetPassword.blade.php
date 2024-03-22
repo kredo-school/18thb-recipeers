@@ -8,6 +8,7 @@
     <h2 class="color1 text-center my-5">Trouble logging in?</h2>
         {{-- * add error messages to each input field --}}
         <form action="#" method="post" class="m-auto w-75">
+            @method('PATCH')
             @csrf
 
             <p class="text-center">Enter your email and we'll send you a link to get back into your account.</p>

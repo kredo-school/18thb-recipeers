@@ -5,8 +5,8 @@
 @section('content')
 <div class="container w-75">
     <form action="" class="pt-5 pb-5" id="create_recipe">
-        @csrf
         @method('PATCH')
+        @csrf
 
         {{-- Input Top Input Form --}}
         <div class="top_form">

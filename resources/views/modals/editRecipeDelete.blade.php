@@ -21,8 +21,13 @@
                     <p>Are you sure?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sub" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-main">Delete</button>
+                    <form action="">
+                        @method('DELETE')
+                        @csrf
+
+                        <button type="button" class="btn btn-sub" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-main">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
