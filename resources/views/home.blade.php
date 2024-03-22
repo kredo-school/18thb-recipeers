@@ -9,7 +9,7 @@
             <div class="card-img-overlay d-flex">
                 <div class="m-auto">
                     <h1 class="Welcome-text color1 fw-bold display-1">Welcome to Recipeers!</h1>
-                    <p class="top-text h5">Recipe sharing platform for Vegans, Vegetarians and people with religious dietary
+                    <p class="top-text mt-4 h5 fw-light">Recipe sharing platform for Vegans, Vegetarians and people with religious dietary
                         restrictions.</p>
                     <p class="color1 h5 mt-5">Start now for free!</p>
                     <button type="submit" class="btn btn-lg btn-main w-25">Sign Up</button>
