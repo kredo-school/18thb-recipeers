@@ -153,6 +153,10 @@ li,p{
 	color: #050505;
 }
 
+a{
+	text-decoration: none;
+}
+
 /* -----------------navbar-------------------------------------------- */
 .nav-link{
 	color: #050505;
@@ -213,6 +217,30 @@ th{
 
 }
 	
+.badge-active{
+	background-color: #C1F2B0;
+	border-color: #C1F2B0 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-deactive{
+	background-color: #E0E0E0;
+	border-color: #E0E0E0 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+/* thead th{
+	background: #C1F2B0 !important;
+} */
+
+th{
+	font-weight: normal;
+	background: #fff6a0 !important;
+
+}
+
 .badge-active{
 	background-color: #C1F2B0;
 	border-color: #C1F2B0 !important;
