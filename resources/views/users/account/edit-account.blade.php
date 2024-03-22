@@ -231,14 +231,18 @@
                 <input type="submit" value="Save" class="btn btn-main flex-grow-1">
             </div>
         </div>
+
+        <div class="text-end h5">
+            <i class="fa-solid fa-trash-can"></i>
+        </div>
     </form>
-    
+
 </div>
 <script>
     function toggleBusinessInfo() {
         var container = document.getElementById('businessInfoContainer');
         var checkbox = document.getElementById('business_info');
-        
+
         if (checkbox.checked) {
             container.style.display = 'block';
         } else {
