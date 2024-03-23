@@ -1,31 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div class="modal fade" id="recipeTrashModal" aria-labelledby="recipeTrashModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title h5" id="recipeTrashModal">
-                        Recipe Title
-                    </h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+{{-- Edit Recipe Delete --}}
+<div class="modal fade" id="recipeTrashModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center align-items-center">
+                <h3 class="modal-title color1">
+                    <i class="fa-solid fa-trash"></i> Delete Recipe
+                </h3>
+            </div>
+            <div class="horizontal-line3"></div>
+            <div class="horizontal-line4"></div>
+
+            <div class="modal-body py-5">
+                <p class="fw-light mb-5 text-center">You are about to deactivate the account below.</p>
+
+                {{-- Card --}}
+                <div class="card d-flex flex-column p-2 w-50 mx-auto">
+
+                    {{-- Card Header --}}
+                    <div class="card-header">
+                        {{-- Recipe Title --}}
+                        <h4>Recipe Title</h4>
+                    </div>
+
+                    {{-- Card Body --}}
+                    <div class="card-body bg-white mx-auto">
+                        <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt=""
+                            class="img-card img-fluid">
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p>Recipe Title will Delete.</p>
-                    <p>Are you sure?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sub" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-main">Delete</button>
-                </div>
+
+            </div>
+            <div class="modal-footer border-0 d-flex justify-content-center mb-5">
+                <form action="">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="button" class="btn btn-sub btn-block w-25 me-4" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-main btn-block w-25">
+                        Delete
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>
