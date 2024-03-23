@@ -174,7 +174,7 @@
                 </button>
 
                 {{-- Import Modal --}}
-                @include('modals.editRecipeDelete')
+                @include('modals.edit-recipe-delete')
             </div>
         </div>
     </form>
