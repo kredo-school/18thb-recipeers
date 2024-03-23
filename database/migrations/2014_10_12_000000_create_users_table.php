@@ -13,12 +13,26 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->integer('role_id')->default(2)->comment('1:admin,2:user,3:business');
+            $table->longText('avatar')->nullable();
+            $table->date('birthday')->nullable();
+            $table->unsignedBigInteger('gender_id')->nullable();
+            $table->unsignedBigInteger('eating_pref_id')->nullable();
+            $table->unsignedBigInteger('nationality_id')->nullable();
+            $table->unsignedBigInteger('residence_city_id')->nullable();
+            $table->unsignedBigInteger('job_status_id')->nullable();
+            $table->text('introduction')->nullable();
+            $table->string('status');
             $table->timestamps();
+
+            // $table->foreign('gender_id')->references('id')->on('genders');
+            // $table->foreign('eating_pref_id')->references('id')->on('eating_preferences');
+            // $table->foreign('nationality_id')->references('id')->on('countries');
+            // $table->foreign('residence_city_id')->references('id')->on('cities');
+            // $table->foreign('job_status_id')->references('id')->on('job_statuses');
         });
     }
 
