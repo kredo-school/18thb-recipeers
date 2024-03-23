@@ -231,14 +231,25 @@
                 <input type="submit" value="Save" class="btn btn-main flex-grow-1">
             </div>
         </div>
+
+        {{-- Delete Button --}}
+        <div class="text-end h5">
+            <button type="button" class="btn btn-trash" data-bs-toggle="modal" data-bs-target="#accountTrashModal">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+
+            {{-- Import Modal --}}
+            @include('modals.edit-account-delete')
+        </div>
+
     </form>
-    
+
 </div>
 <script>
     function toggleBusinessInfo() {
         var container = document.getElementById('businessInfoContainer');
         var checkbox = document.getElementById('business_info');
-        
+
         if (checkbox.checked) {
             container.style.display = 'block';
         } else {
