@@ -258,3 +258,8 @@ th{
 	color: #050505;
 	font-weight: normal;
 }
+
+/* modal */
+.modal-dialog,.modal-content,.modal-header {
+    border-color: #65B741;
+}
