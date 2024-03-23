@@ -13,6 +13,6 @@ class RecipeController extends Controller
 
     public function edit()
     {
-        return view('users.recipe.editRecipe');
+        return view('users.recipe.edit-recipe');
     }
 }
