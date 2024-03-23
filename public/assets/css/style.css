@@ -5,9 +5,9 @@ main{
 
 /* font */
 h1,h2,h3,h4,h5,h6{
-font-family: "Varela Round", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+	font-family: "Varela Round", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 	color: #050505;
 }
 
@@ -24,7 +24,7 @@ h3{
 }
 
 h4{
-font-size: 24px;
+	font-size: 24px;
 }
 
 h5{
@@ -32,27 +32,27 @@ h5{
 }
 
 li,p{
- font-family: "Noto Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-variation-settings:"wdth" 100;
+	font-family: "Noto Sans", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-variation-settings:"wdth" 100;
 	/* color: #050505; */
 	/* text-decoration-color: #050505; */
 }
 
 .input-color1{
-outline:solid 0.5px #65B741;
+	outline:solid 0.5px #65B741;
 }
 .color1{
-color: #65B741;
+	color: #65B741;
 }
 
 .color2{
-color: #93D579;
+	color: #93D579;
 }
 
 .color3{
-color:#C1F2B0;
+	color:#C1F2B0;
 }
 
 .color4{
@@ -65,7 +65,7 @@ color:#C1F2B0;
 }
 
 .icon-md {
-    font-size: 3.5rem;
+    font-size: 3rem;
 }
 
 .icon-lg {
@@ -107,18 +107,22 @@ color:#C1F2B0;
 	width: 15rem;
 }
 
+/* card  */
+.card-header{
+	border: none;
+}
 
 /* button */
 .btn{
- font-family: "Noto Sans", sans-serif;
+	font-family: "Noto Sans", sans-serif;
 }
 
 .btn-main{
-background: #FFB534;
-color: #FFFFFF;
-box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
- font-family: "Noto Sans", sans-serif;
- font-weight: bold;
+	background: #FFB534;
+	color: #FFFFFF;
+	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+	font-family: "Noto Sans", sans-serif;
+	font-weight: bold;
 }
 
 .btn-main:hover{
@@ -129,8 +133,8 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
 	background: #FFFFFF;
 	color: #FFB534;
 	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
- font-family: "Noto Sans", sans-serif;
- font-weight: bold;
+ 	font-family: "Noto Sans", sans-serif;
+ 	font-weight: bold;
 }
 
 .btn-sub:hover{
@@ -139,8 +143,8 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
 }
 
 .btn-outline{
-border: 1px solid #65B741;
-/* color: #FFB534; */
+	border: 1px solid #65B741;
+	/* color: #FFB534; */
 }
 
 .badge-pref{
@@ -149,50 +153,80 @@ border: 1px solid #65B741;
 	color: #050505;
 }
 
+a{
+	text-decoration: none;
+}
+
 /* -----------------navbar-------------------------------------------- */
 .nav-link{
 	color: #050505;
 }
 
 .logo{
-width: 150px;
-margin: 0 auto;
+	width: 150px;
+	margin: 0 auto;
 }
 
 .horizontal-line2{
-padding-bottom: 2px;
-border-bottom: 1px solid #65B741;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #65B741;
 }
 .horizontal-line3{
-padding-bottom: 2px;
-border-bottom: 1px solid #C1F2B0;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #C1F2B0;
 }
 .horizontal-line4{
-padding-bottom: 2px;
-border-bottom: 1px solid #fff6a0;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #fff6a0;
 }
 
 .searchbox i{
-position: absolute;
-left: 15px;
-top: 40px;
-color: #65B741;
+	position: absolute;
+	left: 15px;
+	top: 40px;
+	color: #65B741;
 }
 
 /* footer */
 small{
-		font-family: 'noto-sans','sans-serif';
+	font-family: 'noto-sans','sans-serif';
 	color: #050505;
 }
 
 .box {
-display: flex;
-max-width: 100%;
-overflow-x: hidden;
+	display: flex;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 .box img {
-max-width: 100%; /* 画像が親要素を超えないようにする */
-margin: 0; /* 余白をなくす */
-height: 120px;
+	max-width: 100%; /* 画像が親要素を超えないようにする */
+	margin: 0; /* 余白をなくす */
+	height: 120px;
+}
+
+/* table */
+table{
+	font-family: 'Noto Sans', sans-serif;
+	color: #050505;
+}
+	
+th{
+	font-weight: normal;
+	background: #fff6a0 !important;
+
+}
+	
+.badge-active{
+	background-color: #C1F2B0;
+	border-color: #C1F2B0 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-deactive{
+	background-color: #E0E0E0;
+	border-color: #E0E0E0 !important;
+	color: #050505;
+	font-weight: normal;
 }
