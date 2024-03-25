@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// test route
+Route::get('/inquiry', function () {
+    return view('inquiry');
+});
+
+
+Route::get('/admin/list-of-accounts', function () {
+    return view('admin.list-of-accounts');
+});
+// test route
+
 Auth::routes();
 
 // HomeController
@@ -29,4 +40,3 @@ Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'
 
 // UserController
 Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
-
