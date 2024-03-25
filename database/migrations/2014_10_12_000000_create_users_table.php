@@ -26,6 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('job_status_id')->nullable();
             $table->text('introduction')->nullable();
             $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
 
             // $table->foreign('gender_id')->references('id')->on('genders');
