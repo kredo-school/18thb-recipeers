@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +31,8 @@ Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'
 
 // UserController
 Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
+
+
+Route::get('/show/profile-detail', [UserController::class, 'profile-detail'])->name('profile-detail.show');
+
 

@@ -11,7 +11,11 @@
 
                 <!-- Avatar -->
                 <div class="col-auto">
-                    <i class="fa-solid fa-circle-user icon-lg color1"></i>
+                    @if($user->avatar)
+                        <img src="{{ $user->avatar }}" alt="" class="rounded">
+                    @else
+                        <i class="fa-solid fa-circle-user icon-lg color1"></i>
+                    @endif
                 </div>
 
                 <div class="col">
@@ -32,6 +36,7 @@
                     </p>
                 </div>
 
+                {{-- If this is a business account --}}
                 <!-- Business Info -->
                 <div class="col-lg-4 col-md-4 col-12 ms-4 business-info-box">
                     <h4 class="mt-1">Business Info</h4>
