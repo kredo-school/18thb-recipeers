@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('role_id')->default(2)->comment('1:admin,2:user,3:business');
-            $table->longText('avatar')->nullable();
+            $table->string('avatar')->nullable();
             $table->date('birthday')->nullable();
             $table->unsignedBigInteger('gender_id')->nullable();
             $table->unsignedBigInteger('eating_pref_id')->nullable();
