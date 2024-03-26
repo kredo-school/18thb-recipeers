@@ -29,11 +29,11 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            // $table->foreign('gender_id')->references('id')->on('genders');
-            // $table->foreign('eating_pref_id')->references('id')->on('eating_preferences');
-            // $table->foreign('nationality_id')->references('id')->on('countries');
-            // $table->foreign('residence_city_id')->references('id')->on('cities');
-            // $table->foreign('job_status_id')->references('id')->on('job_statuses');
+            $table->foreign('gender_id')->references('id')->on('genders');
+            $table->foreign('eating_pref_id')->references('id')->on('eating_preferences');
+            $table->foreign('nationality_id')->references('id')->on('countries');
+            $table->foreign('residence_city_id')->references('id')->on('cities');
+            $table->foreign('job_status_id')->references('id')->on('job_statuses');
         });
     }
 
