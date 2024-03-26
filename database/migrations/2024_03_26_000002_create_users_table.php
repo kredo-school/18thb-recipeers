@@ -25,7 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('residence_city_id')->nullable();
             $table->unsignedBigInteger('job_status_id')->nullable();
             $table->text('introduction')->nullable();
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->softDeletes();
             $table->timestamps();
 
