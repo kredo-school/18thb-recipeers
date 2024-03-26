@@ -33,5 +33,5 @@ Route::group(['prefix' => 'recipe', 'as' => 'recipe.'], function() {
 });
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
-    Route::get('/user/resetPassword/show', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPassword');
+    Route::get('/user/resetPassword/show', [UserController::class, 'resetPasswordShow'])->name('resetPassword');
 });
