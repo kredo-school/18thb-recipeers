@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';  /* homeに飛べるよう'/home' からhomeを消す */
 
     /**
      * Create a new controller instance.
