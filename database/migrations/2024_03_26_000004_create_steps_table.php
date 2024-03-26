@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('step_num');
             $table->timestamps();
 
-            // $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
         });
     }
 

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('eating_pref_id')->nullable();
             $table->unsignedBigInteger('occasion_id')->nullable();
-            $table->unsignedBigInteger('mealtype_id')->nullable();
+            $table->unsignedBigInteger('meal_type_id')->nullable();
             $table->string('prep_time')->nullable();
             $table->string('status');
             $table->timestamps();
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('eating_pref_id')->references('id')->on('eating_preferences');
             $table->foreign('occasion_id')->references('id')->on('pref_occasions');
-            $table->foreign('mealtype_id')->references('id')->on('mealtypes');
+            $table->foreign('meal_type_id')->references('id')->on('meal_types');
         });
     }
 
