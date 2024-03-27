@@ -49,7 +49,7 @@
             {{-- BUTTONS --}}
             <div class="row justify-content-center mt-5">
                 <div class="col-3 d-flex justify-content-between">
-                    <button class="btn btn-sub flex-grow-1">Cancel</button>
+                    <a href="{{ route('home') }}" class="btn btn-sub flex-grow-1">Cancel</a>
                 </div>
                 <div class="col-3 d-flex justify-content-between">
                     <input type="submit" value="Send" class="btn btn-main flex-grow-1">
