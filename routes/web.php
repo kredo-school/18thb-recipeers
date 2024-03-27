@@ -22,10 +22,14 @@ Route::get('/inquiry', function () {
     return view('inquiry');
 });
 
-
 Route::get('/admin/list-of-accounts', function () {
     return view('admin.list-of-accounts');
 });
+
+Route::get('/users/search-results', function () {
+    return view('users.search-results');
+});
+
 // test route
 
 Auth::routes();
