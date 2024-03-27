@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->text('body');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('recipe_id');
+            $table->string('name')->unique();
+            $table->softDeletes();
             $table->timestamps();
-
-            // $table->foreign('user_id')->references('id')->on('users');
-            // $table->foreign('recipe_id')->references('id')->on('recipes');
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('countries');
     }
 };
