@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('inquiries', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('inquirier_name');
+            $table->string('inquirer_name');
             $table->string('email');
             $table->string('title');
             $table->text('body');

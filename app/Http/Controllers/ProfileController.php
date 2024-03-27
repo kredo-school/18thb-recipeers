@@ -3,14 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
-    public function profileDetailShow(){
-        return view('users.account.profile-detail');
+    private $user;
+
+    public function __construct(User $user){
+        $this->user = $user;
     }
 
-    public function profileEdit($id){
-        
+    public function Show($id){
+        $user_a = $this->user->findOrFail($id);
+
+        return view('users.account.profile-detail.show')
+                ->with('user', $user_a);
     }
+
+    public function edit(){
+        return view('users.account.profile-detail.edit');
+    }
+
+    
 }

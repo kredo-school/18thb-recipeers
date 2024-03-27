@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Profile Detail")
+@section('title', "Profile Detail") {{-- $user->username --}}
 
 @section('content')
 
@@ -12,27 +12,34 @@
                 <!-- Avatar -->
                 <div class="col-auto">
                     @if($user->avatar)
-                        <img src="{{ $user->avatar }}" alt="" class="rounded">
+                        <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-lg mb-3">
                     @else
-                        <i class="fa-solid fa-circle-user icon-lg color1"></i>
+                        <i class="fa-solid fa-circle-user icon-lg color1 mb-3"></i>
                     @endif
                 </div>
 
                 <div class="col">
                     <div class="row">
                         <div class="col">
-                            <span class="badge badge-pref border rounded-pill">Vegan</span>
+                            @if($user->eating_pref_id)
+                                <span class="badge badge-pref border rounded-pill">{{ $user->eating_pref_id->name }}</span>
+                            @else
+                                <br>
+                            @endif
                         </div>
                         <div class="col" class="text-align-right">
-                            <button type="button" class="btn btn-main px-5">Edit</button>
+                            <form action="{{ route('profile.edit', $user->id )}}", method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-main px-5">Edit</button>
+                            </form>
                         </div>
                     </div>
-                    <p>Username</p>
-                    <p>Introduction......</p>
+                    <p>{{ $user->username }}</p>
+                    <p>{{ $user->introduction }}</p>
                     <p>
-                        <span>10 Recipes</span>
-                        <span class="ms-4">17 Followers</span>
-                        <span class="ms-4">9 Following</span>
+                        <span class="me-2">{{ $user->recipes->count() }} Recipes</span>
+                        <span class="mx-2">{{ $user->followers->count() }} Followers</span>
+                        <span class="mx-2">{{ $user->follows->count() }} Following</span>
                     </p>
                 </div>
 
