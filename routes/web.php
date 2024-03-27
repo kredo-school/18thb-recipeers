@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InquiryController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -45,3 +47,20 @@ Route::patch('/profile/update', [ProfileController::class, 'update'])->name('pro
 // SoftDeleteとするなら上記deleteは不要？
 
 
+
+// Profile
+Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+// Route::delete('/profile/{id}/delete', [ProfileController::class, 'delete'])->name('profile.delete');
+// SoftDeleteとするなら上記deleteは不要？
+
+
+// InquiryController
+Route::get('/inquiry', function () {
+    return view('inquiry');
+});
+Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');
