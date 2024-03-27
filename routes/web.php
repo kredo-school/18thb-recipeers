@@ -17,10 +17,28 @@ Route::get('/', function () {
     return view('home');
 });
 
-// test route
+// test route for navbar and footer
+Route::get('/users/recipe/all-recipes', function () {
+    return view('users.recipe.all-recipes');
+})->name('all-recipes');
+
+Route::get('/users/bookmarks', function () {
+    return view('users.bookmarks');
+})->name('bookmarks');
+
+Route::get('/users/liked-recipes', function () {
+    return view('users.liked-recipes');
+})->name('liked-recipes');
+
 Route::get('/inquiry', function () {
     return view('inquiry');
-});
+})->name('inquiry');
+
+Route::get('/users/account/profile-detail', function () {
+    return view('users.account.profile-detail');
+})->name('profile-detail');
+
+//
 
 Route::get('/admin/list-of-accounts', function () {
     return view('admin.list-of-accounts');
