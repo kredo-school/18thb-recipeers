@@ -7,9 +7,9 @@
 <div class="container py-5 justify-content-center">
     <h2 class="color1 text-center mb-5">Inquiry Detail</h2>
     {{-- * change each item to the variable --}}
-    <form action="#" method="post">
+    <form action="{{ route('admin.inquiry.update', $inquiry->id) }}" method="patch">
         @csrf
-        @method('POST')
+        @method('PATCH')
 
         <div class="row mb-4">
             {{-- LEFT SIDE --}}
@@ -83,7 +83,8 @@
         {{-- BUTTONS --}}
         <div class="row justify-content-center mt-5">
             <div class="col-2 d-flex justify-content-between">
-                <button class="btn btn-sub flex-grow-1">Cancel</button>
+
+                <a href="{{ route('admin.inquiry.show') }}" class="btn btn-sub flex-grow-1">Cancel</a>
             </div>
             <div class="col-2 d-flex justify-content-between">
                 <input type="submit" value="Update" class="btn btn-main flex-grow-1">

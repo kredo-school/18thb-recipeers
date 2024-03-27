@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\Admin\InquiriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,12 @@ Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'
 Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
 
 // InquiryController
-Route::get('/inquiry', function () {
+Route::get('/inquiry', function(){
     return view('inquiry');
 });
 Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');
+
+// InquiriesController
+Route::get('/admin/inquiries_list',[InquiriesController::class], 'show')->name('admin.inquiry.show');
+Route::get('/admin/inquiry/{id}/detail',[InquiriesController::class, 'detail'])->name('admin.inquiry.detail');
+Route::patch('/admin/inquiry/{id}/update',[InquiriesController::class, 'update'])->name('admin.inquiry.update');
