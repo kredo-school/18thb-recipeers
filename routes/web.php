@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InquiryController;
 
 
 /*
@@ -31,3 +32,8 @@ Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'
 // UserController
 Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
 
+// InquiryController
+Route::get('/inquiry', function () {
+    return view('inquiry');
+});
+Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');
