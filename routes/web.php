@@ -36,7 +36,8 @@ Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'
 Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
 
 
-// Profile
+
+// ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
 
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,19 +45,8 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.e
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 // Route::delete('/profile/{id}/delete', [ProfileController::class, 'delete'])->name('profile.delete');
-// SoftDeleteとするなら上記deleteは不要？
+// SoftDeleteとするならこのdeleteは不要？
 
-
-
-// Profile
-Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
-
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-
-Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
-// Route::delete('/profile/{id}/delete', [ProfileController::class, 'delete'])->name('profile.delete');
-// SoftDeleteとするなら上記deleteは不要？
 
 
 // InquiryController

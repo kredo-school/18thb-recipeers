@@ -37,9 +37,20 @@
                     <p>{{ $user->username }}</p>
                     <p>{{ $user->introduction }}</p>
                     <p>
-                        <span class="me-2">{{ $user->recipes->count() }} Recipes</span>
-                        <span class="mx-2">{{ $user->followers->count() }} Followers</span>
-                        <span class="mx-2">{{ $user->follows->count() }} Following</span>
+
+
+                        {{-- ここから --}}
+                        <a href="{{ route('', $user->recipes->id )}}">
+                            <span class="me-2">{{ $user->recipes->count() }}</span> {{ $user->recipes->count() ==1 ? 'recipe' : 'recipes' }}
+                        </a>
+
+                        <a href="">
+                            <span class="mx-2">{{ $user->followers->count() }} Followers</span>
+                        </a>
+
+                        <a href="">
+                            <span class="mx-2">{{ $user->follows->count() }} Following</span>
+                        </a>
                     </p>
                 </div>
 
