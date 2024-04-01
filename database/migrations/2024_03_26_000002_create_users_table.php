@@ -27,6 +27,7 @@ return new class extends Migration
             $table->text('introduction')->nullable();
             $table->string('status')->default('active');
             $table->softDeletes();
+            $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('gender_id')->references('id')->on('genders');
