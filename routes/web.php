@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\InquiryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +37,8 @@ Route::group(['prefix' => 'recipe', 'as' => 'recipe.'], function() {
 Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
     Route::get('/user/resetPassword/show', [UserController::class, 'resetPasswordShow'])->name('resetPassword');
 });
+// InquiryController
+Route::get('/inquiry', function () {
+    return view('inquiry');
+});
+Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');
