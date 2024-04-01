@@ -32,9 +32,9 @@ Route::get('/users/liked-recipes', function () {
     return view('users.liked-recipes');
 })->name('liked-recipes');
 
-Route::get('/inquiry', function () {
-    return view('inquiry');
-})->name('inquiry');
+// Route::get('/inquiry', function () {
+//     return view('inquiry');
+// })->name('inquiry');
 
 Route::get('/users/account/profile-detail', function () {
     return view('users.account.profile-detail');
@@ -69,5 +69,6 @@ Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, '
 // InquiryController
 Route::get('/inquiry', function () {
     return view('inquiry');
-});
+})->name('inquiry');
+
 Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');
