@@ -4,7 +4,8 @@
 
 @section('content')
 <div class="container w-75">
-    <form action="" class="pt-5 pb-5" id="create_recipe">
+    <form action="{{ route('home.index') }}" class="pt-5 pb-5" method="post" enctype="multipart/form-data">
+        @csrf
 
         {{-- Input Top Input Form --}}
         <div class="top_form">
@@ -58,7 +59,7 @@
                         </div>
                     </div>
 
-                    {{-- Adding Meal Types --}}
+                    {{-- Adding Meal Types
                     <div class="row mt-3 align-items-end">
                         <div class="col"></div>
                         <div class="col-3 text-end">
@@ -67,10 +68,10 @@
                         <div id="tagContainer3" class="col-3 d-flex flex-wrap ">
                             <input type="text" id="tagInput3" class="form-control form-control-sm input-color1">
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- Adding Occasion --}}
-                    <div class="row mt-3 text-end align-items-end">
+                    {{-- <div class="row mt-3 text-end align-items-end">
                         <div class="col"></div>
                         <div class="col-3">
                             <h6>Occasion:</h6>
@@ -78,7 +79,7 @@
                         <div id="tagContainer4" class="col-3 d-flex flex-wrap align-item-center">
                             <input type="text" id="tagInput4" class="form-control form-control-sm input-color1">
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- Adding Summary --}}
                     <div class="row">
@@ -115,10 +116,10 @@
             {{-- Input Form --}}
             <div class="row">
                 <div class="col-4">
-                    <input type="text" name="ing_input1" id="ing_input0" placeholder="Ingredient" class="form-control input-color1">
+                    <input type="text" name="ing_input0" id="ing_input0" placeholder="Ingredient" class="form-control input-color1">
                 </div>
                 <div class="col-4">
-                    <input type="text" name="ammount_input" id="ammount_input0" placeholder="ammount" class="form-control input-color1">
+                    <input type="text" name="ammount_input0" id="ammount_input0" placeholder="ammount" class="form-control input-color1">
                 </div>
             </div>
 
