@@ -71,7 +71,7 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li>
-                                            <a class="dropdown-item" href="{{ route('recipe.create') }}">Posts</a>
+                                            <a class="dropdown-item" href="{{ route('create') }}">Posts</a>
                                         </li>
                                         <li><a class="dropdown-item" href="#">Bookmarks</a></li>
                                         <li><a class="dropdown-item" href="#">Liked Recipes</a></li>

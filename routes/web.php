@@ -25,18 +25,17 @@ Route::get('/', function () {
 Auth::routes();
 
 // HomeController
-Route::group(['prefix' => 'home', 'as' => 'home.'], function() {
-    Route::get('/home', [HomeController::class, 'index'])->name('index');
-});
+Route::get('/home', [HomeController::class, 'index'])->name('index');
 
-Route::group(['prefix' => 'recipe', 'as' => 'recipe.'], function() {
-    Route::get('/recipe/create', [RecipeController::class, 'create'])->name('create');
-    Route::get('/recipe/edit', [RecipeController::class, 'edit'])->name('edit');
-});
+// RecipeController
+Route::get('/recipe/create', [RecipeController::class, 'create'])->name('create');
+Route::post('/recipe//store', [RecipeController::class, 'store'])->name('store');
+Route::patch('/recipe/{id}/edit', [RecipeController::class, 'edit'])->name('edit');
+Route::get('/recipe//show', [RecipeController::class, 'show'])->name('show');
 
-Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
-    Route::get('/user/resetPassword/show', [UserController::class, 'resetPasswordShow'])->name('resetPassword');
-});
+// UserController
+Route::get('/user/resetPassword/show', [UserController::class, 'resetPasswordShow'])->name('resetPassword');
+
 // InquiryController
 Route::get('/inquiry', function () {
     return view('inquiry');

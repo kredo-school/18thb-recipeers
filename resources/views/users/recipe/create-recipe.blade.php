@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container w-75">
-    <form action="{{ route('home.index') }}" class="pt-5 pb-5" method="post" enctype="multipart/form-data">
+    <form action="{{ route('store') }}" class="pt-5 pb-5" method="post" enctype="multipart/form-data">
         @csrf
 
         {{-- Input Top Input Form --}}
@@ -13,7 +13,7 @@
 
             {{-- Input Recipe Title --}}
             <div class="row">
-                <input type="text" name="Recipe_name" id="Recipe_name" class="form-control w-100 input-color1" placeholder="Enter the recipe title.">
+                <input type="text" name="title" id="title" class="form-control w-100 input-color1" placeholder="Enter the recipe title.">
             </div>
 
             <div class="row mt-3">
@@ -21,7 +21,7 @@
                 {{-- Input Image --}}
                 <div class="col-4 previews">
                     <p>Select recipe image</p>
-                    <input type="file" onchange="imgPreView(event)" name="recipe_top_image" id="recipe_top_image preview">
+                    <input type="file" name="thumbnail" id="thumbnail">
                 </div>
 
                 {{-- Recipe Input form --}}
@@ -33,7 +33,7 @@
                             <h6>Preparation Time[min]:</h6>
                         </div>
                         <div class="col-3">
-                            <input type="number" name="pre_time" id="pre_time" placeholder="00" class="form-control form-control-sm input-color1">
+                            <input type="number" name="prep_time" id="prep_time" placeholder="00" class="form-control form-control-sm input-color1">
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="recipe_summary" class="h6">Summary:</label>
-                            <textarea type="text" name="recipe_summary" id="recipe_summary" class="form-control input-color1"></textarea>
+                            <textarea type="text" name="summary" id="summary" class="form-control input-color1"></textarea>
                         </div>
                     </div>
 
@@ -93,7 +93,7 @@
                     <div class="row mt-3">
                         <div class="col">
                             <label for="country_select" class="h6">Country of Origin:</label>
-                            <select name="country_select" id="country_select" class="form-select input-color1">
+                            <select name="recipe_country" id="recipe_country" class="form-select input-color1">
                                 <option selected>Select Country of Origin</option>
                                 <option value="1">USA</option>
                                 <option value="1">Japan</option>
