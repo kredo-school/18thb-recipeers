@@ -12,7 +12,7 @@
                     <p class="top-text mt-4 h5 fw-light">Recipe sharing platform for Vegans, Vegetarians and people with religious dietary
                         restrictions.</p>
                     <p class="color1 h5 mt-5">Start now for free!</p>
-                    <button type="submit" class="btn btn-lg btn-main w-25">Sign Up</button>
+                    <a href="{{ route('register') }}" class="btn btn-lg btn-main w-25">Sign Up</a>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
 
                                     {{-- Recipe Over View --}}
                                     <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
- 
+
                                     <button type="button" class="btn btn-main">View Details</button>
                                 </div>
                             </div>
@@ -78,10 +78,13 @@
                     </div>
                 </div>
 
-                {{-- Ads index --}}
-                <div class="col-lg-4 mt-5 mt-md-2 col-12">
-                    <img src="{{ asset('/assets/images/food_sample.jpg') }}" alt="" class="w-100">
-                </div>
+        <div class="col-lg-4 col-md-4 col-12">
+			<img src="{{ asset('/assets/images/ad1.jpg') }}" alt="ad1" class="w-100 img-fluid mb-3 ml-5">
+			<img src="{{ asset('/assets/images/ad2.jpg') }}" alt="ad2" class="w-100 img-fluid mb-3 ml-5">
+			<img src="{{ asset('/assets/images/ad3.jpg') }}" alt="ad3" class="w-100 img-fluid mb-3 ml-5 border">
+			<img src="{{ asset('/assets/images/ad4.jpg') }}" alt="ad4" class="w-100 img-fluid mb-3 ml-5">
+		</div>
+
             </div>
         </div>
     </div>
