@@ -17,13 +17,13 @@ class ProfileController extends Controller
     public function Show($id){
         $user_a = $this->user->findOrFail($id);
 
-        return view('users.account.profile-detail.show')
+        return view('users.account.profile-detail')
                 ->with('user', $user_a);
     }
 
     public function edit(){
-        return view('users.account.profile-detail.edit');
+        return view('users.account.edit-account');
     }
 
-    
+
 }

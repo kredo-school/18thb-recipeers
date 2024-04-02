@@ -44,8 +44,9 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.e
 
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
+// delete accountをSoftDeleteとするなら↓このdeleteは不要？
 // Route::delete('/profile/{id}/delete', [ProfileController::class, 'delete'])->name('profile.delete');
-// SoftDeleteとするならこのdeleteは不要？
+
 
 
 
