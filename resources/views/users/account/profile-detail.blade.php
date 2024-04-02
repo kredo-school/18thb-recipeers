@@ -37,9 +37,11 @@
                     <p>{{ $user->username }}</p>
                     <p>{{ $user->introduction }}</p>
                     <p>
-                        <a href="{{ route('recipe.show', $user->recipes->id )}}" class="text-decoration-none text-dark">
+                        @if($user->recipes !== null && $user->recipes->count() > 0)
                             <span class="me-2">{{ $user->recipes->count() }}</span> {{ $user->recipes->count() ==1 ? 'recipe' : 'recipes' }}
-                        </a>
+                        @else
+                            <span class="me-2">0 recipe</span>
+                        @endif
 
                         <span class="mx-2">17 followers</span>
                         {{-- * remove comment out below if Follow functions are being implemented. --}}
@@ -52,7 +54,6 @@
                         {{-- <a href="{{ route('profile.following', $user->id) }}" class="text-decoration-none text-dark">
                             <span class="mx-2">{{ $user->follows->count() }}</span> Following
                         </a> --}}
-
                     </p>
                 </div>
 
@@ -62,11 +63,15 @@
                     <h4 class="mt-1">Business Info</h4>
                     <h6>
                         Website
-                        <a href="{{ $user->business_info->hp_url }}" class="url-display">{{ $user->business_info->hp_url }}</a>
+                        @if($user->business_info && $user->business_info->hp_url)
+                            <a href="{{ $user->business_info->hp_url }}" class="url-display">{{ $user->business_info->hp_url }}</a>
+                        @endif
                     </h6>
                     <h6 class="mb-3">
                         Order delivery
-                        <a href="{{ $user->business_info->delivery_url }}" class="url-display">{{ $user->business_info->delivery_url }}</a>
+                        @if($user->business_info && $user->business_info->delivery_url)
+                            <a href="{{ $user->business_info->delivery_url }}" class="url-display">{{ $user->business_info->delivery_url }}</a>
+                        @endif
                     </h6>
                     <div>
                         {{-- below icons are temporary. No links --}}
@@ -108,7 +113,7 @@
 
     <div class="row justify-content-center mb-5">
 
-    <!-- card index -->
+        <!-- card index -->
         <div class="col-lg-10 col-md-10 col-12">
             <div class="row px-5">
 
@@ -119,8 +124,8 @@
 
                     {{-- @if($recipe->count() > 0 || $recipe->count() < 4) --}}  {{-- 下記$chunkでカバー --}}
 
-                    <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                        @forelse ($chunk as $recipe)
+                    @foreach ($chunk as $recipe)
+                        <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
                             <div class="recipe">
                                 <div class="card d-flex flex-column mb-4 p-2">
                                     {{-- card header --}}
@@ -165,7 +170,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <form action="{{ route('recipe.show', $recipe->id )}}", method="post">
+                                                <form action="{{ route('recipe.show', $recipe->id )}}" method="post">
                                                     @csrf
                                                     <button type="submit" class="btn btn-main">View Details</button>
                                                 </form>
@@ -174,8 +179,19 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforelse
-                    </div>   {{-- end of a recipe card--}}
+                        </div>
+                    @endforeach
+
+                @empty
+                {{-- no recipes --}}
+                <div class="text-center">
+                    <h2>Share recipes</h2>
+                    <p class="text-muted">When you share recipes, they appear on your profile.</p>
+                    <a href="{{ route('create') }}" class="text-decoration-none">Share your first recipe.</a>
+                </div>
+
+                @endforelse
+            </div>   {{-- end of a recipe card--}}
 
 
 
@@ -281,25 +297,11 @@
 
 
 
-                @empty
-                {{-- no recipes --}}
-                <div class="text-center">
-                    <h2>Share recipes</h2>
-                    <p class="text-muted">When you share recipes, they appear on your profile.</p>
-                    <a href="{{ route('create') }}" class="text-decoration-none">Share your first recipe.</a>
-                </div>
-
-                @endforelse
-
-            </div>
         </div>
+
+        {{ $recipes->links() }}  {{-- pagination --}}
+
     </div>  {{-- End of recipes --}}
-
-
-
-
-    
-    {{-- pagenation here --}}
 
 </div>  {{-- end of container --}}
 
