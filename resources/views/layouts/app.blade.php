@@ -39,7 +39,7 @@
         <header>
             <nav class="navbar navbar-expand-md navbar-light bg-white">
                 <div class="container">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="logo img-fluid">
                     </a>
                     <!-- hamburger button for responsive -->
@@ -60,21 +60,26 @@
                             @endif
 
                             @if (Route::has('register'))
-                                <a class="nav-link me-3" href="{{ route('register') }}">{{ __('Sign up') }}</a>
+                                <a class="nav-link me-3" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
                             @endif
                         @else
                             <ul class="navbar-nav ml-auto">
-                                <div class="dropdown">
+                                <div class="nav-item dropdown">
                                     <button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button"
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         Recipe
                                     </button>
+
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li>
-                                            <a class="dropdown-item" href="{{ route('create') }}">Posts</a>
+                                            <a class="dropdown-item" href="{{route('all-recipes')}}">Posts</a>
                                         </li>
-                                        <li><a class="dropdown-item" href="#">Bookmarks</a></li>
-                                        <li><a class="dropdown-item" href="#">Liked Recipes</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('bookmarks')}}">Bookmarks</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('liked-recipes')}}">Liked Recipes</a>
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -82,9 +87,10 @@
                                     <button class="btn dropdown-menu-togglebtn2" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-circle-user icon-sm color1"></i>
                                     </button>
-                                <div class="dropdown-menu dropdown-menu-end">
+
+                                <div id="dropdownMenuButton2" class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <a href="" class="dropdown-item">
+                                        <a href="{{route('profile-detail')}}" class="dropdown-item">
                                             <i class="fa-solid fa-circle-user"></i> Profile
                                         </a>
                                     </li>
@@ -121,13 +127,13 @@
                 <nav class="navbar navbar-expand-md navbar-light bg-white">
                     <div class="container">
                         <div class="footer-widgets">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="{{ url('/') }}">
                                 <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="logo img-fluid">
                             </a>
                         </div>
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact Us</a>
+                                <a class="nav-link" href="{{route('inquiry')}}">Contact Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Privacy Policy</a>
