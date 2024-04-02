@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
+    public function index()
+    {
+        return view('users.recipe.all-recipes');
+    }
     public function create()
     {
         return view('users.recipe.createRecipe');
