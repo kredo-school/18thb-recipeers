@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Profile Detail") {{-- $user->username --}}
+@section('title', "Profile Detail")
 
 @section('content')
 
@@ -111,87 +111,94 @@
         </ul>
     </div> --}}
 
+    {{-- the user's all recipes --}}
     <div class="row justify-content-center mb-5">
-
         <!-- card index -->
         <div class="col-lg-10 col-md-10 col-12">
-            <div class="row px-5">
 
-                {{-- loop of recipe cards --}}
-                @forelse ( $recipes->chunk(3) as $chunk )
+            @php $counter = 0 @endphp
 
-                    <!-- card -->
+            {{-- loop of recipe cards --}}
+            @forelse ( $recipes as $recipe )
 
-                    {{-- @if($recipe->count() > 0 || $recipe->count() < 4) --}}  {{-- 下記$chunkでカバー --}}
+                @if ($counter % 3 == 0)
+                    <div class="row px-5">
+                @endif
 
-                    @foreach ($chunk as $recipe)
-                        <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                            <div class="recipe">
-                                <div class="card d-flex flex-column mb-4 p-2">
-                                    {{-- card header --}}
-                                    <div class="card-header bg-white mx-auto border-bottom-none">
-                                        <img src="{{ $recipe->thumbnail }}" alt="card-pic" class="img-card img-fluid">
-                                        {{-- {{ asset('/assets/images/food.jpg') }} --}}
-                                    </div>
-                                    {{-- card body --}}
-                                    <div class="card-body">
-                                        <div class="row">
-                                            {{-- Tag --}}
-                                            <div class="col-auto">
-                                                <span class="badge badge-pref border rounded-pill">{{ $recipe->eating_pref_id->name }}</span>
-                                                {{-- Vegan --}}
-                                            </div>
-                                            {{-- Bookmark --}}
-                                            <div class="col">
-                                                <div class="row justify-content-end">
-                                                    <div class="col-auto">
-                                                        <div class="fa-layers d-flex flex-column align-items-center">
-                                                            <i class="fa-regular fa-bookmark"></i>
-                                                            <span class="fa-layers-counter">{{ $recipe->bookmarks->count() }}</span>
-                                                        </div>
+                    <!-- 1st card -->
+                    <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                        <div class="recipe">
+                            <div class="card d-flex flex-column mb-4 p-2">
+                                {{-- card header --}}
+                                <div class="card-header bg-white mx-auto border-bottom-none">
+                                    <img src="{{ $recipe->thumbnail }}" alt="card-pic" class="img-card img-fluid">
+                                    {{-- {{ asset('/assets/images/food.jpg') }} --}}
+                                </div>
+                                {{-- card body --}}
+                                <div class="card-body">
+                                    <div class="row">
+                                        {{-- Tag --}}
+                                        <div class="col-auto">
+                                            <span class="badge badge-pref border rounded-pill">{{ $recipe->eating_pref_id->name }}</span>
+                                            {{-- Vegan --}}
+                                        </div>
+                                        {{-- Bookmark --}}
+                                        <div class="col">
+                                            <div class="row justify-content-end">
+                                                <div class="col-auto">
+                                                    <div class="fa-layers d-flex flex-column align-items-center">
+                                                        <i class="fa-regular fa-bookmark"></i>
+                                                        <span class="fa-layers-counter">{{ $recipe->bookmarks->count() }}</span>
                                                     </div>
-                                                    {{-- Heart --}}
-                                                    <div class="col-auto">
-                                                        <div class="fa-layers d-flex flex-column align-items-center">
-                                                            <i class="fa-regular fa-heart"></i>
-                                                            <span class="fa-layers-counter">{{ $recipe->likes->count() }}</span>
-                                                        </div>
+                                                </div>
+                                                {{-- Heart --}}
+                                                <div class="col-auto">
+                                                    <div class="fa-layers d-flex flex-column align-items-center">
+                                                        <i class="fa-regular fa-heart"></i>
+                                                        <span class="fa-layers-counter">{{ $recipe->likes->count() }}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- Recipe Title --}}
-                                        <div class="row">
-                                            <h4>{{ $recipe->title }}</h4>
-                                        </div>
-                                        {{-- Recipe Over View --}}
-                                        <div class="row">
-                                            <p class="small">{{ $recipe->summary }}</p>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <form action="{{ route('recipe.show', $recipe->id )}}" method="post">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-main">View Details</button>
-                                                </form>
-                                            </div>
+                                    </div>
+                                    {{-- Recipe Title --}}
+                                    <div class="row">
+                                        <h4>{{ $recipe->title }}</h4>
+                                    </div>
+                                    {{-- Recipe Over View --}}
+                                    <div class="row">
+                                        <p class="small">{{ $recipe->summary }}</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <form action="{{ route('recipe.show', $recipe->id )}}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-main">View Details</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
 
-                @empty
+                @php $counter++ @endphp
+
+                @if ($counter % 3 == 0 || $loop->last)
+                    </div>
+                @endif
+
+            @empty
                 {{-- no recipes --}}
                 <div class="text-center">
-                    <h2>Share recipes</h2>
+                    <p class="text-muted">No recipes found.</p>
+                    {{-- <h2>Share recipes</h2>
                     <p class="text-muted">When you share recipes, they appear on your profile.</p>
-                    <a href="{{ route('create') }}" class="text-decoration-none">Share your first recipe.</a>
+                    <a href="{{ route('create') }}" class="text-decoration-none">Share your first recipe.</a> --}}
                 </div>
 
-                @endforelse
-            </div>   {{-- end of a recipe card--}}
+            @endforelse
+        </div>   {{-- end of the 1st recipe card--}}
 
 
 
@@ -295,9 +302,6 @@
                         </div>
                     </div>  {{--end of the 3rd recipe--}}
 
-
-
-        </div>
 
         {{ $recipes->links() }}  {{-- pagination --}}
 

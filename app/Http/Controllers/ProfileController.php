@@ -15,13 +15,11 @@ class ProfileController extends Controller
         $this->user = $user;
     }
 
-    public function Show($id){
+    public function show($id){
         $user = $this->user->findOrFail($id);
         $recipes = Recipe::where('user_id', $user->id)->paginate(12);
-        $chunkedRecipes = $recipes->chunk(3);
 
         return view('users.account.profile-detail', compact('user', 'recipes'));
-                // ->with('user', $user);
     }
 
     public function edit(){
