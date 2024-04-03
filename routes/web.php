@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +67,17 @@ Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'
 
 // UserController
 Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
+
+
+
+// ProfileController
+Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
 
 
 // InquiryController
