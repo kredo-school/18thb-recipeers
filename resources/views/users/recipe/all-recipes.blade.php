@@ -1,10 +1,23 @@
 @extends('layouts.app')
 
+@section('title', "All Recipes")
+
 @section('content')
-<div class="container p-5">
-    <div class="row">
-		<h2 class="color1 my-3 mx-2">Recipes</h2>
-	</div>
+<div class="container p-4">
+  <div class="row">
+     <div class="row mb-1">
+       <div class="col-8">
+         <div class="row">
+            <div class="col">
+                <h2 class="color1 mb-0">Recipes</h2>
+            </div>
+            <div class="col-3 mt-2 text-end">
+                <a href="#" class="btn btn-lg btn-main">Post Recipe</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 	<div class="dropdown mb-3">
 		<button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 			New To Old
@@ -14,7 +27,7 @@
 		</ul>
     </div>
 
-	<div class="row">
+
 	<!-- card index -->
 		<div class="col-lg-8 col-md-8 col-12">
 			 <div class="row">
@@ -142,8 +155,6 @@
 						</div>
 					</div>
             	</div>
-
-
 			</div>
 		</div>
 
@@ -151,7 +162,7 @@
 		<div class="col-lg-4 col-md-4 col-12">
 			<img src="{{ asset('/assets/images/ad1.jpg') }}" alt="ad1" class="w-100 img-fluid mb-3 ml-5">
 			<img src="{{ asset('/assets/images/ad2.jpg') }}" alt="ad2" class="w-100 img-fluid mb-3 ml-5">
-			<img src="{{ asset('/assets/images/ad3.jpg') }}" alt="ad3" class="w-100 img-fluid mb-3 ml-5">
+			<img src="{{ asset('/assets/images/ad3.jpg') }}" alt="ad3" class="w-100 img-fluid mb-3 ml-5 border">
 			<img src="{{ asset('/assets/images/ad4.jpg') }}" alt="ad4" class="w-100 img-fluid mb-3 ml-5">
 		</div>
 	</div>
