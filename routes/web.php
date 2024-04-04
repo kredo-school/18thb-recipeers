@@ -6,9 +6,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
-
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -74,11 +72,6 @@ Route::get('/liked-recipes', [App\Http\Controllers\LikeController::class, 'index
 Route::get('/user/search-results', [App\Http\Controllers\UserController::class, 'index'])->name('search-results');
 Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
 
-//ProfileController
-Route::get('/users/account/profile-detail', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile-detail');
-
-
-
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
 
@@ -86,13 +79,7 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.e
 
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-
-
-
 // InquiryController
-// Route::get('/inquiry', function () {
-//     return view('inquiry');
-// })->name('inquiry');
 Route::get('/inquiry', [InquiryController::class, 'index'])->name('inquiry');
 
 Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');

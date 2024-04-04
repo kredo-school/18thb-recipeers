@@ -17,10 +17,10 @@ class ProfileController extends Controller
         $this->user = $user;
     }
 
-    public function index()
-    {
-        return view('users.account.profile-detail');
-    }
+    // public function index()
+    // {
+    //     return view('users.account.profile-detail', compact('user')）;
+    // }
 
     public function show($id)
     {
