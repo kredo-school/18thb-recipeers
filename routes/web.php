@@ -84,10 +84,9 @@ Route::patch('/profile/update', [ProfileController::class, 'update'])->name('pro
 Route::get('/inquiry', function(){
     return view('inquiry');
 })->name('inquiry');
-
 Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');
 
 // InquiriesController
-Route::get('/admin/inquiries_list',[InquiriesController::class], 'show')->name('admin.inquiry.show');
+Route::get('/admin/list_of_inquiries',[InquiriesController::class], 'show')->name('admin.inquiry.show');
 Route::get('/admin/inquiry/{id}/detail',[InquiriesController::class, 'detail'])->name('admin.inquiry.detail');
 Route::patch('/admin/inquiry/{id}/update',[InquiriesController::class, 'update'])->name('admin.inquiry.update');

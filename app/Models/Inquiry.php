@@ -14,6 +14,6 @@ class Inquiry extends Model
     }
 
     public function admin(){
-        return $this->belongsTo(User::class, 'admin_id')->withTrashed();
+        return $this->belongsTo(User::class, 'admin_id');
     }
 }
