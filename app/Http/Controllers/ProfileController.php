@@ -19,7 +19,7 @@ class ProfileController extends Controller
 
     // public function index()
     // {
-    //     return view('users.account.profile-detail', compact('user')）;
+    //     return view('users.account.profile-detail'）;
     // }
 
     public function show($id)
