@@ -64,7 +64,7 @@
             </div>
 
             <div class="text-md-center mb-3">
-                <input type ="checkbox" name="checkbox_name" id="" value="1" class="text-md-end form-check-input me-1 input-color1">
+                <input type ="checkbox" name="agreement" id="agreement" value="1" class="text-md-end form-check-input me-1 input-color1">
                 I agree to <a class="privactpolicy-link" href="{{ url('/privactpolicy') }}">Privacy Policy</a> and <a class="conditionsofuse-link" href="{{ url('/conditionsofuse') }}">Conditions of Use</a>. *
             </div>
 

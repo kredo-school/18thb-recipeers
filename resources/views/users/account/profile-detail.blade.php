@@ -4,46 +4,77 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container p-5">
     <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-12">
             <div class="row px-5 me-2">
 
                 <!-- Avatar -->
                 <div class="col-auto">
-                    <i class="fa-solid fa-circle-user icon-lg color1"></i>
+                    @if($user->avatar)
+                        <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-lg mb-3">
+                    @else
+                        <i class="fa-solid fa-circle-user icon-lg color1 mb-3"></i>
+                    @endif
                 </div>
 
                 <div class="col">
                     <div class="row">
                         <div class="col">
-                            <span class="badge badge-pref border rounded-pill">Vegan</span>
+                            @if($user->eating_pref_id)
+                                <span class="badge badge-pref border rounded-pill">{{ $user->eating_pref_id->name }}</span>
+                            @else
+                                <br>
+                            @endif
                         </div>
                         <div class="col" class="text-align-right">
-                            <button type="button" class="btn btn-main px-5">Edit</button>
+                            <form action="{{ route('profile.edit', $user->id )}}", method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-main px-5">Edit</button>
+                            </form>
                         </div>
                     </div>
-                    <p>Username</p>
-                    <p>Introduction......</p>
+                    <p>{{ $user->username }}</p>
+                    <p>{{ $user->introduction }}</p>
                     <p>
-                        <span>10 Recipes</span>
-                        <span class="ms-4">17 Followers</span>
-                        <span class="ms-4">9 Following</span>
+                        @if($user->recipes !== null && $user->recipes->count() > 0)
+                            <span class="me-2">{{ $user->recipes->count() }}</span> {{ $user->recipes->count() ==1 ? 'recipe' : 'recipes' }}
+                        @else
+                            <span class="me-2">0 recipe</span>
+                        @endif
+
+                        <span class="mx-2">17 followers</span>
+                        {{-- * remove comment out below if Follow functions are being implemented. --}}
+                        {{-- <a href="{{ route('profile.followers', $user->id) }}" class="text-decoration-none text-dark">
+                            <span class="mx-2">{{ $user->followers->count() }}</span> {{ $user->followers->count() ==1 ? 'Follower' : 'Followers' }}
+                        </a> --}}
+
+                        <span class="mx-2">9 followings</span>
+                        {{-- * remove comment out below if Follow functions are being implemented. --}}
+                        {{-- <a href="{{ route('profile.following', $user->id) }}" class="text-decoration-none text-dark">
+                            <span class="mx-2">{{ $user->follows->count() }}</span> Following
+                        </a> --}}
                     </p>
                 </div>
 
+                {{-- If this is a business account, show below --}}
                 <!-- Business Info -->
                 <div class="col-lg-4 col-md-4 col-12 ms-4 business-info-box">
                     <h4 class="mt-1">Business Info</h4>
                     <h6>
                         Website
-                        <a href="https:testaaaaaaaa.com" class="url-display">https:testaaaaaaaa.com</a>
+                        @if($user->business_info && $user->business_info->hp_url)
+                            <a href="{{ $user->business_info->hp_url }}" class="url-display">{{ $user->business_info->hp_url }}</a>
+                        @endif
                     </h6>
                     <h6 class="mb-3">
                         Order delivery
-                        <a href="https:testbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com" class="url-display">https:testbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com</a>
+                        @if($user->business_info && $user->business_info->delivery_url)
+                            <a href="{{ $user->business_info->delivery_url }}" class="url-display">{{ $user->business_info->delivery_url }}</a>
+                        @endif
                     </h6>
                     <div>
+                        {{-- below icons are temporary. No links --}}
                         <a href="" class="sns-icon">
                             <i class="fa-brands fa-x-twitter me-1 h4"></i>
                         </a>
@@ -80,166 +111,203 @@
         </ul>
     </div> --}}
 
+    {{-- the user's all recipes --}}
     <div class="row justify-content-center mb-5">
-
-    <!-- card index -->
+        <!-- card index -->
         <div class="col-lg-10 col-md-10 col-12">
-            <div class="row px-5">
 
-                <!-- card -->
-                <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                    <div class="card d-flex flex-column mb-4 p-2">
-                        {{-- card header --}}
-                        <div class="card-header bg-white mx-auto border-bottom-none">
-                            <img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
-                        </div>
-                        {{-- card body --}}
-                        <div class="card-body">
-                            <div class="row">
-                                {{-- Tag --}}
-                                <div class="col-auto">
-                                    <span class="badge badge-pref border rounded-pill">Vegan</span>
+            @php $counter = 0 @endphp
+
+            {{-- loop of recipe cards --}}
+            @forelse ( $recipes as $recipe )
+
+                @if ($counter % 3 == 0)
+                    <div class="row px-5">
+                @endif
+
+                    <!-- 1st card -->
+                    <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                        <div class="recipe">
+                            <div class="card d-flex flex-column mb-4 p-2">
+                                {{-- card header --}}
+                                <div class="card-header bg-white mx-auto border-bottom-none">
+                                    <img src="{{ $recipe->thumbnail }}" alt="card-pic" class="img-card img-fluid">
+                                    {{-- {{ asset('/assets/images/food.jpg') }} --}}
                                 </div>
-                                {{-- Bookmark --}}
-                                <div class="col">
-                                    <div class="row justify-content-end">
+                                {{-- card body --}}
+                                <div class="card-body">
+                                    <div class="row">
+                                        {{-- Tag --}}
                                         <div class="col-auto">
-                                            <div class="fa-layers d-flex flex-column align-items-center">
-                                                <i class="fa-regular fa-bookmark"></i>
-                                                <span class="fa-layers-counter">1</span>
+                                            <span class="badge badge-pref border rounded-pill">{{ $recipe->eating_pref_id->name }}</span>
+                                            {{-- Vegan --}}
+                                        </div>
+                                        {{-- Bookmark --}}
+                                        <div class="col">
+                                            <div class="row justify-content-end">
+                                                <div class="col-auto">
+                                                    <div class="fa-layers d-flex flex-column align-items-center">
+                                                        <i class="fa-regular fa-bookmark"></i>
+                                                        <span class="fa-layers-counter">{{ $recipe->bookmarks->count() }}</span>
+                                                    </div>
+                                                </div>
+                                                {{-- Heart --}}
+                                                <div class="col-auto">
+                                                    <div class="fa-layers d-flex flex-column align-items-center">
+                                                        <i class="fa-regular fa-heart"></i>
+                                                        <span class="fa-layers-counter">{{ $recipe->likes->count() }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        {{-- Heart --}}
-                                        <div class="col-auto">
-                                            <div class="fa-layers d-flex flex-column align-items-center">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span class="fa-layers-counter">1</span>
-                                            </div>
+                                    </div>
+                                    {{-- Recipe Title --}}
+                                    <div class="row">
+                                        <h4>{{ $recipe->title }}</h4>
+                                    </div>
+                                    {{-- Recipe Over View --}}
+                                    <div class="row">
+                                        <p class="small">{{ $recipe->summary }}</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <form action="{{ route('recipe.show', $recipe->id )}}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-main">View Details</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {{-- Recipe Title --}}
-                            <div class="row">
-                                <h4>Recipe Title</h4>
-                            </div>
-                            {{-- Recipe Over View --}}
-                            <div class="row">
-                                <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button" class="btn btn-main">View Details</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
+
+                @php $counter++ @endphp
+
+                @if ($counter % 3 == 0 || $loop->last)
+                    </div>
+                @endif
+
+            @empty
+                {{-- no recipes --}}
+                <div class="text-center">
+                    <p class="text-muted">No recipes found.</p>
+                    {{-- <h2>Share recipes</h2>
+                    <p class="text-muted">When you share recipes, they appear on your profile.</p>
+                    <a href="{{ route('create') }}" class="text-decoration-none">Share your first recipe.</a> --}}
                 </div>
 
-                <!-- card -->
-                <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                    <div class="card d-flex flex-column mb-4 p-2">
-                        {{-- card header --}}
-                        <div class="card-header bg-white mx-auto border-bottom-none">
-                            <img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
-                        </div>
-                        {{-- card body --}}
-                        <div class="card-body">
-                            <div class="row">
-                                {{-- Tag --}}
-                                <div class="col-auto">
-                                    <span class="badge badge-pref border rounded-pill">Vegan</span>
-                                </div>
-                                {{-- Bookmark --}}
-                                <div class="col">
-                                    <div class="row justify-content-end">
-                                        <div class="col-auto">
-                                            <div class="fa-layers d-flex flex-column align-items-center">
-                                                <i class="fa-regular fa-bookmark"></i>
-                                                <span class="fa-layers-counter">1</span>
+            @endforelse
+        </div>   {{-- end of the 1st recipe card--}}
+
+
+
+                    {{-- card --}}  {{-- 2nd recipe --}}
+                    <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                        <div class="card d-flex flex-column mb-4 p-2">
+                            {{-- card header --}}
+                            <div class="card-header bg-white mx-auto border-bottom-none">
+                                <img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
+                            </div>
+                            {{-- card body --}}
+                            <div class="card-body">
+                                <div class="row">
+                                    {{-- Tag --}}
+                                    <div class="col-auto">
+                                        <span class="badge badge-pref border rounded-pill">Vegan</span>
+                                    </div>
+                                    {{-- Bookmark --}}
+                                    <div class="col">
+                                        <div class="row justify-content-end">
+                                            <div class="col-auto">
+                                                <div class="fa-layers d-flex flex-column align-items-center">
+                                                    <i class="fa-regular fa-bookmark"></i>
+                                                    <span class="fa-layers-counter">1</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        {{-- Heart --}}
-                                        <div class="col-auto">
-                                            <div class="fa-layers d-flex flex-column align-items-center">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span class="fa-layers-counter">1</span>
+                                            {{-- Heart --}}
+                                            <div class="col-auto">
+                                                <div class="fa-layers d-flex flex-column align-items-center">
+                                                    <i class="fa-regular fa-heart"></i>
+                                                    <span class="fa-layers-counter">1</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- Recipe Title --}}
-                            <div class="row">
-                                <h4>Recipe Title</h4>
-                            </div>
-                            {{-- Recipe Over View --}}
-                            <div class="row">
-                                <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button" class="btn btn-main">View Details</button>
+                                {{-- Recipe Title --}}
+                                <div class="row">
+                                    <h4>Recipe Title</h4>
+                                </div>
+                                {{-- Recipe Over View --}}
+                                <div class="row">
+                                    <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-main">View Details</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>  {{-- end of the 2nd recipe --}}
 
-                <!-- card -->
-                <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                    <div class="card d-flex flex-column mb-4 p-2">
-                        {{-- card header --}}
-                        <div class="card-header bg-white mx-auto border-bottom-none">
-                            <img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
-                        </div>
-                        {{-- card body --}}
-                        <div class="card-body">
-                            <div class="row">
-                                {{-- Tag --}}
-                                <div class="col-auto">
-                                    <span class="badge badge-pref border rounded-pill">Vegan</span>
-                                </div>
-                                {{-- Bookmark --}}
-                                <div class="col">
-                                    <div class="row justify-content-end">
-                                        <div class="col-auto">
-                                            <div class="fa-layers d-flex flex-column align-items-center">
-                                                <i class="fa-regular fa-bookmark"></i>
-                                                <span class="fa-layers-counter">1</span>
+                    {{-- card --}}  {{-- 3rd recipe --}}
+                    <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                        <div class="card d-flex flex-column mb-4 p-2">
+                            {{-- card header --}}
+                            <div class="card-header bg-white mx-auto border-bottom-none">
+                                <img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
+                            </div>
+                            {{-- card body --}}
+                            <div class="card-body">
+                                <div class="row">
+                                    {{-- Tag --}}
+                                    <div class="col-auto">
+                                        <span class="badge badge-pref border rounded-pill">Vegan</span>
+                                    </div>
+                                    {{-- Bookmark --}}
+                                    <div class="col">
+                                        <div class="row justify-content-end">
+                                            <div class="col-auto">
+                                                <div class="fa-layers d-flex flex-column align-items-center">
+                                                    <i class="fa-regular fa-bookmark"></i>
+                                                    <span class="fa-layers-counter">1</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        {{-- Heart --}}
-                                        <div class="col-auto">
-                                            <div class="fa-layers d-flex flex-column align-items-center">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span class="fa-layers-counter">1</span>
+                                            {{-- Heart --}}
+                                            <div class="col-auto">
+                                                <div class="fa-layers d-flex flex-column align-items-center">
+                                                    <i class="fa-regular fa-heart"></i>
+                                                    <span class="fa-layers-counter">1</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- Recipe Title --}}
-                            <div class="row">
-                                <h4>Recipe Title</h4>
-                            </div>
-                            {{-- Recipe Over View --}}
-                            <div class="row">
-                                <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="button" class="btn btn-main">View Details</button>
+                                {{-- Recipe Title --}}
+                                <div class="row">
+                                    <h4>Recipe Title</h4>
+                                </div>
+                                {{-- Recipe Over View --}}
+                                <div class="row">
+                                    <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-main">View Details</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>  {{--end of the 3rd recipe--}}
 
-            </div>
-        </div>
-    </div>  <!-- End of recipes-->
-</div>
+
+        {{ $recipes->links() }}  {{-- pagination --}}
+
+    </div>  {{-- End of recipes --}}
+
+</div>  {{-- end of container --}}
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
