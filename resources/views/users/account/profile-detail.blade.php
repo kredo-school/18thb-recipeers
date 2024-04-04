@@ -7,7 +7,7 @@
 <div class="container p-5">
     <div class="row justify-content-center">
         <div class="col-lg-10 col-md-10 col-12">
-            <div class="row px-5 me-2">
+            <div class="row me-2">
 
                 <!-- Avatar -->
                 <div class="col-auto">
@@ -28,7 +28,8 @@
                             @endif
                         </div>
                         <div class="col" class="text-align-right">
-                            <form action="{{ route('profile.edit', $user->id )}}", method="post">
+                            <form action="{{ route('profile.edit', $user->id )}}"
+                                 method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-main px-5">Edit</button>
                             </form>
@@ -96,7 +97,7 @@
 
     <div class="row ms-5">
         <div class="col-lg-10 col-md-10 col-12">
-            <div class="row px-5">
+            <div class="row">
                 <h4 class="color1 ms-5 my-4">Posted Recipes</h4>
             </div>
         </div>
@@ -119,7 +120,7 @@
             @php $counter = 0 @endphp
 
             {{-- loop of recipe cards --}}
-            @forelse ( $recipes as $recipe )
+            @forelse ($recipes as $recipe)
 
                 @if ($counter % 3 == 0)
                     <div class="row px-5">
@@ -198,8 +199,61 @@
                 </div>
 
             @endforelse
-        </div>   {{-- end of the 1st recipe card--}}
+        </div>   {{-- end of the loop of recipes posted. --}}
 
+
+                    {{-- When some resipes are posted by the user, remove below 3 recipes (since these are just examples). --}}
+
+
+                    {{-- card --}}  {{-- 1st recipe --}}
+                    <div class="col-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                        <div class="card d-flex flex-column mb-4 p-2">
+                            {{-- card header --}}
+                            <div class="card-header bg-white mx-auto border-bottom-none">
+                                <img src="{{ asset('/assets/images/food.jpg') }}" alt="card-pic" class="img-card img-fluid">
+                            </div>
+                            {{-- card body --}}
+                            <div class="card-body">
+                                <div class="row">
+                                    {{-- Tag --}}
+                                    <div class="col-auto">
+                                        <span class="badge badge-pref border rounded-pill">Vegan</span>
+                                    </div>
+                                    {{-- Bookmark --}}
+                                    <div class="col">
+                                        <div class="row justify-content-end">
+                                            <div class="col-auto">
+                                                <div class="fa-layers d-flex flex-column align-items-center">
+                                                    <i class="fa-regular fa-bookmark"></i>
+                                                    <span class="fa-layers-counter">1</span>
+                                                </div>
+                                            </div>
+                                            {{-- Heart --}}
+                                            <div class="col-auto">
+                                                <div class="fa-layers d-flex flex-column align-items-center">
+                                                    <i class="fa-regular fa-heart"></i>
+                                                    <span class="fa-layers-counter">1</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- Recipe Title --}}
+                                <div class="row">
+                                    <h4>Recipe Title</h4>
+                                </div>
+                                {{-- Recipe Over View --}}
+                                <div class="row">
+                                    <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-main">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  {{-- end of the 1st recipe --}}
 
 
                     {{-- card --}}  {{-- 2nd recipe --}}
@@ -309,8 +363,9 @@
 
 </div>  {{-- end of container --}}
 
+{{--
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
 
 @endsection
