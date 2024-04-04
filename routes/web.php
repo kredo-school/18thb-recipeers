@@ -7,6 +7,9 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +76,17 @@ Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, '
 
 //ProfileController
 Route::get('/users/account/profile-detail', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile-detail');
+
+
+
+// ProfileController
+Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
 
 
 // InquiryController
