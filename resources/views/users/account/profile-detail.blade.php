@@ -29,7 +29,7 @@
                         </div>
                         <div class="col" class="text-align-right">
                             <form action="{{ route('profile.edit', $user->id )}}"
-                                 method="post">
+                                 method="get">
                                 @csrf
                                 <button type="submit" class="btn btn-main px-5">Edit</button>
                             </form>
