@@ -53,6 +53,7 @@ class InquiriesController extends Controller
         $inquiry = $this->inquiry->findOrFail($id);
 
         $inquiry->admin_id = $request->admin;
+        $inquiry->status = $request->status;
         $inquiry->history = $request->history;
         $inquiry->save();
 
