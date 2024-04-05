@@ -30,6 +30,14 @@
                 </div>
                 <div class="row d-flex align-items-baseline">
                     <div class="col-4">
+                        <p class="h6 color1">Updated at: </p>
+                    </div>
+                    <div class="col-8">
+                        <p>{{ $inquiry->updated_at }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex align-items-baseline">
+                    <div class="col-4">
                         <p class="h6 color1">Inquirer: </p>
                     </div>
                     <div class="col-8">
@@ -78,13 +86,13 @@
                     </div>
                     <div class="col-8">
                         <select name="admin" id="admin" class="form-select">
+                            @if(isset($admin))
+                                <option value="{{ $admin->id }}" selected>{{ $admin->username }}</option>
+                            @else
+                                <option value="" {{ !isset($admin) ? 'selected' : '' }}>Select responder</option>
+                            @endif
                             @foreach($all_admins as $admin)
-                                @if($inquiry->admin_id == $admin->id)
-                                    <option value="{{ $admin_id }}" selected>{{ $admin->username }}</option>
-                                @else
-                                    <option value="" selected>Select responder</option>
-                                    <option value="{{ $admin->id }}">{{ $admin->username }}</option>
-                                @endif
+                                <option value="{{ $admin->id }}">{{ $admin->username }}</option>
                             @endforeach
                         </select>
                         @error('admin')
@@ -108,7 +116,7 @@
         {{-- BUTTONS --}}
         <div class="row justify-content-center mt-5">
             <div class="col-2 d-flex justify-content-between">
-                <a href="{{ route('admin.inquiry.show') }}" class="btn btn-sub flex-grow-1">Cancel</a>
+                <a href="{{ route('admin.inquiry.show') }}" class="btn btn-sub flex-grow-1">Go back</a>
             </div>
             <div class="col-2 d-flex justify-content-between">
                 <input type="submit" value="Update" class="btn btn-main flex-grow-1">

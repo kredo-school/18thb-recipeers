@@ -26,6 +26,8 @@ class InquiriesController extends Controller
     public function detail($id){
         $inquiry = $this->inquiry->findOrFail($id);
         $all_admins = User::where('role_id', 1)->get();
+        $admin = $inquiry->admin()->first();
+
         $statuses = [
             'Received' => 'Received',
             'In Progress' => 'In progress',
@@ -37,6 +39,7 @@ class InquiriesController extends Controller
         return view('admin.inquiry-detail')
                 ->with('inquiry', $inquiry)
                 ->with('all_admins', $all_admins)
+                ->with('admin', $admin)
                 ->with('statuses', $statuses);
     }
 
