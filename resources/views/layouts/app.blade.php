@@ -90,7 +90,7 @@
 
                                 <div id="dropdownMenuButton2" class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <a href="{{route('profile-detail')}}" class="dropdown-item">
+                                        <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">
                                             <i class="fa-solid fa-circle-user"></i> Profile
                                         </a>
                                     </li>

@@ -10,11 +10,18 @@ class InquiryController extends Controller
 {
     private $inquiry;
 
-    public function __construct(Inquiry $inquiry){
+    public function __construct(Inquiry $inquiry)
+    {
         $this->inquiry = $inquiry;
     }
 
-    public function create(Request $request){
+    public function index()
+    {
+        return view('inquiry');
+    }
+
+    public function create(Request $request)
+    {
         $request->validate([
             'title' => 'required|min:1',
             'body' => 'required|min:1',
