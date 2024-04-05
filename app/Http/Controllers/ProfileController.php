@@ -9,22 +9,29 @@ use App\Models\Recipe;
 
 class ProfileController extends Controller
 {
+    //
     private $user;
 
-    public function __construct(User $user){
+    public function __construct(User $user)
+    {
         $this->user = $user;
     }
 
-    public function show($id){
+    // public function index()
+    // {
+    //     return view('users.account.profile-detail'）;
+    // }
+
+    public function show($id)
+    {
         $user = $this->user->findOrFail($id);
         $recipes = Recipe::where('user_id', $user->id)->paginate(12);
 
         return view('users.account.profile-detail', compact('user', 'recipes'));
     }
 
-    public function edit(){
+    public function edit()
+    {
         return view('users.account.edit-account');
     }
-
-
 }
