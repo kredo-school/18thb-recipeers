@@ -26,7 +26,7 @@ class InquiryController extends Controller
             'title' => 'required|min:1',
             'body' => 'required|min:1',
             'name' => 'required|min:1',
-            'email' => 'required|email|unique:inquiries,email',
+            'email' => 'required|email',
             'agreement' => 'required|accepted'
         ]);
 
@@ -40,6 +40,7 @@ class InquiryController extends Controller
         $this->inquiry->user_id = $user_id;
         $this->inquiry->save();
 
+        // * need to change the route so that it redirects to the home page
         return redirect()->route('home');
     }
 }
