@@ -75,7 +75,7 @@ Route::get('/liked-recipes', [App\Http\Controllers\LikeController::class, 'index
 
 // UserController
 Route::get('/user/search-results', [App\Http\Controllers\UserController::class, 'index'])->name('search-results');
-Route::get('/user/resetPassword', [App\Http\Controllers\UserController::class, 'resetPasswordShow'])->name('resetPasswordShow');
+Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 'reset_password_show'])->name('reset-password.show');
 
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
