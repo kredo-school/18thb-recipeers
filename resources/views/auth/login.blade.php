@@ -60,8 +60,8 @@
                     @endif
                 <br>
                 Did you forget your password? 
-                    @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                    @if (Route::has('reset-password.show'))
+                        <a class="btn btn-link" href="{{ route('reset-password.show') }}">
                             {{ __('Reset here.') }}
                         </a>
                     @endif

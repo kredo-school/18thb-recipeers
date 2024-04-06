@@ -11,8 +11,8 @@ class UserController extends Controller
     {
         return view('users.search-results');
     }
-    public function resetPasswordShow()
+    public function reset_password_show()
     {
-        return view('users.resetPassword');
+        return view('users.reset-password');
     }
 }
