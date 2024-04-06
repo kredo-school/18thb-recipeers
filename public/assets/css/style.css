@@ -205,32 +205,31 @@ small{
 	height: 120px;
 }
 
-/* profile detail 用 */
+/* profile-detail 用 */
 
-.text-align-right {
-text-align: right;
-}
-
-.business-info-box {
-padding: 0.5em 1em;
-margin: 0 0 2em 0;
-background: white;
-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-}
-
-.url-display {
-display: block;
-word-wrap: break-word;
-max-width: 300px
+.business-icon {
+text-decoration: none;
+color: #65B741;
 }
 
 .sns-icon {
 text-decoration: none;
-color: #050505
 }
 
-.border-bottom-none {
-border-bottom: none;
+.x-twitter-color {
+color: rgb(0,0,0);
+}
+
+.instagram-color {
+color: rgb(157, 59, 196);
+}
+
+.facebook-color {
+color: rgb(60, 90, 153);
+}
+
+.tiktok-color {
+color: rgb(254,44,85);
 }
 
 /* table */

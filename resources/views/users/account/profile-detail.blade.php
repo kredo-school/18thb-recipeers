@@ -9,25 +9,36 @@
         <div class="col-lg-10 col-md-10 col-12">
             <div class="row me-2">
 
-                <!-- Avatar -->
                 <div class="col-auto">
-                    @if($user->avatar)
-                        <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-lg mb-3">
-                    @else
-                        <i class="fa-solid fa-circle-user icon-lg color1 mb-3"></i>
-                    @endif
+                    {{-- Avatar --}}
+                    <div class="row">
+                        @if($user->avatar)
+                            <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-lg mb-3">
+                        @else
+                            <i class="fa-solid fa-circle-user icon-lg color1 mb-3"></i>
+                        @endif
+                    </div>
+                    {{-- SNS icons --}}
+                    <div class="row justify-content-start">  {{-- below icons are temporary. No links for now --}}
+                        <div class="col-auto mx-auto">
+                            <i class="fa-brands fa-x-twitter x-twitter-color fa-lg sns-icon me-1"></i>
+                            <i class="fa-brands fa-instagram instagram-color fa-lg sns-icon mx-1"></i>
+                            <i class="fa-brands fa-facebook facebook-color fa-lg sns-icon mx-1"></i>
+                            <i class="fa-brands fa-tiktok tiktok-color fa-lg sns-icon ms-1"></i>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col">
-                    <div class="row">
+                    <div class="d-flex align-items-center mb-2">
+                        {{-- eating preference --}}
                         <div class="col">
                             @if($user->eating_pref_id)
                                 <span class="badge badge-pref border rounded-pill">{{ $user->eating_pref_id->name }}</span>
-                            @else
-                                <br>
                             @endif
                         </div>
-                        <div class="col" class="text-align-right">
+                        {{-- edit button --}}
+                        <div class="col d-flex justify-content-end">
                             <form action="{{ route('profile.edit', $user->id )}}"
                                  method="get">
                                 @csrf
@@ -35,70 +46,73 @@
                             </form>
                         </div>
                     </div>
-                    <p>{{ $user->username }}</p>
-                    <p>{{ $user->introduction }}</p>
-                    <p>
+
+                    <div class="d-flex align-items-start mb-2">
+                        <h4 class="me-2">
+                            {{-- user name/business name --}}
+                            @if(optional($user->business_info)->exists())
+                                {{ $user->business_info->name }}
+                            @else
+                                {{ $user->username }}
+                            @endif
+
+                            {{-- icons for business --}}
+                            @if(optional($user->business_info)->exists())
+                                @if($user->business_info->hp_url)
+                                    <a href="{{ $user->business_info->hp_url }}">
+                                        <i class="fa-solid fa-globe fa-sm business-icon align-self-center mx-2"></i>
+                                    </a>
+                                @endif
+                                @if($user->business_info->delivery_url)
+                                    <a href="{{ $user->business_info->delivery_url }}">
+                                        <i class="fa-solid fa-truck fa-sm business-icon align-self-center"></i>
+                                    </a>
+                                @endif
+                            @endif
+                        </h4>
+                    </div>
+
+                    {{-- Location for business users --}}
+                    @if(optional($user->business_info)->exists())
+                        @if($user->business_info->location)
+                            <p class="my-2">{{ $user->business_info->location }}</p>
+                        @endif
+                    @endif
+
+                    {{-- introduction --}}
+                    @if ($user->introduction)
+                        <p class="my-3">{{ $user->introduction }}</p>
+                    @endif
+
+                    {{-- Nos. of recipes/followers/following --}}
+                    <p class="my-3">
                         @if($user->recipes !== null && $user->recipes->count() > 0)
                             <span class="me-2">{{ $user->recipes->count() }}</span> {{ $user->recipes->count() ==1 ? 'recipe' : 'recipes' }}
                         @else
-                            <span class="me-2">0 recipe</span>
+                            <span class="me-2"><span class="h5">0</span> recipe</span>
                         @endif
 
-                        <span class="mx-2">17 followers</span>
+                        <span class="mx-2"><span class="h5">17</span> followers</span>
                         {{-- * remove comment out below if Follow functions are being implemented. --}}
                         {{-- <a href="{{ route('profile.followers', $user->id) }}" class="text-decoration-none text-dark">
                             <span class="mx-2">{{ $user->followers->count() }}</span> {{ $user->followers->count() ==1 ? 'Follower' : 'Followers' }}
                         </a> --}}
 
-                        <span class="mx-2">9 followings</span>
+                        <span class="mx-2"><span class="h5">9</span> followings</span>
                         {{-- * remove comment out below if Follow functions are being implemented. --}}
                         {{-- <a href="{{ route('profile.following', $user->id) }}" class="text-decoration-none text-dark">
                             <span class="mx-2">{{ $user->follows->count() }}</span> Following
                         </a> --}}
                     </p>
                 </div>
-
-                {{-- If this is a business account, show below --}}
-                <!-- Business Info -->
-                <div class="col-lg-4 col-md-4 col-12 ms-4 business-info-box">
-                    <h4 class="mt-1">Business Info</h4>
-                    <h6>
-                        Website
-                        @if($user->business_info && $user->business_info->hp_url)
-                            <a href="{{ $user->business_info->hp_url }}" class="url-display">{{ $user->business_info->hp_url }}</a>
-                        @endif
-                    </h6>
-                    <h6 class="mb-3">
-                        Order delivery
-                        @if($user->business_info && $user->business_info->delivery_url)
-                            <a href="{{ $user->business_info->delivery_url }}" class="url-display">{{ $user->business_info->delivery_url }}</a>
-                        @endif
-                    </h6>
-                    <div>
-                        {{-- below icons are temporary. No links --}}
-                        <a href="" class="sns-icon">
-                            <i class="fa-brands fa-x-twitter me-1 h4"></i>
-                        </a>
-                        <a href="" class="sns-icon">
-                            <i class="fa-brands fa-instagram me-1 h4 ms-1"></i>
-                        </a>
-                        <a href="" class="sns-icon">
-                            <i class="fa-brands fa-facebook me-1 h4 ms-1"></i>
-                        </a>
-                        <a href="" class="sns-icon">
-                            <i class="fa-brands fa-tiktok h4 ms-1"></i>
-                        </a>
-                    </div>
-                </div>  <!-- End of Business Info -->
             </div>
         </div>
-
     </div>
 
     <div class="row ms-5">
         <div class="col-lg-10 col-md-10 col-12">
             <div class="row">
-                <h4 class="color1 ms-5 my-4">Posted Recipes</h4>
+                <h4 class="color1 ms-5 my-5">Posted Recipes</h4>
             </div>
         </div>
     </div>
