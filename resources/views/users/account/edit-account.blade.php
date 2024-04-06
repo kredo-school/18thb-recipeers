@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 {{-- * change title to variable --}}
-@section('title', "Recipe Title")
+@section('title', "Edit Your Profile")
 
 @section('content')
 <div class="container p-5 justify-content-center">
@@ -34,7 +34,7 @@
                         <label for="username" class="form-label h5 mt-1">Username</label>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="username" id="username" class="form-control input-color1" placeholder="Username" value="">
+                        <input type="text" name="username" id="username" class="form-control input-color1" placeholder="Username" value="{{ old('username') }}">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -225,7 +225,7 @@
         {{-- BUTTONS --}}
         <div class="row justify-content-center mt-5">
             <div class="col-2 d-flex justify-content-between">
-                <button class="btn btn-sub flex-grow-1">Cancel</button>
+                <a href="{{ route('profile.show', $user->id) }}" class="btn btn-sub flex-grow-1">Cancel</a>
             </div>
             <div class="col-2 d-flex justify-content-between">
                 <input type="submit" value="Save" class="btn btn-main flex-grow-1">
@@ -258,6 +258,7 @@
     }
 </script>
 <div class="box">
+    <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
     <img src="{{ asset('assets/images/footer.jpg') }}" alt="footer-banner">
