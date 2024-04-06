@@ -155,6 +155,8 @@ li,p{
 
 a{
 	text-decoration: none;
+	color: #65B741;
+	font-weight: normal;
 }
 
 /* -----------------navbar-------------------------------------------- */
@@ -212,25 +214,25 @@ text-align: right;
 }
 
 .business-info-box {
-padding: 0.5em 1em;
-margin: 0 0 2em 0;
-background: white;
-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+	padding: 0.5em 1em;
+	margin: 0 0 2em 0;
+	background: white;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
 .url-display {
-display: block;
-word-wrap: break-word;
-max-width: 300px
+	display: block;
+	word-wrap: break-word;
+	max-width: 300px
 }
 
 .sns-icon {
-text-decoration: none;
-color: #050505
+	text-decoration: none;
+	color: #050505
 }
 
 .border-bottom-none {
-border-bottom: none;
+	border-bottom: none;
 }
 
 /* table */
@@ -242,7 +244,10 @@ table{
 th{
 	font-weight: normal;
 	background: #fff6a0 !important;
+}
 
+tr{
+	padding: 10px;
 }
 
 .badge-active{
@@ -259,7 +264,75 @@ th{
 	font-weight: normal;
 }
 
+.badge-received{
+	background-color: #FFB534;
+	border-color: #FFB534 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-in-progress{
+	background-color: #FFF6A0;
+	border-color: #FFF6A0 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-pending{
+	background-color: #D2F5C5;
+	border-color: #D2F5C5 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-resolved{
+	background-color: #A9DD94;
+	border-color: #A9DD94 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
 /* modal */
 .modal-dialog,.modal-content,.modal-header {
     border-color: #65B741;
+}
+
+/* pagination */
+.pagination{
+	text-align: center;
+	display: inline-flex;
+	position: relative;
+}
+
+.pagination > li{
+	line-height: 27px;
+    height: 38px;
+    width: 38px;
+	margin: 0 4px;
+	border: none;
+	border-radius: 50%;
+	display: block;
+    overflow: hidden;
+	position: relative;
+}
+
+.pagination > li > .page-link{
+	color: #050505;
+	background-color: transparent;
+	border: none;
+}
+
+.pagination > .active > .page-link{
+    color: #fff;
+    background-color: #93D579;
+    border: none;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover{
+    color: #fff;
+    background-color: #93D579;
+    border: none;
 }
