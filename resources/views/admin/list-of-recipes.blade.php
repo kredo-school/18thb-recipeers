@@ -5,24 +5,24 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<!-- admin menu -->
+		{{-- Admin menu --}}
 		<div class="col-lg-2 col-md-2 col-12 my-5 mr-2">
 			<div class="list-group">
-				<button class="btn btn-sub list-group-item mb-3">
+				<a href="{{ route('admin.home') }}" class="btn btn-sub list-group-item mb-3">
 					Admin Home
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.users.show') }}" class="btn btn-sub list-group-item mb-3">
 					All Users
-				</button>
-				<button class="btn btn-main list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.recipes.show') }}" class="btn btn-main list-group-item mb-3">
 					All Recipes
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.inquiries.show') }}" class="btn btn-sub list-group-item mb-3">
 					All Inquiries
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				{{-- <a href="{{ route('admin.') }}" class="btn btn-sub list-group-item mb-3">
 					All Ads
-				</button>
+				</a> --}}
 			</div>
 		</div>
 

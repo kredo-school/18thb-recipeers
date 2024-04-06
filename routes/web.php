@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
+use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\RecipesController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\LikeController;
@@ -56,7 +59,8 @@ Route::get('/admin/list-of-accounts', function () {
 Auth::routes();
 
 // HomeController
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/admin/home', [HomeController::class, 'admin_home'])->name('admin.home');
 
 // RecipeController
 Route::get('/recipe', [App\Http\Controllers\RecipeController::class, 'index'])->name('all-recipes');
@@ -85,6 +89,12 @@ Route::get('/inquiry', [InquiryController::class, 'index'])->name('inquiry');
 Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');
 
 // InquiriesController
-Route::get('/admin/list_of_inquiries', [InquiriesController::class, 'show'])->name('admin.inquiry.show');
+Route::get('/admin/list_of_inquiries', [InquiriesController::class, 'show'])->name('admin.inquiries.show');
 Route::get('/admin/inquiry/{id}/detail', [InquiriesController::class, 'detail'])->name('admin.inquiry.detail');
 Route::patch('/admin/inquiry/{id}/update', [InquiriesController::class, 'update'])->name('admin.inquiry.update');
+
+// UsersController
+Route::get('/admin/list_of_accounts', [UsersController::class, 'show'])->name('admin.users.show');
+
+// RecipesController
+Route::get('/admin/list_of_recipes', [RecipesController::class, 'show'])->name('admin.recipes.show');

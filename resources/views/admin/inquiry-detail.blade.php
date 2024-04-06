@@ -116,7 +116,7 @@
         {{-- BUTTONS --}}
         <div class="row justify-content-center mt-5">
             <div class="col-2 d-flex justify-content-between">
-                <a href="{{ route('admin.inquiry.show') }}" class="btn btn-sub flex-grow-1">Go back</a>
+                <a href="{{ route('admin.inquiries.show') }}" class="btn btn-sub flex-grow-1">Go back</a>
             </div>
             <div class="col-2 d-flex justify-content-between">
                 <input type="submit" value="Update" class="btn btn-main flex-grow-1">
