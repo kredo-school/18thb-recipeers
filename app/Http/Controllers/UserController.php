@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function resetPasswordShow()
+    public function reset_password_show()
     {
-        return view('users.resetPassword');
+        return view('users.reset-password');
     }
 }
