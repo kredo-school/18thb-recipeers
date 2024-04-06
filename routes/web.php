@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\Admin\InquiriesController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\LikeController;
@@ -81,5 +82,9 @@ Route::patch('/profile/update', [ProfileController::class, 'update'])->name('pro
 
 // InquiryController
 Route::get('/inquiry', [InquiryController::class, 'index'])->name('inquiry');
-
 Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inquiry.create');
+
+// InquiriesController
+Route::get('/admin/list_of_inquiries', [InquiriesController::class, 'show'])->name('admin.inquiry.show');
+Route::get('/admin/inquiry/{id}/detail', [InquiriesController::class, 'detail'])->name('admin.inquiry.detail');
+Route::patch('/admin/inquiry/{id}/update', [InquiriesController::class, 'update'])->name('admin.inquiry.update');
