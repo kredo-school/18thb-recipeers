@@ -23,6 +23,12 @@
                     <input type="submit" value="Send" class="btn btn-main flex-grow-1">
                 </div>
             </div>
+
+        {{-- after the Reset button is pressed, 
+            an error message or confirmation message of sending an email will be displayed.
+            Error message : The email address you entered does not match any of the existing account.
+            Comfirmation message : We sent you an email for you to reset your password! --}}
+
         </form>
     </div>
 
