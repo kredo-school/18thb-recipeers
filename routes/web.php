@@ -75,6 +75,10 @@ Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 
 
 Route::delete('/user/{id}/delete', [UserController::class, 'destroy'])->name('account.user.delete');
 
+Route::delete('/user/{id}/delete', [UserController::class, 'destroy'])->name('account.user.delete');
+
+// AdminController
+Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('Admin.home');
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
