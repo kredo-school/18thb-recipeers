@@ -1,21 +1,36 @@
-{{-- still editing --}}
+{{-- Delete an Account --}}
+{{-- * Change to variables --}}
 
-<div class="modal fade" id="recipeTrashModal" aria-labelledby="recipeTrashModalLabel" aria-hidden="true">
+<div class="modal fade" id="accountTrashModal">
+    {{-- -{{ $user->id }} --}}
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title h5" id="recipeTrashModal">
-                    Recipe Title
-                </h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header d-flex justify-content-center align-items-center">
+                <h3 class="modal-title color1">
+                    <i class="fa-solid fa-user-xmark me-3"></i>
+                    Delete Account
+                </h3>
             </div>
-            <div class="modal-body">
-                <p>Recipe Title will Delete.</p>
-                <p>Are you sure?</p>
+            <div class="horizontal-line3"></div>
+            <div class="horizontal-line4"></div>
+
+            <div class="modal-body justify-items-center py-5 text-center">
+                <p class="fw-light mb-5">You are about to delete your account.</p>
+                <img src="../assets/images/user.jpg" alt="avatar" class="rounded-circle img-lg mb-3">
+                <p class="h4 fw-light">Username</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sub" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-main">Delete</button>
+            <div class="modal-footer border-0 d-flex justify-content-center mb-5">
+                {{-- <form action="{{ route('account.users.delete',$user->id) }}" method="post">
+                    @csrf
+                    @method('DELETE') --}}
+                        <button type="button" class="btn btn-sub btn-block w-25 me-4" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-main btn-block w-25">
+                            Delete
+                        </button>
+                    </div>
+                {{-- </form> --}}
             </div>
         </div>
     </div>

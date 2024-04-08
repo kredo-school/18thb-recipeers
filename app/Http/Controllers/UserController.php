@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function resetPasswordShow()
+    //
+    public function index()
     {
-        return view('users.resetPassword');
+        return view('users.search-results');
+    }
+    public function reset_password_show()
+    {
+        return view('users.reset-password');
     }
 }

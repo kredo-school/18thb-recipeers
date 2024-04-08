@@ -1,15 +1,13 @@
 @extends('layouts.app')
 
-{{-- * change title to variable --}}
-@section('title', "Contact Us")
+@section('title', "Inquiry Detail")
 
 @section('content')
 <div class="container py-5 justify-content-center">
     <h2 class="color1 text-center mb-5">Inquiry Detail</h2>
-    {{-- * change each item to the variable --}}
-    <form action="#" method="post">
+    <form action="{{ route('admin.inquiry.update', $inquiry->id) }}" method="post">
         @csrf
-        @method('POST')
+        @method('PATCH')
 
         <div class="row mb-4">
             {{-- LEFT SIDE --}}
@@ -19,63 +17,98 @@
                         <p class="h6 color1">Title: </p>
                     </div>
                     <div class="col-8">
-                        <p>Cannot register</p>
-                    </div>    
+                        <p>{{ $inquiry->title }}</p>
+                    </div>
                 </div>
                 <div class="row d-flex align-items-baseline">
                     <div class="col-4">
                         <p class="h6 color1">Received at: </p>
                     </div>
                     <div class="col-8">
-                        <p>2024/03/19 21:20:35</p>
-                    </div>    
+                        <p>{{ $inquiry->created_at }}</p>
+                    </div>
+                </div>
+                <div class="row d-flex align-items-baseline">
+                    <div class="col-4">
+                        <p class="h6 color1">Updated at: </p>
+                    </div>
+                    <div class="col-8">
+                        <p>{{ $inquiry->updated_at }}</p>
+                    </div>
                 </div>
                 <div class="row d-flex align-items-baseline">
                     <div class="col-4">
                         <p class="h6 color1">Inquirer: </p>
                     </div>
                     <div class="col-8">
-                        <p>Inquierer's Name</p>
-                    </div>    
+                        <p>{{ $inquiry->inquirer_name }}</p>
+                    </div>
                 </div>
                 <div class="row d-flex align-items-baseline">
                     <div class="col-4">
                         <p class="h6 color1">Email: </p>
                     </div>
                     <div class="col-8">
-                        <p>inquierer@mail.com</p>
-                    </div>    
+                        <p>{{ $inquiry->email }}</p>
+                    </div>
                 </div>
                 <div class="row d-flex align-items-baseline">
                     <div class="col-4">
                         <p class="h6 color1">Message: </p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero sequi accusantium sapiente sit quaerat. Necessitatibus quas, possimus similique labore sit quo ipsa aut est nulla facere. Sunt aliquam, corporis nesciunt ullam ipsum saepe consectetur fuga molestiae eaque repellat pariatur facilis quae enim, recusandae, fugiat alias maxime quia. Commodi, reiciendis illo?</p>
+                    <p>{{ $inquiry->body }}</p>
                 </div>
             </div>
             {{-- RIGHT SIDE --}}
             <div class="col-6 align-items-center mb-3">
-                <div class="row d-flex align-items-baseline">
+                <div class="row d-flex align-items-baseline mb-3">
                     <div class="col-4">
-                        <p class="h6 color1">Status: </p>
+                        <label for="admin" class="form-label h6 color1">Status: </label>
                     </div>
                     <div class="col-8">
-                        <p>Received</p>
-                    </div>    
+                        <select name="status" id="status" class="form-select">
+                            @foreach($statuses as $status)
+                                @if($inquiry->status == $status)
+                                    <option value="{{ $status }}" selected>{{ $status }}</option>
+                                @else
+                                    <option value="{{ $status }}">{{ $status }}</option>
+                                @endif
+                            @endforeach
+                            @error('status')
+                                <div class="text-danger small">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
                 </div>
-                <div class="row d-flex align-items-baseline">
+                <div class="row d-flex align-items-baseline mb-4">
                     <div class="col-4">
-                        <p class="h6 color1">Responder: </p>
+                        <label for="admin" class="form-label h6 color1">Responder: </label>
                     </div>
                     <div class="col-8">
-                        <p>Admin Username</p>
-                    </div>    
+                        <select name="admin" id="admin" class="form-select">
+                            @if(isset($admin))
+                                <option value="{{ $admin->id }}" selected>{{ $admin->username }}</option>
+                            @else
+                                <option value="" {{ !isset($admin) ? 'selected' : '' }}>Select responder</option>
+                            @endif
+                            @foreach($all_admins as $admin)
+                                <option value="{{ $admin->id }}">{{ $admin->username }}</option>
+                            @endforeach
+                        </select>
+                        @error('admin')
+                            <div class="text-danger small">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
                 <div class="row d-flex align-items-baseline">
                     <div class="col-4">
                         <label for="history" class="form-label h6 color1">History: </label>
                     </div>
-                    <textarea name="history" id="history" rows="10" class="form-control input-color1 ms-2"></textarea>
+                    <textarea name="history" id="history" rows="10" class="form-control input-color1 ms-2">{{ old('history', $inquiry->history) }}</textarea>
+                    {{-- ERROR --}}
+                    @error('history')
+                        <div class="text-danger small">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -83,7 +116,7 @@
         {{-- BUTTONS --}}
         <div class="row justify-content-center mt-5">
             <div class="col-2 d-flex justify-content-between">
-                <button class="btn btn-sub flex-grow-1">Cancel</button>
+                <a href="{{ route('admin.inquiry.show') }}" class="btn btn-sub flex-grow-1">Go back</a>
             </div>
             <div class="col-2 d-flex justify-content-between">
                 <input type="submit" value="Update" class="btn btn-main flex-grow-1">

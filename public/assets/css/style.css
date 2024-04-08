@@ -5,9 +5,9 @@ main{
 
 /* font */
 h1,h2,h3,h4,h5,h6{
-font-family: "Varela Round", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+	font-family: "Varela Round", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 	color: #050505;
 }
 
@@ -24,7 +24,7 @@ h3{
 }
 
 h4{
-font-size: 24px;
+	font-size: 24px;
 }
 
 h5{
@@ -32,25 +32,27 @@ h5{
 }
 
 li,p{
- font-family: "Noto Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-variation-settings:"wdth" 100;
+	font-family: "Noto Sans", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-variation-settings:"wdth" 100;
+	/* color: #050505; */
+	/* text-decoration-color: #050505; */
 }
 
 .input-color1{
-outline:solid 0.5px #65B741;
+	outline:solid 0.5px #65B741;
 }
 .color1{
-color: #65B741;
+	color: #65B741;
 }
 
 .color2{
-color: #93D579;
+	color: #93D579;
 }
 
 .color3{
-color:#C1F2B0;
+	color:#C1F2B0;
 }
 
 .color4{
@@ -112,15 +114,15 @@ color:#C1F2B0;
 
 /* button */
 .btn{
- font-family: "Noto Sans", sans-serif;
+	font-family: "Noto Sans", sans-serif;
 }
 
 .btn-main{
-background: #FFB534;
-color: #FFFFFF;
-box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
- font-family: "Noto Sans", sans-serif;
- font-weight: bold;
+	background: #FFB534;
+	color: #FFFFFF;
+	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+	font-family: "Noto Sans", sans-serif;
+	font-weight: bold;
 }
 
 .btn-main:hover{
@@ -131,8 +133,8 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
 	background: #FFFFFF;
 	color: #FFB534;
 	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
- font-family: "Noto Sans", sans-serif;
- font-weight: bold;
+ 	font-family: "Noto Sans", sans-serif;
+ 	font-weight: bold;
 }
 
 .btn-sub:hover{
@@ -141,7 +143,8 @@ box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 
 }
 
 .btn-outline{
-border: 1px solid #65B741;
+	border: 1px solid #65B741;
+	/* color: #FFB534; */
 }
 
 .badge-pref{
@@ -151,7 +154,9 @@ border: 1px solid #65B741;
 }
 
 a{
-text-decoration: none;
+	text-decoration: none;
+	color: #65B741;
+	font-weight: normal;
 }
 
 /* -----------------navbar-------------------------------------------- */
@@ -160,62 +165,88 @@ text-decoration: none;
 }
 
 .logo{
-width: 150px;
-margin: 0 auto;
+	width: 150px;
+	margin: 0 auto;
 }
 
 .horizontal-line2{
-padding-bottom: 2px;
-border-bottom: 1px solid #65B741;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #65B741;
 }
 .horizontal-line3{
-padding-bottom: 2px;
-border-bottom: 1px solid #C1F2B0;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #C1F2B0;
 }
 .horizontal-line4{
-padding-bottom: 2px;
-border-bottom: 1px solid #fff6a0;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #fff6a0;
 }
 
 .searchbox i{
-position: absolute;
-left: 15px;
-top: 40px;
-color: #65B741;
+	position: absolute;
+	left: 15px;
+	top: 40px;
+	color: #65B741;
 }
 
 /* footer */
 small{
-		font-family: 'noto-sans','sans-serif';
+	font-family: 'noto-sans','sans-serif';
 	color: #050505;
 }
 
 .box {
-display: flex;
-max-width: 100%;
-overflow-x: hidden;
+	display: flex;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 .box img {
-max-width: 100%; /* 画像が親要素を超えないようにする */
-margin: 0; /* 余白をなくす */
-height: 120px;
+	max-width: 100%; /* 画像が親要素を超えないようにする */
+	margin: 0; /* 余白をなくす */
+	height: 120px;
+}
+
+/* profile-detail 用 */
+
+.business-icon {
+text-decoration: none;
+color: #65B741;
+}
+
+.sns-icon {
+	text-decoration: none;
+}
+
+.x-twitter-color {
+color: rgb(0,0,0);
+}
+
+.instagram-color {
+color: rgb(157, 59, 196);
+}
+
+.facebook-color {
+color: rgb(60, 90, 153);
+}
+
+.tiktok-color {
+color: rgb(254,44,85);
 }
 
 /* table */
 table{
-font-family: 'Noto Sans', sans-serif;
-color: #050505;
+	font-family: 'Noto Sans', sans-serif;
+	color: #050505;
 }
-
-/* thead th{
-	background: #C1F2B0 !important;
-} */
 
 th{
 	font-weight: normal;
-		background: #fff6a0 !important;
+	background: #fff6a0 !important;
+}
 
+tr{
+	padding: 10px;
 }
 
 .badge-active{
@@ -230,4 +261,77 @@ th{
 	border-color: #E0E0E0 !important;
 	color: #050505;
 	font-weight: normal;
+}
+
+.badge-received{
+	background-color: #FFB534;
+	border-color: #FFB534 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-in-progress{
+	background-color: #FFF6A0;
+	border-color: #FFF6A0 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-pending{
+	background-color: #D2F5C5;
+	border-color: #D2F5C5 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+.badge-resolved{
+	background-color: #A9DD94;
+	border-color: #A9DD94 !important;
+	color: #050505;
+	font-weight: normal;
+}
+
+/* modal */
+.modal-dialog,.modal-content,.modal-header {
+    border-color: #65B741;
+}
+
+/* pagination */
+.pagination{
+	text-align: center;
+	display: inline-flex;
+	position: relative;
+}
+
+.pagination > li{
+	line-height: 27px;
+    height: 38px;
+    width: 38px;
+	margin: 0 4px;
+	border: none;
+	border-radius: 50%;
+	display: block;
+    overflow: hidden;
+	position: relative;
+}
+
+.pagination > li > .page-link{
+	color: #050505;
+	background-color: transparent;
+	border: none;
+}
+
+.pagination > .active > .page-link{
+    color: #fff;
+    background-color: #93D579;
+    border: none;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover{
+    color: #fff;
+    background-color: #93D579;
+    border: none;
 }

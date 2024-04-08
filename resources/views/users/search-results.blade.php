@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Search Results")
+
 @section('content')
 <div class="container p-5">
 	<div class="row">
@@ -52,7 +54,7 @@
 									</div>
 								</div>
 								<!-- Recipe Title -->
-	
+
 								<h4>Recipe Title</h4>
 								{{-- Recipe Over View --}}
 								<p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
@@ -93,7 +95,7 @@
 									</div>
 								</div>
 								<!-- Recipe Title -->
-	
+
 								<h4>Recipe Title</h4>
 								{{-- Recipe Over View --}}
 								<p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
@@ -134,7 +136,7 @@
 									</div>
 								</div>
 								<!-- Recipe Title -->
-	
+
 								<h4>Recipe Title</h4>
 								{{-- Recipe Over View --}}
 								<p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, tempora.</p>
@@ -142,8 +144,8 @@
 							</div>
 						</div>
 					</div>
-	
-	
+
+
 				</div>
 		</div>
 
@@ -151,7 +153,7 @@
 		<div class="col-lg-4 col-md-4 col-12">
 			<img src="{{ asset('/assets/images/ad1.jpg') }}" alt="ad1" class="w-100 img-fluid mb-3 ml-5">
 			<img src="{{ asset('/assets/images/ad2.jpg') }}" alt="ad2" class="w-100 img-fluid mb-3 ml-5">
-			<img src="{{ asset('/assets/images/ad3.jpg') }}" alt="ad3" class="w-100 img-fluid mb-3 ml-5">
+			<img src="{{ asset('/assets/images/ad3.jpg') }}" alt="ad3" class="w-100 img-fluid mb-3 ml-5 border">
 			<img src="{{ asset('/assets/images/ad4.jpg') }}" alt="ad4" class="w-100 img-fluid mb-3 ml-5">
 		</div>
 	</div>

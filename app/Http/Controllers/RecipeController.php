@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
+    private $recipe;
+    public function __construct(Recipe $recipe)
+    {
+        $this->recipe = $recipe;
+    }
+
+    public function index()
+    {
+        return view('users.recipe.all-recipes');
+    }
+
     public function create()
     {
         return view('users.recipe.createRecipe');
@@ -13,6 +25,6 @@ class RecipeController extends Controller
 
     public function edit()
     {
-        return view('users.recipe.editRecipe');
+        return view('users.recipe.edit-recipe');
     }
 }
