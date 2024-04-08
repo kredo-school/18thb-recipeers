@@ -25,9 +25,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    // * change the file to admim-home
-    public function admin_home(){
-        return view('home');
-    }
 }

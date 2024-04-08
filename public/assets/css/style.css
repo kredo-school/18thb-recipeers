@@ -59,6 +59,10 @@ li,p{
 	color: #fff6a0;
 }
 
+.color5{
+	color: #FFB534;
+}
+
 /* icon	 */
 .icon-sm {
     font-size: 2rem;
@@ -254,6 +258,7 @@ tr{
 	border-color: #C1F2B0 !important;
 	color: #050505;
 	font-weight: normal;
+	line-height: 1rem;
 }
 
 .badge-deactive{
@@ -261,6 +266,7 @@ tr{
 	border-color: #E0E0E0 !important;
 	color: #050505;
 	font-weight: normal;
+	line-height: 1rem;
 }
 
 .badge-received{
@@ -289,6 +295,18 @@ tr{
 	border-color: #A9DD94 !important;
 	color: #050505;
 	font-weight: normal;
+}
+
+/* dropdown menu */
+td .dropdown-menu{
+	min-width: unset;
+	padding: 2px;
+}
+
+td .dropdown-item {
+	font-size: 0.8rem;
+	padding: 8px 16px;
+	width: auto;
 }
 
 /* modal */

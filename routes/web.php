@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
 use App\Http\Controllers\Admin\UsersController;
@@ -60,7 +61,6 @@ Auth::routes();
 
 // HomeController
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/admin/home', [HomeController::class, 'admin_home'])->name('admin.home');
 
 // RecipeController
 Route::get('/recipe', [App\Http\Controllers\RecipeController::class, 'index'])->name('all-recipes');
@@ -78,7 +78,8 @@ Route::get('/user/search-results', [App\Http\Controllers\UserController::class, 
 Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 'reset_password_show'])->name('reset-password.show');
 
 // AdminController
-Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('Admin.home');
+Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');
+
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
 

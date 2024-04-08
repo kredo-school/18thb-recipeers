@@ -90,35 +90,46 @@
 							<td>0</td>
 							<td>0</td>
 							<td>
-								@if($user->status == "active")
-									<button class="badge badge-active cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										{{ $user->status }}
-									</button>
-								@elseif($user->status == "deactivated")
-									<button class="badge badge-deactive cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										{{ $user->status }}
-									</button>
-								@endif
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									@if ($user->is_active)
-									  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deactivateModal{{ $user->id }}">Deactivate</a>
-									@else
-									  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#activateModal{{ $user->id }}">Activate</a>
+								<div class="dropdown">
+									@if($user->status == "active")
+										<span role="button" class="badge badge-active dropdown-toggle" data-bs-toggle="dropdown">
+											<i class="fa-solid fa-circle color1 small"></i> {{ $user->status }}
+										</span>
+										<div class="dropdown-menu">
+											<button class="dropdown-item color5" data-bs-toggle="modal" data-bs-target="#deactivate-account-{{ $user->id }}">
+												<i class="fa-solid fa-user-slash"></i> Deactivate
+											</button>
+										</div>
+									@elseif($user->status == "deactivated")
+										<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
+											<i class="fa-regular fa-circle small"></i> {{ $user->status }}
+										</span>
+										<ul class="dropdown-menu">
+											<li>
+												<button class="dropdown-item color1" data-toggle="modal" data-target="#activateModal{{ $user->id }}">
+													<i class="fa-solid fa-user-check"></i> Activate
+												</button>
+											</li>
+										</ul>
 									@endif
 								</div>
 								{{-- <div class="dropdown">
-										<button class="btn shadow-none badge badge-active" data-bs-toggle="dropdown">
-											<i class="fa-solid fa-circle text-success"></i> Active
-										</button>
-									<div class="dropdown-menu">
-										<button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-user">
-											<i class="fa-solid fa-user-slash"></i> Deactivate
-										</button>
-										<button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#activate-user">
-											<i class="fa-solid fa-user-check"></i> Activate
-										</button>
-									</div>
-								</div> --}}
+                                    <button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Recipe
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('all-recipes')}}">Posts</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('bookmarks')}}">Bookmarks</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('liked-recipes')}}">Liked Recipes</a>
+                                        </li>
+                                    </ul>
+                                </div> --}}
 							</td>
 						</tr>
 					@endforeach
