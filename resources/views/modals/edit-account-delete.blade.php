@@ -16,8 +16,12 @@
 
             <div class="modal-body justify-items-center py-5 text-center">
                 <p class="fw-light mb-5">You are about to delete your account.</p>
-                <img src="../assets/images/user.jpg" alt="avatar" class="rounded-circle img-lg mb-3">
-                <p class="h4 fw-light">Username</p>
+                @if($user->avatar)
+                    <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-lg mb-3">
+                @else
+                    <i class="fa-solid fa-circle-user icon-lg color1 mb-3"></i>
+                @endif
+                <p class="h4 fw-light">{{ $user->username}}</p>
             </div>
             <div class="modal-footer border-0 d-flex justify-content-center mb-5">
                 {{-- <form action="{{ route('account.users.delete',$user->id) }}" method="post">
