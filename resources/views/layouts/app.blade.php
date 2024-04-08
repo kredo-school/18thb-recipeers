@@ -90,15 +90,13 @@
 
                                 <div id="dropdownMenuButton2" class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">
-                                            <i class="fa-solid fa-circle-user"></i> Profile
+                                        <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">Profile
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{{ Auth::logout() }}" class="dropdown-item">
-                                            <i class="fa-solid fa-right-from-bracket"></i>{{ __('Logout') }}
-                                        </a>
-                                    </li>
+                                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                    </form>
                                 </div>
                             </div>
                         @endif

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bookmarks')
+@section('title', 'Liked')
 
 @section('content')
 <div class="container py-5 justify-content-center">
