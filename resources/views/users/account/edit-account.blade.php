@@ -234,7 +234,7 @@
 
         {{-- Delete Button --}}
         <div class="text-end h5">
-            <button type="button" class="btn btn-trash" data-bs-toggle="modal" data-bs-target="#accountTrashModal">
+            <button type="button" class="btn btn-trash" data-bs-toggle="modal" data-bs-target="#account-softdelete{{ $user->id }}">
                 <i class="fa-solid fa-trash-can"></i>
             </button>
 

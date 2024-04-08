@@ -73,11 +73,11 @@ Route::get('/liked-recipes', [App\Http\Controllers\LikeController::class, 'index
 Route::get('/user/search-results', [App\Http\Controllers\UserController::class, 'index'])->name('search-results');
 Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 'reset_password_show'])->name('reset-password.show');
 
+Route::delete('/user/{id}/delete', [UserController::class, 'destroy'])->name('account.user.delete');
+
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
-
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-
 Route::patch('/profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
 
 // InquiryController

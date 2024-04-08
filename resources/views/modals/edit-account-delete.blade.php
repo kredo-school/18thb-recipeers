@@ -1,7 +1,6 @@
-{{-- Delete an Account --}}
-{{-- * Change to variables --}}
+{{-- Delete an Account (SoftDelete) --}}
 
-<div class="modal fade" id="accountTrashModal">
+<div class="modal fade" id="account-softdelete{{ $user->id }}">
     {{-- -{{ $user->id }} --}}
     <div class="modal-dialog">
         <div class="modal-content">
@@ -21,12 +20,12 @@
                 @else
                     <i class="fa-solid fa-circle-user icon-lg color1 mb-3"></i>
                 @endif
-                <p class="h4 fw-light">{{ $user->username}}</p>
+                <p class="h4 fw-light">{{ $user->username }}</p>
             </div>
             <div class="modal-footer border-0 d-flex justify-content-center mb-5">
-                {{-- <form action="{{ route('account.users.delete',$user->id) }}" method="post">
+                <form action="{{ route('account.user.delete', $user->id) }}" method="post">
                     @csrf
-                    @method('DELETE') --}}
+                    @method('DELETE')
                         <button type="button" class="btn btn-sub btn-block w-25 me-4" data-bs-dismiss="modal">
                             Cancel
                         </button>
@@ -34,7 +33,7 @@
                             Delete
                         </button>
                     </div>
-                {{-- </form> --}}
+                </form>
             </div>
         </div>
     </div>
