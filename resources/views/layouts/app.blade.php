@@ -89,6 +89,15 @@
                                     </button>
 
                                 <div id="dropdownMenuButton2" class="dropdown-menu dropdown-menu-end">
+                                    @can('admin')
+                                    <li>
+                                        <a href="{{route('liked-recipes')}}" class="dropdown-item">
+                                            {{-- admin homeに繋げる --}}
+                                        Admin
+                                        </a>
+                                    </li>
+                                    @endcan
+
                                     <li>
                                         <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">Profile
                                         </a>
