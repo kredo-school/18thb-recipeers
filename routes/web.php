@@ -53,7 +53,8 @@ Route::get('/user/search-results', [App\Http\Controllers\UserController::class, 
 Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 'reset_password_show'])->name('reset-password.show');
 
 // AdminController
-Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('Admin.home');
+Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('admin.home');
+
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
 
@@ -69,6 +70,3 @@ Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inqu
 Route::get('/admin/list_of_inquiries', [InquiriesController::class, 'show'])->name('admin.inquiry.show');
 Route::get('/admin/inquiry/{id}/detail', [InquiriesController::class, 'detail'])->name('admin.inquiry.detail');
 Route::patch('/admin/inquiry/{id}/update', [InquiriesController::class, 'update'])->name('admin.inquiry.update');
-
-//AdminController
-// Route::get('/admin', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.index');

@@ -91,8 +91,7 @@
                                 <div id="dropdownMenuButton2" class="dropdown-menu dropdown-menu-end">
                                     @can('admin')
                                     <li>
-                                        <a href="{{route('liked-recipes')}}" class="dropdown-item">
-                                            {{-- admin homeに繋げる --}}
+                                        <a href="{{route('admin.home')}}" class="dropdown-item">
                                         Admin
                                         </a>
                                     </li>
