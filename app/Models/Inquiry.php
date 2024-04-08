@@ -10,10 +10,10 @@ class Inquiry extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_id')->withTrashed();
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function admin(){
-        return $this->belongsTo(User::class, 'admin_id')->withTrashed();
+        return $this->belongsTo(User::class, 'admin_id');
     }
 }

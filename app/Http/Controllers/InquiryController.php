@@ -10,16 +10,23 @@ class InquiryController extends Controller
 {
     private $inquiry;
 
-    public function __construct(Inquiry $inquiry){
+    public function __construct(Inquiry $inquiry)
+    {
         $this->inquiry = $inquiry;
     }
 
-    public function create(Request $request){
+    public function index()
+    {
+        return view('inquiry');
+    }
+
+    public function create(Request $request)
+    {
         $request->validate([
             'title' => 'required|min:1',
             'body' => 'required|min:1',
             'name' => 'required|min:1',
-            'email' => 'required|email|unique:inquiries,email',
+            'email' => 'required|email',
             'agreement' => 'required|accepted'
         ]);
 
@@ -33,6 +40,7 @@ class InquiryController extends Controller
         $this->inquiry->user_id = $user_id;
         $this->inquiry->save();
 
+        // * need to change the route so that it redirects to the home page
         return redirect()->route('home');
     }
 }
