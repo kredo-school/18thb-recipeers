@@ -106,7 +106,8 @@
                                     @csrf
                                     </form>
                                 </div>
-                            </div>
+                                </div>
+                            </ul>
                         @endif
 
                         <!-- * add Translate API-->
