@@ -6,11 +6,9 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
-use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -62,9 +60,10 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('index');
 
 // RecipeController
-Route::get('/recipe', [App\Http\Controllers\RecipeController::class, 'index'])->name('all-recipes');
-Route::get('/recipe/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
-Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'])->name('edit');
+Route::get('/recipe', [RecipeController::class, 'index'])->name('all-recipes');
+Route::get('/recipe/create', [RecipeController::class, 'create'])->name('recipe.create');
+Route::get('/recipe/edit', [RecipeController::class, 'edit'])->name('recipe.edit');
+Route::post('/recipe/store', [RecipeController::class, 'store'])->name('recipe.store');
 
 //BookmarkController
 Route::get('/bookmarks', [App\Http\Controllers\BookmarkController::class, 'index'])->name('bookmarks');

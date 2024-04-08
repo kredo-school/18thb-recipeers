@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container w-75">
-    <form action="{{ route('store') }}" class="pt-5 pb-5" method="post" enctype="multipart/form-data">
+    <form action="{{ route('recipe.store') }}" class="pt-5 pb-5" method="post" enctype="multipart/form-data">
         @csrf
 
         {{-- Input Top Input Form --}}
