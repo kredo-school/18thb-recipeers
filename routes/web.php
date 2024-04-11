@@ -7,6 +7,7 @@ use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\RecipesController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\LikeController;
@@ -30,31 +31,9 @@ Route::get('/', function () {
 });
 
 // test route for navbar and footer
-// Route::get('/users/recipe/all-recipes', function () {
-//     return view('users.recipe.all-recipes');
-// })->name('all-recipes');
-
-// Route::get('/users/bookmarks', function () {
-//     return view('users.bookmarks');
-// })->name('bookmarks');
-
-// Route::get('/users/liked-recipes', function () {
-//     return view('users.liked-recipes');
-// })->name('liked-recipes');
-
-// Route::get('/users/account/profile-detail', function () {
-//     return view('users.account.profile-detail');
-// })->name('profile-detail');
-//
-
 Route::get('/admin/list-of-accounts', function () {
     return view('admin.list-of-accounts');
 });
-
-// Route::get('/users/search-results', function () {
-//     return view('users.search-results');
-// });
-
 // test route
 
 Auth::routes();
@@ -78,7 +57,7 @@ Route::get('/user/search-results', [App\Http\Controllers\UserController::class, 
 Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 'reset_password_show'])->name('reset-password.show');
 
 // AdminController
-Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');
+Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'home'])->name('admin.home');
 
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
