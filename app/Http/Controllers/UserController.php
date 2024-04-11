@@ -23,9 +23,9 @@ class UserController extends Controller
         return view('users.reset-password');
     }
 
-    public function destroy($id){
-        $this->user->softDelete($id);
+    public function softDelete($id){
+        $this->user->destroy($id);
 
-        return view('home');
+        return redirect()->route('home');
     }
 }

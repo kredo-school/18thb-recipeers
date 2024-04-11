@@ -23,18 +23,27 @@
                 <p class="h4 fw-light">{{ $user->username }}</p>
             </div>
             <div class="modal-footer border-0 d-flex justify-content-center mb-5">
-                <form action="{{ route('account.user.delete', $user->id) }}" method="post">
+                <form action="{{ route('user.account.delete', $user->id) }}" method="post">
                     @csrf
                     @method('DELETE')
-                        <button type="button" class="btn btn-sub btn-block w-25 me-4" data-bs-dismiss="modal">
-                            Cancel
-                        </button>
-                        <button type="submit" class="btn btn-main btn-block w-25">
-                            Delete
-                        </button>
-                    </div>
+                    <button type="button" class="btn btn-sub btn-block w-25 me-4" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-main btn-block w-25">
+                        Delete
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+@section('javascript')
+<script>
+$(document).ready(function() {
+    $('#account-softdelete{{ $user->id }}').on('hidden.bs.modal', function () {
+        window.location.href = "{{ route('home') }}";
+    });
+});
+</script>
+@endsection

@@ -73,9 +73,7 @@ Route::get('/liked-recipes', [App\Http\Controllers\LikeController::class, 'index
 Route::get('/user/search-results', [App\Http\Controllers\UserController::class, 'index'])->name('search-results');
 Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 'reset_password_show'])->name('reset-password.show');
 
-Route::delete('/user/{id}/delete', [UserController::class, 'destroy'])->name('account.user.delete');
-
-Route::delete('/user/{id}/delete', [UserController::class, 'destroy'])->name('account.user.delete');
+Route::delete('/user/account/{id}/delete', [UserController::class, 'softDelete'])->name('user.account.delete');
 
 // AdminController
 Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('Admin.home');
