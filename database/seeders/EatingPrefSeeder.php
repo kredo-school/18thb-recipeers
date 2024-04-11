@@ -4,22 +4,37 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Recipe;
-use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class EatingPrefSeeder extends Seeder
 {
-    private $eating_pref;
-
-    public function __construct(Eating_pref $eating_pref){
-        $this->eating_pref = $eating_pref;
-    }
-
     /**
      * Run the database seeds.
      */
     public function run()
     {
-        
+        $eating_pref = [
+            [
+                'name' => 'Vegan',
+                'created_at' => NOW(),
+                'updated_at' => NOW(),
+            ],
+            [
+                'name' => 'Vegetarian',
+                'created_at' => NOW(),
+                'updated_at' => NOW(),
+            ],
+            [
+                'name' => 'Halal',
+                'created_at' => NOW(),
+                'updated_at' => NOW(),
+            ],
+            [
+                'name' => 'Hindi Diet',
+                'created_at' => NOW(),
+                'updated_at' => NOW(),
+            ],
+        ];
+        DB::table('eating_preferences')->insert($eating_pref);
     }
 }
