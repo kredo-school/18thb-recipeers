@@ -39,8 +39,7 @@
                         </div>
                         {{-- edit button --}}
                         <div class="col d-flex justify-content-end">
-                            <form action="{{ route('profile.edit', $user->id )}}"
-                                 method="get">
+                            <form action="{{ route('profile.edit', $user->id) }}" method="get">
                                 @csrf
                                 <button type="submit" class="btn btn-main px-5">Edit</button>
                             </form>
