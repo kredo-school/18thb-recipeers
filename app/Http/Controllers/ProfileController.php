@@ -35,9 +35,12 @@ class ProfileController extends Controller
     public function update(Request $request){
 
         $request->validate([
+            'avatar' => 'max:1048|mimes:jpeg,jpg,png,gif',
             'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
             'password' => 'required|string|min:8|confirmed',
+            'introduction' => 'max:100',
+
         ]);
 
         $user = $this->user->findOrFail(Auth::user()->id);
