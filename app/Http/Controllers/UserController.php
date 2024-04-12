@@ -26,6 +26,6 @@ class UserController extends Controller
     public function softDelete($id){
         $this->user->destroy($id);
 
-        return redirect()->route('home');
+        return view('home');
     }
 }

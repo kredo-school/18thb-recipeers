@@ -222,6 +222,7 @@
                 </div>
             </div>
         </div>
+        
         {{-- BUTTONS --}}
         <div class="row justify-content-center mt-5">
             <div class="col-2 d-flex justify-content-between">
@@ -237,12 +238,11 @@
             <button type="button" class="btn btn-trash" data-bs-toggle="modal" data-bs-target="#account-softdelete{{ $user->id }}">
                 <i class="fa-solid fa-trash-can"></i>
             </button>
-
-            {{-- Import Modal --}}
-            @include('modals.edit-account-delete')
         </div>
-
     </form>
+
+    {{-- Import Modal --}}
+    @include('modals.edit-account-delete')
 
 </div>
 <script>

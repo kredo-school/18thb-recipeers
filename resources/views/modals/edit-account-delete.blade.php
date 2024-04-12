@@ -23,15 +23,21 @@
                 <p class="h4 fw-light">{{ $user->username }}</p>
             </div>
             <div class="modal-footer border-0 d-flex justify-content-center mb-5">
-                <form action="{{ route('user.account.delete', $user->id) }}" method="post">
+                <form action="{{ route('user.account.delete', $user->id) }}" method="post" id="delete">
                     @csrf
                     @method('DELETE')
-                    <button type="button" class="btn btn-sub btn-block w-25 me-4" data-bs-dismiss="modal">
-                        Cancel
-                    </button>
-                    <button type="submit" class="btn btn-main btn-block w-25">
-                        Delete
-                    </button>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-sub btn-block" data-bs-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-main btn-block">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
