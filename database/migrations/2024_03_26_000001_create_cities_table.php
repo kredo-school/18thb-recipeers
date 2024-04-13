@@ -54,6 +54,6 @@ return new class extends Migration
 
     public function down()
     {
-        DB::table('cities')->delete();
+        Schema::dropIfExists('cities');
     }
 };
