@@ -41,24 +41,24 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // RecipeController
-Route::get('/recipe', [App\Http\Controllers\RecipeController::class, 'index'])->name('all-recipes');
-Route::get('/recipe/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
-Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'])->name('edit');
+Route::get('/recipe', [RecipeController::class, 'index'])->name('all-recipes');
+Route::get('/recipe/create', [RecipeController::class, 'create'])->name('create');
+Route::get('/recipe/edit', [RecipeController::class, 'edit'])->name('edit');
 
 //BookmarkController
-Route::get('/bookmarks', [App\Http\Controllers\BookmarkController::class, 'index'])->name('bookmarks');
+Route::get('/bookmarks', [BookmarkController::class, 'index'])->name('bookmarks');
 
 //LikeController
-Route::get('/liked-recipes', [App\Http\Controllers\LikeController::class, 'index'])->name('liked-recipes');
+Route::get('/liked-recipes', [LikeController::class, 'index'])->name('liked-recipes');
 
 // UserController
-Route::get('/user/search-results', [App\Http\Controllers\UserController::class, 'index'])->name('search-results');
-Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 'reset_password_show'])->name('reset-password.show');
+Route::get('/user/search-results', [UserController::class, 'index'])->name('search-results');
+Route::get('/user/reset-password', [UserController::class, 'reset_password_show'])->name('reset-password.show');
 
 Route::delete('/user/account/{id}/delete', [UserController::class, 'softDelete'])->name('user.account.delete');
 
 // AdminController
-Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'home'])->name('admin.home');
+Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');
 
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
@@ -76,6 +76,8 @@ Route::patch('/admin/inquiry/{id}/update', [InquiriesController::class, 'update'
 
 // UsersController
 Route::get('/admin/list_of_accounts', [UsersController::class, 'show'])->name('admin.users.show');
+Route::delete('/admin/list_of_accounts/{id}/deactivate',[UsersController::class,'deactivate'])->name('admin.users.deactivate');
+Route::patch('/admin/list_of_accounts/{id}/activate',[UsersController::class,'activate'])->name('admin.users.activate');
 
 // RecipesController
 Route::get('/admin/list_of_recipes', [RecipesController::class, 'show'])->name('admin.recipes.show');

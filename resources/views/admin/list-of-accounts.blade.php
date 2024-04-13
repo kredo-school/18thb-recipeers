@@ -92,23 +92,29 @@
 							<td>
 								<div class="dropdown">
 									@if($user->status == "active")
-										<span role="button" class="badge badge-active dropdown-toggle" data-bs-toggle="dropdown">
+										<span role="button" class="badge badge-active dropdown-toggle px-3" data-bs-toggle="dropdown">
 											<i class="fa-solid fa-circle color1 small"></i> {{ $user->status }}
 										</span>
 										<div class="dropdown-menu">
-											<button class="dropdown-item color5" data-bs-toggle="modal" data-bs-target="#deactivate-account-{{ $user->id }}">
+											<button class="dropdown-item fw-bold color5" data-bs-toggle="modal" data-bs-target="#deactivate-account-{{ $user->id }}">
 												<i class="fa-solid fa-user-slash"></i> Deactivate
 											</button>
 										</div>
+										@include('modals.list-of-accounts-deactivate')
 									@elseif($user->status == "deactivated")
 										<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
 											<i class="fa-regular fa-circle small"></i> {{ $user->status }}
 										</span>
 										<ul class="dropdown-menu">
 											<li>
-												<button class="dropdown-item color1" data-toggle="modal" data-target="#activateModal{{ $user->id }}">
-													<i class="fa-solid fa-user-check"></i> Activate
-												</button>
+												<form action="{{ route('admin.users.activate', $user->id) }}" method="post">
+													@csrf
+													@method('PATCH')
+													
+													<button type="submit" class="dropdown-item fw-bold color1" data-toggle="modal" data-target="#activateModal{{ $user->id }}">
+														<i class="fa-solid fa-user-check"></i> Activate
+													</button>
+												</form>
 											</li>
 										</ul>
 									@endif
