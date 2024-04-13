@@ -43,6 +43,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // RecipeController
 Route::get('/recipe', [RecipeController::class, 'index'])->name('all-recipes');
 Route::get('/recipe/create', [RecipeController::class, 'create'])->name('create');
+Route::get('recipe/{id}/detail', [RecipeController::class, 'show'])->name('recipe.show');
 Route::get('/recipe/edit', [RecipeController::class, 'edit'])->name('edit');
 
 //BookmarkController
@@ -81,3 +82,5 @@ Route::patch('/admin/list_of_accounts/{id}/activate',[UsersController::class,'ac
 
 // RecipesController
 Route::get('/admin/list_of_recipes', [RecipesController::class, 'show'])->name('admin.recipes.show');
+Route::delete('/admin/list_of_recipes/{id}/hide',[RecipesController::class,'hide'])->name('admin.recipes.hide');
+Route::patch('/admin/list_of_recipes/{id}/unhide',[RecipesController::class,'unhide'])->name('admin.recipes.unhide');

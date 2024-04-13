@@ -6,16 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use App\Models\Recipe;
 
 class UsersController extends Controller
 {
     private $user;
     private $recipe;
 
-    public function __construct(User $user, Recipe $recipe){
+    public function __construct(User $user){
         $this->user = $user;
-        $this->recipe = $recipe;
     }
 
     public function index()
@@ -60,8 +58,10 @@ class UsersController extends Controller
 
     public function activate($id){
         $user = $this->user->onlyTrashed()->findOrFail($id);
+        $user->restore();
+        
         $user->status = "active";
-        $user->update() ;
+        $user->update();
         
         return redirect()->back();
     }

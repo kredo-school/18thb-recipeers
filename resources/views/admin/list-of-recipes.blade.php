@@ -25,11 +25,11 @@
 				</a> --}}
 			</div>
 		</div>
-
+	{{-- Title and search box --}}
 		<div class="col-lg-10 col-md-10 col-12 my-5">
 			<div class="row align-items-center mb-2">
 				<div class="col">
-					<h3 class="color1 mx-2 mb-0">Recipes</h3>
+					<h3 class="color1 mx-2 mb-3">Recipes</h3>
 				</div>
 				<div class="col-3 mx-2 mb-1">
 					<form action="#" method="get" class="form-inline mx-auto d-flex">
@@ -37,6 +37,7 @@
 					</form>
 				</div>
 			</div>
+			{{-- List of recipes --}}
 			<table class="table table-hover bg-white align-middle border text-center">
 				<thead>
 					<tr>
@@ -48,85 +49,78 @@
 						<th>Conuntry of Origin</th>
 						<th>Pref Occations</th>
 						<th>Mealtype</th>
-						<th>Pref Time</th>
+						<th>Prep Time</th>
 						<th>Status</th>
 					</tr>
 				</thead>
-				<tbody>
-					<!-- recipe1 -->
-					<tr class="text-center">
-						<td>1</td>
-						<td>
-							<a href="#" class="text-decoration-none">
-								<img src="../assets/images/food.jpg" alt="food pic" class="img-sm mx-auto d-block">
-							</a>
-						</td>
-						<td>
-							<a href="#" class="text-decoration-none text-dark">
-								Eggplant
-							</a>
-						</td>
-							<td>Username</td>
-							<td>category</td>
-							<td>Japan</td>
-							<td>vegetarian</td>
-							<td>ordinary</td>
-							<td>15 min</td>
+				<tbody class="fw-light">
+					@foreach($all_recipes as $recipe)
+						<tr class="text-center">
+							<td>{{ $recipe->id }}</td>
+							<td>
+								<a href="{{ route('recipe.show', $recipe->id) }}" class="text-decoration-none">
+									@if($recipe->thumbnail)
+										<img src="{{ $recipe->thumbnail }}" alt="{{ $recipe->title }}" class="img-sm mx-auto d-block">
+									@else
+										<i class="fa-sharp fa-solid fa-image color1 icon-md d-block text-center"></i>
+									@endif
+								</a>
+							</td>
+							<td>
+								<a href="{{ route('recipe.show', $recipe->id) }}">
+									{{ $recipe->title }}
+								</a>
+							</td>
+							<td>
+								<a href="{{ route('profile.show', $recipe->user->id) }}" class="text-decoration-none">
+									{{ $recipe->user->username ?? 'N/A' }}
+								</a>
+							</td>
+							<td>{{ $recipe->category }}</td>
+							<td>{{ $recipe->country }}</td>
+							<td>{{ $recipe->occasion }}</td>
+							<td>{{ $recipe->meal_type }}</td>
+							<td>{{ $recipe->prep_time }} min</td>
 							<td>
 								<div class="dropdown">
-									<button class="btn shadow-none badge badge-active" data-bs-toggle="dropdown">
-									<i class="fa-solid fa-circle text-success"></i> Active
-									</button>
-									<div class="dropdown-menu">
-										<button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-user">
-										<i class="fa-solid fa-user-slash"></i> Deactivate
-										</button>
-										<button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#activate-user">
-										<i class="fa-solid fa-user-check"></i> Activate
-										</button>
-									</div>
+									@if($recipe->status == "visible")
+										<span role="button" class="badge badge-active dropdown-toggle px-2" data-bs-toggle="dropdown">
+											<i class="fa-solid fa-circle color1 small"></i> {{ $recipe->status }}
+										</span>
+										<div class="dropdown-menu">
+											<form action="{{ route('admin.recipes.hide', $recipe->id) }}" method="post">
+												@csrf
+												@method('DELETE')
+
+												<button type="submit" class="dropdown-item fw-bold color5">
+													<i class="fa-solid fa-user-slash"></i> Hide
+												</button>
+											</form>
+										</div>
+									@elseif($recipe->status == "hidden")
+										<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
+											<i class="fa-regular fa-circle small"></i> {{ $recipe->status }}
+										</span>
+										<div class="dropdown-menu">
+											<form action="{{ route('admin.recipes.unhide', $recipe->id) }}" method="post">
+												@csrf
+												@method('PATCH')
+												
+												<button type="submit" class="dropdown-item fw-bold color1">
+													<i class="fa-solid fa-user-check"></i> Unhide
+												</button>
+											</form>
+										</div>
+									@endif
 								</div>
 							</td>
 						</tr>
-
-					<!-- Recipe2 -->
-					<tr class="text-center">
-						<td>2</td>
-						<td>
-							<a href="#" class="text-decoration-none">
-								<img src="../assets/images/food.jpg" alt="food pic" class="img-sm mx-auto d-block">
-							</a>
-						</td>
-						<td>
-							<a href="#" class="text-decoration-none text-dark">
-								Eggplant
-							</a>
-						</td>
-							<td>Username</td>
-							<td>category</td>
-							<td>Japan</td>
-							<td>vegetarian</td>
-							<td>ordinary</td>
-							<td>15 min</td>
-							<td>
-							<div class="dropdown">
-								<button class="btn shadow-none badge badge-deactive" data-bs-toggle="dropdown">
-								<i class="fa-regular fa-circle"></i>
-									Inactive
-								</button>
-								<div class="dropdown-menu">
-									<button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-user">
-									<i class="fa-solid fa-user-slash"></i> Deactivate
-									</button>
-									<button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#activate-user">
-									<i class="fa-solid fa-user-check"></i> Activate
-									</button>
-								</div>
-							</div>
-						</td>
-					</tr>
+					@endforeach
 				</tbody>
 			</table>
+			<div class="d-flex justify-content-center">
+				{{ $all_recipes->links() }}
+			</div>
 		</div>
 	</div>
 </div>

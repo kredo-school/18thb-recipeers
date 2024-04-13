@@ -105,18 +105,16 @@
 										<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
 											<i class="fa-regular fa-circle small"></i> {{ $user->status }}
 										</span>
-										<ul class="dropdown-menu">
-											<li>
-												<form action="{{ route('admin.users.activate', $user->id) }}" method="post">
-													@csrf
-													@method('PATCH')
-													
-													<button type="submit" class="dropdown-item fw-bold color1" data-toggle="modal" data-target="#activateModal{{ $user->id }}">
-														<i class="fa-solid fa-user-check"></i> Activate
-													</button>
-												</form>
-											</li>
-										</ul>
+										<div class="dropdown-menu">
+											<form action="{{ route('admin.users.activate', $user->id) }}" method="post">
+												@csrf
+												@method('PATCH')
+												
+												<button type="submit" class="dropdown-item fw-bold color1">
+													<i class="fa-solid fa-user-check"></i> Activate
+												</button>
+											</form>
+										</div>
 									@endif
 								</div>
 								{{-- <div class="dropdown">
