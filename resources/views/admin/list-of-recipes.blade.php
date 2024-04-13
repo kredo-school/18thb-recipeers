@@ -93,7 +93,7 @@
 												@method('DELETE')
 
 												<button type="submit" class="dropdown-item fw-bold color5">
-													<i class="fa-solid fa-user-slash"></i> Hide
+													<i class="fa-solid fa-eye-slash"></i> Hide
 												</button>
 											</form>
 										</div>
@@ -107,7 +107,7 @@
 												@method('PATCH')
 												
 												<button type="submit" class="dropdown-item fw-bold color1">
-													<i class="fa-solid fa-user-check"></i> Unhide
+													<i class="fa-solid fa-eye"></i> Unhide
 												</button>
 											</form>
 										</div>
