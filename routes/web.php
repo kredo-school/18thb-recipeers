@@ -7,7 +7,6 @@ use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\RecipesController;
-use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\LikeController;

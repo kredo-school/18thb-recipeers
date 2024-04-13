@@ -82,10 +82,10 @@
 									Admin
 								@endif
 							</td>
-							<td>{{ $user->eating_pref->name ?? 'N/A' }}</td>
-							<td>{{ $user->gender->gender ?? 'N/A' }}</td>
-							<td>{{ $user->nationality->name ?? 'N/A' }}</td>
-							<td>{{ $user->job_status->name ?? 'N/A' }}</td>
+							<td>{{ $user->eating_pref ?? 'N/A' }}</td>
+							<td>{{ $user->gender ?? 'N/A' }}</td>
+							<td>{{ $user->nationality ?? 'N/A' }}</td>
+							<td>{{ $user->job_status ?? 'N/A' }}</td>
 							<td>{{ $user->recipes->count() }}</td>
 							<td>0</td>
 							<td>0</td>
@@ -135,6 +135,9 @@
 					@endforeach
 				</tbody>
 			</table>
+			<div class="d-flex justify-content-center">
+				{{ $all_users->links() }}
+			</div>
 		</div>
 	</div>
 </div>
