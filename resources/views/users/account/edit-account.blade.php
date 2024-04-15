@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-{{-- * change title to variable --}}
-@section('title', "Edit Your Profile")
+@section('title', "Edit $user->username's Profile")
 
 @section('content')
 <div class="container p-5 justify-content-center">
@@ -11,7 +10,7 @@
     </div>
 
     {{-- * add error messages to each input field --}}
-    <form action="#">
+    <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
@@ -21,7 +20,7 @@
             {{-- * put variables to the old helpers and values --}}
             {{-- LEFT SIDE --}}
             <div class="col-6 me-5">
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="avatar" class="form-label h5 mt-1">Avatar</label>
                     </div>
@@ -29,60 +28,60 @@
                         <input type="file" name="image" id="image" class="form-control input-color1">
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="username" class="form-label h5 mt-1">Username</label>
                     </div>
                     <div class="col-8">
-                        <input type="text" name="username" id="username" class="form-control input-color1" placeholder="Username" value="{{ old('username') }}">
+                        <input type="text" name="username" id="username" class="form-control input-color1" placeholder="Username" value="{{ isset($user) ? $user->username : old('username') }}">
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="email" class="form-label h5 mt-1">Email</label>
                     </div>
                     <div class="col-8">
-                        <input type="email" name="email" id="email" class="form-control input-color1" placeholder="user@email.com" value="">
+                        <input type="email" name="email" id="email" class="form-control input-color1" placeholder="user@email.com">
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="password" class="form-label h5 mt-1">Password</label>
                     </div>
                     <div class="col-8">
-                        <input type="password" name="password" id="password" class="form-control input-color1">
+                        <input type="password" name="password" id="password" class="form-control input-color1" required autocomplete="new-password">
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
-                        <label for="password-confirm" class="form-label h5 mt-1">Confirm Password</label>
+                        <label for="password_confirmation" class="form-label h5 mt-1">Confirm Password</label>
                     </div>
                     <div class="col-8">
-                        <input type="password" name="password-confirm" id="password-confirm" class="form-control input-color1">
+                        <input type="password" name="password_confirmation" id="password_confirmation" required class="form-control input-color1">
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="birthday" class="form-label h5 mt-1">Birthday</label>
                     </div>
                     <div class="col-8">
-                        <input type="date" name="birthday" id="birthday" class="form-control input-color1" placeholder="YYYY/MM/DD" value="">
+                        <input type="date" name="birthday" id="birthday" class="form-control input-color1" placeholder="YYYY/MM/DD" value="{{ isset($user) ? $user->birthday : old('birtyday') }}">
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="gender" class="form-label h5 mt-1">Gender</label>
                     </div>
                     <div class="col-8">
-                        <select name="gender" id="gender" class="form-select input-color1">
+                        <select name="gender" id="gender" class="form-select input-color1" value="{{ isset($user) ? $user->gender : old('gender') }}">
                             <option value="" selected>Select your gender</option>
-                            <option value="female">Female</option>
-                            <option value="male">Male</option>
-                            <option value="neither chosen">Prefer not to say</option>
+                            <option value="1" @if ($user->gender === 1) selected @endif>Male</option>
+                            <option value="2" @if ($user->gender === 2) selected @endif>Female</option>
+                            <option value="3" @if ($user->gender === 3) selected @endif>Prefer not to say</option>
                         </select>
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="eating_pref" class="form-label h5 mt-1">Eating Preference</label>
                     </div>
@@ -91,17 +90,17 @@
                             {{-- * if preference is null null --}}
                             <option value="" selected>Choose your preference</option>
                             {{-- * else pre-select an option --}}
-                            <option value="vegan">Vegan</option>
-                            <option value="vegetarian">Vegetarian</option>
-                            <option value="halal">Halal</option>
-                            <option value="hindi">Hindi Diet</option>
+                            <option value="1">Vegan</option>
+                            <option value="2">Vegetarian</option>
+                            <option value="3">Halal</option>
+                            <option value="4">Hindi Diet</option>
                         </select>
                     </div>
                 </div>
             </div>
             {{-- RIGHT SIDE --}}
             <div class="col">
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="nationality" class="form-label h5 mt-1">Nationality</label>
                     </div>
@@ -115,7 +114,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="residence_city" class="form-label h5 mt-1">City of Residence</label>
                     </div>
@@ -129,7 +128,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row align-items-center mb-3">
+                <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
                         <label for="job_status" class="form-label h5 mt-1">Job Status</label>
                     </div>
@@ -137,17 +136,17 @@
                         {{-- * get the list of the major cities --}}
                         <select class="form-select input-color1" name="job_status" id="job_status" class="form-control">
                             <option value="" selected>Select your job status</option>
-                            <option value="Full-time">Full-time</option>
-                            <option value="Part-time">Part-time</option>
-                            <option value="Business Owner">Business Owner</option>
-                            <option value="Self-employed">Self-employed</option>
-                            <option value="Internship">Internship</option>
-                            <option value="Student">Student</option>
-                            <option value="Other">None of the above</option>
+                            <option value="1">Full-time</option>
+                            <option value="2">Part-time</option>
+                            <option value="3">Business Owner</option>
+                            <option value="4">Self-employed</option>
+                            <option value="5">Internship</option>
+                            <option value="6">Student</option>
+                            <option value="7">None of the above</option>
                         </select>
                     </div>
                 </div>
-                <div class="row align-items-center mb-4">
+                <div class="row form-group align-items-center mb-4">
                     <div class="col-4 text-end">
                         <label for="introduction" class="form-label h5 mt-1">Introduction</label>
                     </div>
@@ -222,7 +221,7 @@
                 </div>
             </div>
         </div>
-        
+
         {{-- BUTTONS --}}
         <div class="row justify-content-center mt-5">
             <div class="col-2 d-flex justify-content-between">

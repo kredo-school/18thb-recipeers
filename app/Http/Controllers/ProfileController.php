@@ -26,38 +26,83 @@ class ProfileController extends Controller
             ->with('recipes', $recipes);
     }
 
-    public function edit($id){
-        $user = $this->user->findOrFail($id);
+    public function edit(){
+        $user = $this->user->findOrFail(Auth::user()->id);
         return view('users.account.edit-account')
             ->with('user', $user);
     }
 
+    // public function store(Request $request){
+    //     $request->validate([
+    //         'avatar' => 'nullable|max:1048|mimes:jpeg,jpg,png,gif',
+    //         'username' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users,email,' . (Auth::check() ? Auth::user()->id : null),
+    //         'password' => 'required|string|min:8|confirmed',
+    //         'birthday' => 'nullable|',
+    //         'gender' => 'nullable|',
+    //         'eating_preference' => 'nullable|',
+    //         'nationality' => 'nullable|',
+    //         'city_of_residence' => 'nullable|',
+    //         'job_status' => 'nullable|',
+    //         'introduction' => 'nullable|max:300',
+    //     ]);
+
+    //     $user = $this->user->findOrFail(Auth::user()->id);
+
+    //     // if($request->avatar){
+    //     //     $user->avatar = 'data:image/'.$request->avatar->extension().';base64,'.base64_encode(file_get_contents($request->avatar));
+    //     // };
+
+    //     $this->user->avatar ='data:image/'.$request->avatar->extension().';base64,'.base64_encode(file_get_contents($request->avatar));
+    //     $this->user->username = $request->username;
+    //     $this->user->email = $request->email;
+    //     $this->user->password = $request->password;
+
+    //     $this->user->birthday = $request->birthday;
+    //     $this->user->gender_id = $request->gender;
+    //     $this->user->eating_pref_id = $request->eating_pref;
+    //     $this->user->nationality_id = $request->nationality;
+    //     $this->user->residence_city_id = $request->residence_city;
+    //     $this->user->job_status_id = $request->job_status;
+    //     $this->user->introduction = $request->introduction;
+
+    //     $this->user->save();
+
+    //     return redirect()->route('profile.show', Auth::user()->id);
+    // }
+
     public function update(Request $request){
+        // $user = User::findOrFail($id);
 
         $request->validate([
-            'avatar' => 'max:1048|mimes:jpeg,jpg,png,gif',
+            'avatar' => 'nullable|image|max:1048|mimes:jpeg,jpg,png,gif',
             'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
+            'email' => 'required|string|email|max:255|unique:users,email,' . (Auth::check() ? Auth::user()->id : null),
             'password' => 'required|string|min:8|confirmed',
-            'introduction' => 'max:100',
-
+            'birthday' => 'nullable|date',
+            'gender' => 'required|in:male,female,other',
+            'eating_preference' => 'required',
+            'nationality' => 'nullable',
+            'city_of_residence' => 'nullable',
+            'job_status' => 'required',
+            'introduction' => 'nullable|max:255',
         ]);
 
         $user = $this->user->findOrFail(Auth::user()->id);
 
         if($request->avatar){
-            $user->avatar = $request->avatar;
-        }
+            $user->avatar = 'data:image/'.$request->avatar->extension().';base64,'.base64_encode(file_get_contents($request->avatar));
+        };
 
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->birthday = $request->birthday;
-        $user->gender_id = $request->gender_id;
-        $user->eating_pref_id = $request->eating_pref_id;
-        $user->nationality_id = $request->nationality_id;
-        $user->residence_city_id = $request->residence_city_id;
-        $user->job_status_id = $request->job_status_id;
+        $user->gender_id = $request->gender;
+        $user->eating_pref_id = $request->eating_pref;
+        $user->nationality_id = $request->nationality;
+        $user->residence_city_id = $request->residence_city;
+        $user->job_status_id = $request->job_status;
         $user->introduction = $request->introduction;
 
         $user->save();
