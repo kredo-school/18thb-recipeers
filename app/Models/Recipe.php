@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Category;
 use App\Models\EatingPreference;
+use App\Models\Ingredient;
 
 class Recipe extends Model
 {
@@ -24,9 +25,7 @@ class Recipe extends Model
         return $this->belongsToMany(EatingPreference::class);
     }
 
-    public function categoryRecipe() {
-        return $this->hasMany(CategoryRecipe::class);
+    public function ingredients() {
+        return $this->belongsToMany(Ingredient::class);
     }
-
-
 }

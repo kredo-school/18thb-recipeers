@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Models\Category;
 use App\Models\EatingPreference;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Auth;
@@ -76,6 +77,19 @@ class RecipeController extends Controller
             $eat_pref->save();
         }
         $this->recipe->eatPrefs()->attach($eat_pref->id);
+
+        // getting ingredient
+        $ingName = $request->input('ing_input0');
+        $amoName = $request->input('amount_input0');
+        $ingredient = Ingredient::where('name', $ingName)->first();
+        $ingredient = Ingredient::where('amount', $amoName)->first();
+        if(!$ingredient) {
+            $ingredient = new Ingredient();
+            $ingredient->name = $ingName;
+            $ingredient->amount = $amoName;
+            $ingredient->save();
+        }
+        $this->recipe->ingredients()->attach($ingredient->id);
 
         return view('users.recipe.recipe-detail');
     }

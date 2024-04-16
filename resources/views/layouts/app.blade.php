@@ -213,6 +213,7 @@
                         url: "{{ route('recipe.store') }}",
                         url: "{{ route('category.store') }}",
                         url: "{{ route('eat_pref.store') }}",
+                        url: "{{ route('ingredient.store') }}",
                         type: "POST",
                         data: $("#recipe_form").serialize(),
                         success:function(response){

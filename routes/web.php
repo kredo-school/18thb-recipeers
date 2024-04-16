@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EatingPreferenceController;
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
@@ -81,3 +82,6 @@ Route::post('category/store', [CategoryController::class, 'store'])->name('categ
 
 // EatingPreferenceController
 Route::post('eat_pref/store', [EatingPreferenceController::class, 'store'])->name('eat_pref.store');
+
+// IngredientController
+Route::post('ingredient/store', [IngredientController::class, 'store'])->name('ingredient.store');
