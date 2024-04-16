@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category_recipe', function (Blueprint $table) {
+        Schema::create('eating_preference_recipe', function (Blueprint $table) {
             $table->unsignedBigInteger('recipe_id');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('eating_preference_id');
 
             $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('eating_preference_id')->references('id')->on('eating_preferences')->onDelete('cascade');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_recipe');
+        Schema::dropIfExists('eating_preference_recipe');
     }
 };

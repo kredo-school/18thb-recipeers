@@ -9,6 +9,7 @@ use App\Models\Recipe;
 class CategoryController extends Controller
 {
     private $category;
+    
     public function __construct(Category $category, Recipe $recipe) {
         $this->category = $category;
         $this->recipe = $recipe;

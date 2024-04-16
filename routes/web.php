@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EatingPreferenceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
@@ -43,6 +45,7 @@ Route::get('/recipe', [RecipeController::class, 'index'])->name('all-recipes');
 Route::get('/recipe/create', [RecipeController::class, 'create'])->name('recipe.create');
 Route::get('/recipe/edit', [RecipeController::class, 'edit'])->name('recipe.edit');
 Route::post('/recipe/store', [RecipeController::class, 'store'])->name('recipe.store');
+Route::get('/recipe/show', [RecipeController::class, 'show'])->name('show');
 
 //BookmarkController
 Route::get('/bookmarks', [App\Http\Controllers\BookmarkController::class, 'index'])->name('bookmarks');
@@ -57,12 +60,12 @@ Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 
 Route::delete('/user/account/{id}/delete', [UserController::class, 'softDelete'])->name('user.account.delete');
 
 // AdminController
-Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'home'])->name('admin.home');
+Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('Admin.home');
 
 // ProfileController
-Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
-Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
+// Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 // InquiryController
 Route::get('/inquiry', [InquiryController::class, 'index'])->name('inquiry');
@@ -72,3 +75,9 @@ Route::post('/inquiry/create', [InquiryController::class, 'create'])->name('inqu
 Route::get('/admin/list_of_inquiries', [InquiriesController::class, 'show'])->name('admin.inquiry.show');
 Route::get('/admin/inquiry/{id}/detail', [InquiriesController::class, 'detail'])->name('admin.inquiry.detail');
 Route::patch('/admin/inquiry/{id}/update', [InquiriesController::class, 'update'])->name('admin.inquiry.update');
+
+// CategoryController
+Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
+
+// EatingPreferenceController
+Route::post('eat_pref/store', [EatingPreferenceController::class, 'store'])->name('eat_pref.store');

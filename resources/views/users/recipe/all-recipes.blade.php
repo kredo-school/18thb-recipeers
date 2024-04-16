@@ -12,7 +12,7 @@
                 <h2 class="color1 mb-0">Recipes</h2>
             </div>
             <div class="col-3 mt-2 text-end">
-                <a href="#" class="btn btn-lg btn-main">Post Recipe</a>
+                <a href="{{ route('recipe.create') }}" class="btn btn-lg btn-main">Post Recipe</a>
             </div>
         </div>
     </div>

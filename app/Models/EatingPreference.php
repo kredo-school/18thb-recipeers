@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Recipe;
 
-class Category extends Model
+class EatingPreference extends Model
 {
     use HasFactory;
-
+    
     public function recipes() {
         return $this->belongsToMany(Recipe::class);
     }
+
 }

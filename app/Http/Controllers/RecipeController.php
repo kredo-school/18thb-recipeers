@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Category;
+use App\Models\EatingPreference;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Auth;
@@ -10,9 +12,14 @@ use Auth;
 class RecipeController extends Controller
 {
     private $recipe;
-    public function __construct(Recipe $recipe)
+    private $category;
+    private $eat_pref;
+
+    public function __construct(Recipe $recipe, Category $category, EatingPreference $eat_pref)
     {
         $this->recipe = $recipe;
+        $this->category = $category;
+        $this->eat_pref = $eat_pref;
     }
 
     public function index()
@@ -31,24 +38,46 @@ class RecipeController extends Controller
     }
 
     public function store(Request $request) {
-        $recipe = new Recipe;
-        Log::info($request);
-        // $request->validate([
-        //     'title' => 'required',
-        //     'summary' => 'required',
-        //     'thumbnail' => 'required|mimes:jpeg,jpg,png,gif|max:1048',
-        //     'prep_time' => 'required',
-        // ]);
+        $request->validate([
+            'thumbnail' => 'image|mimes:jpeg, png, jpg, gif|max:2048'
+        ]);
 
         $this->recipe->user_id = 1;
         $this->recipe->title = $request->input('title');
+
+        // getting thumbnail
+        if($request->hasFile('thumbnail')) {
+            $recipe_thumb = uniqid().'.'.$request->thumbnail->extension();
+            $request->thumbnail->move(public_path('/public/assets/images'), $recipe_thumb);
+            $this->recipe->thumbnail = $recipe_thumb;
+        }
+
         $this->recipe->summary = $request->input('summary');
-        // $this->recipe->thumbnail = $request->input('recipe_thumb');
         $this->recipe->prep_time = $request->input('prep_time');
         $this->recipe->status = 'active';
         $this->recipe->save();
 
-        return redirect()->route('index');
+        // getting category
+        $categoryName = $request->input('category');
+        $category = Category::where('name', $categoryName)->first();
+        if(!$category) {
+            $category = new Category();
+            $category->name = $categoryName;
+            $category->save();
+        }
+        $this->recipe->categories()->attach($category->id);
+
+        // getting eat_pref
+        $eatPrefName = $request->input('eat_pref');
+        $eat_pref = EatingPreference::where('name', $eatPrefName)->first();
+        if(!$eat_pref) {
+            $eat_pref = new EatingPreference();
+            $eat_pref->name = $eatPrefName;
+            $eat_pref->save();
+        }
+        $this->recipe->eatPrefs()->attach($eat_pref->id);
+
+        return view('users.recipe.recipe-detail');
     }
 
     public function show() {

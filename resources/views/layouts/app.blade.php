@@ -31,7 +31,6 @@
 
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
 </head>
 
 <body>
@@ -50,8 +49,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <form action="#" method="get" class="form-inline mx-auto d-flex ">
-                            <input type="text" name="search" placeholder="Search for..."
+                            <input type="text" name="search" id="search_bar" placeholder="Search for..."
                                 class="form-control form-control-sm input-color1">
+                            <p id="search_text"></p>
                         </form>
 
                         @guest
@@ -63,42 +63,45 @@
                                 <a class="nav-link me-3" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
                             @endif
                         @else
-                            <ul class="navbar-nav ml-auto">
-                                <div class="nav-item dropdown">
-                                    <button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button"
-                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Recipe
-                                    </button>
+                        <ul class="navbar-nav ml-auto">
+                            <div class="nav-item dropdown">
+                                <button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button"
+                                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Recipe
+                                </button>
 
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li>
-                                            <a class="dropdown-item" href="{{route('all-recipes')}}">Posts</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{route('bookmarks')}}">Bookmarks</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{route('liked-recipes')}}">Liked Recipes</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('all-recipes') }}">Posts</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('bookmarks') }}">Bookmarks</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('liked-recipes') }}">Liked Recipes</a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                                <div class="dropdown">
-                                    <button class="btn dropdown-menu-togglebtn2" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-circle-user icon-sm color1"></i>
-                                    </button>
+                            <div class="dropdown">
+                                <button class="btn dropdown-menu-togglebtn2" type="button" id="dropdownMenuButton2"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-circle-user icon-sm color1"></i>
+                                </button>
 
                                 <div id="dropdownMenuButton2" class="dropdown-menu dropdown-menu-end">
                                     @can('admin')
                                     <li>
                                         <a href="{{route('admin.home')}}" class="dropdown-item">
                                         Admin
+                                        {{-- <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item"> --}}
+                                            <i class="fa-solid fa-circle-user"></i> Profile
                                         </a>
                                     </li>
                                     @endcan
 
                                     <li>
-                                        <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">Profile
+                                        {{-- <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">Profile --}}
                                         </a>
                                     </li>
                                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
@@ -106,12 +109,12 @@
                                     @csrf
                                     </form>
                                 </div>
-                                </div>
-                            </ul>
+                            </div>
+                        </ul>
                         @endif
 
-                        <!-- * add Translate API-->
-                        <a href="#" class="nav-link">En</a>
+                            <!-- * add Translate API-->
+                            <a href="#" class="nav-link">En</a>
                     </div>
                 </div>
             </nav>
@@ -140,7 +143,7 @@
                         </div>
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('inquiry')}}">Contact Us</a>
+                                <a class="nav-link" href="{{ route('inquiry') }}">Contact Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Privacy Policy</a>
@@ -156,12 +159,70 @@
                 </div>
             </div>
         </footer>
-        </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-            integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
 
-    </body>
+{{-------------------------jQuery---------------------------}}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    </html>
+    {{-- Add Ingredients Form Function --}}
+    <script>
+        'use strict';
+
+        {
+            document.addEventListener('DOMContentLoaded', () => {
+                let i = 1;
+                document.querySelector('#add_ing_btn').addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const divRowElement = document.createElement('div');
+                    const divIngColElement = document.createElement('div');
+                    const divAmoColElement = document.createElement('div');
+                    const inputIngElement = document.createElement('input');
+                    const inputAmoElement = document.createElement('input');
+
+                    divRowElement.classList.add('row', 'mb-2');
+                    divIngColElement.classList.add('col-4');
+                    divAmoColElement.classList.add('col-4');
+                    inputIngElement.classList.add('form-control', 'input-color1');
+                    inputAmoElement.classList.add('form-control', 'input-color1');
+                    inputIngElement.placeholder = 'Ingredient';
+                    inputAmoElement.placeholder = 'Ammount';
+                    inputIngElement.id = 'ing_input' + i;
+                    inputAmoElement.id = 'amo_input' + i;
+
+                    const parent = document.querySelector('#add_ing_form');
+
+                    parent.appendChild(divRowElement).appendChild(divIngColElement).appendChild(inputIngElement);
+                    divRowElement.appendChild(divAmoColElement).appendChild(inputAmoElement);
+                    i++;
+                });
+            });
+        }
+
+        // Confirm all input infomation
+        {
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('#recipe_save').addEventListener('click', (e) => {
+                    // e.preventDefault();
+
+                    $.ajax ({
+                        url: "{{ route('recipe.store') }}",
+                        url: "{{ route('category.store') }}",
+                        url: "{{ route('eat_pref.store') }}",
+                        type: "POST",
+                        data: $("#recipe_form").serialize(),
+                        success:function(response){
+                            console.log($("#recipe_form").serialize());
+                        }
+                    });
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
