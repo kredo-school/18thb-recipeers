@@ -49,26 +49,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function gender(){
-        return $this->belongsTo(User::class, "gender_id");
-    }
-
-    public function eating_pref(){
-        return $this->belongsTo(User::class, "eating_pref_id");
-    }
-
-    public function nationality(){
-        return $this->belongsTo(User::class, "nationality_id");
-    }
-
-    public function residence_city(){
-        return $this->belongsTo(User::class, "residence_city_id");
-    }
-
-    public function job_status(){
-        return $this->belongsTo(User::class, "job_status_id");
-    }
-
     public function recipes(){
         return $this->hasMany(Recipe::class);
     }

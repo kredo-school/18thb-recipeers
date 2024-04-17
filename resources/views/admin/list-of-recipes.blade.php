@@ -33,7 +33,7 @@
 				</div>
 				<div class="col-3 mx-2 mb-1">
 					<form action="#" method="get" class="form-inline mx-auto d-flex">
-						<input type="text" name="search" placeholder="Search for..." class="form-control form-control-sm input-color1">
+						<input type="text" name="search" placeholder="Search in the table" class="form-control form-control-sm input-color1">
 					</form>
 				</div>
 			</div>
