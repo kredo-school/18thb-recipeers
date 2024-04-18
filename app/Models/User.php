@@ -29,11 +29,11 @@ class User extends Authenticatable
         'email',
         'password',
         'birthday',
-        'gender',
-        'eating_preference',
-        'nationality',
-        'city_of_residence',
-        'job_status',
+        'gender_id',
+        'eating_pref_id',
+        'nationality_id',
+        'residence_city_id',
+        'job_status_id',
         'introduction',
     ];
 
@@ -56,4 +56,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function eatingPreference()
+    {
+        return $this->belongsTo(EatingPreference::class, 'eating_pref_id');
+    }
+
+    
 }

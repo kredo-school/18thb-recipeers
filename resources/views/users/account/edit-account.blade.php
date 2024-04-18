@@ -10,7 +10,7 @@
     </div>
 
     {{-- * add error messages to each input field --}}
-    <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
@@ -41,7 +41,7 @@
                         <label for="email" class="form-label h5 mt-1">Email</label>
                     </div>
                     <div class="col-8">
-                        <input type="email" name="email" id="email" class="form-control input-color1" placeholder="user@email.com">
+                        <input type="email" name="email" id="email" class="form-control input-color1" placeholder="user@email.com" value="{{ isset($user) ? $user->email : old('email') }}">
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -73,11 +73,11 @@
                         <label for="gender" class="form-label h5 mt-1">Gender</label>
                     </div>
                     <div class="col-8">
-                        <select name="gender" id="gender" class="form-select input-color1" value="{{ isset($user) ? $user->gender : old('gender') }}">
+                        <select name="gender_id" id="gender_id" class="form-select input-color1" value="{{ isset($user) ? $user->gender : old('gender_id') }}">
                             <option value="" selected>Select your gender</option>
-                            <option value="1" @if ($user->gender === 1) selected @endif>Male</option>
-                            <option value="2" @if ($user->gender === 2) selected @endif>Female</option>
-                            <option value="3" @if ($user->gender === 3) selected @endif>Prefer not to say</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                            <option value="3">Prefer not to say</option>
                         </select>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                         <label for="eating_pref" class="form-label h5 mt-1">Eating Preference</label>
                     </div>
                     <div class="col-8">
-                        <select class="form-select input-color1" name="eating_pref" id="eating_pref">
+                        <select class="form-select input-color1" name="eating_pref_id" id="eating_pref_id">
                             {{-- * if preference is null null --}}
                             <option value="" selected>Choose your preference</option>
                             {{-- * else pre-select an option --}}
@@ -106,11 +106,23 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the countries --}}
-                        <select name="nationality" id="nationality" class="form-select input-color1" value="">
+                        <select name="nationality_id" id="nationality_id" class="form-select input-color1">
                             <option value="" selected>Select your nationality</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Canada">Canada</option>
-                            <option value="New Zealand">New Zealand</option>
+                            <?php
+                            $csvFile = '/assets/data/all.csv';
+                            $countryId = 1;
+                            // Open the CSV
+                            if (($handle = fopen(public_path($csvFile), 'r')) !== false) {
+                                fgetcsv($handle);
+                                while (($row = fgetcsv($handle)) !== false) {
+                                    $countryName = $row[0];
+                                    echo "<option value=\"$countryId\">$countryName</option>";
+                                    $countryId++;
+                                }
+                                // Close
+                                fclose($handle);
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -120,11 +132,21 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the major cities --}}
-                        <select name="residence_city" id="residence_city" class="form-select input-color1">
+                        <select name="residence_city_id" id="residence_city_id" class="form-select input-color1">
                             <option value="" selected>Select your city of residence</option>
-                            <option value="Tokyo">Tokyo</option>
-                            <option value="Ottawa">Ottawa</option>
-                            <option value="Wellington">Wellington</option>
+                            <?php
+                            $csvFile = '/assets/data/cities.csv';
+                            // Open the CSV
+                            if (($handle = fopen(public_path($csvFile), 'r')) !== false) {
+                                while (($row = fgetcsv($handle)) !== false) {
+                                    $cityId = $row[0];
+                                    $cityName = $row[1];
+                                    echo "<option value=\"$cityId\">$cityName</option>";
+                                }
+                                // Close
+                                fclose($handle);
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -134,7 +156,7 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the major cities --}}
-                        <select class="form-select input-color1" name="job_status" id="job_status" class="form-control">
+                        <select class="form-select input-color1" name="job_status_id" id="job_status_id" class="form-control">
                             <option value="" selected>Select your job status</option>
                             <option value="1">Full-time</option>
                             <option value="2">Part-time</option>

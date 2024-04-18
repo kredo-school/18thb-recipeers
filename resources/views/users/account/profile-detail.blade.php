@@ -13,7 +13,7 @@
                     {{-- Avatar --}}
                     <div class="row">
                         @if($user->avatar)
-                            <img src="{{ $user->avatar }}" alt="avatar" class="rounded-circle img-lg mb-3">
+                            <img src="{{ asset('storage/assets/avatars/' . $user->avatar) }}" alt="avatar" class="rounded-circle img-lg mb-3">
                         @else
                             <i class="fa-solid fa-circle-user icon-lg color1 mb-3"></i>
                         @endif
@@ -33,8 +33,8 @@
                     <div class="d-flex align-items-center mb-2">
                         {{-- eating preference --}}
                         <div class="col">
-                            @if($user->eating_pref_id)
-                                <span class="badge badge-pref border rounded-pill">{{ $user->eating_pref_id->name }}</span>
+                            @if($user->eatingPreference)
+                                <span class="badge badge-pref border rounded-pill">{{ $user->eatingPreference->name }}</span>
                             @endif
                         </div>
                         {{-- edit button --}}
