@@ -8,21 +8,21 @@
 		{{-- Admin menu --}}
 		<div class="col-lg-2 col-md-2 col-12 my-5 mr-2">
 			<div class="list-group">
-				<button class="btn btn-sub list-group-item mb-3">
+				<a href="{{ route('admin.home') }}" class="btn btn-sub list-group-item mb-3">
 					Admin Home
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.users.show') }}" class="btn btn-sub list-group-item mb-3">
 					All Users
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.recipes.show') }}" class="btn btn-sub list-group-item mb-3">
 					All Recipes
-				</button>
-				<button class="btn btn-main list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.inquiries.show') }}" class="btn btn-main list-group-item mb-3">
 					All Inquiries
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				{{-- <a href="{{ route('admin.') }}" class="btn btn-sub list-group-item mb-3">
 					All Ads
-				</button>
+				</a> --}}
 			</div>
 		</div>
 		{{-- Title and search box --}}
@@ -33,7 +33,7 @@
 				</div>
 				<div class="col-3 mx-2 mb-1">
 					<form action="#" method="get" class="form-inline mx-auto d-flex">
-					<input type="text" name="search" placeholder="Search for..." class="form-control form-control-sm input-color1">
+					<input type="text" name="search" placeholder="Search in the table" class="form-control form-control-sm input-color1">
 					</form>
 				</div>
 			</div>
@@ -42,9 +42,9 @@
 				<thead>
 					<tr>
 						<th>ID</th>
+						<th>Title</th>
 						<th>Inquirer</th>
 						<th>User Type</th>
-						<th>Title</th>
 						<th>Recieved Time</th>
 						<th>Last Update</th>
 						<th>Responder</th>
@@ -55,6 +55,7 @@
 					@foreach($all_inquiries as $inquiry)
 						<tr class="text-center">
 							<td>{{ $inquiry->id }}</td>
+							<td><a href="{{ route('admin.inquiry.detail', $inquiry->id) }}">{{ $inquiry->title }}</a></td>
 							<td>
 								@if(isset($inquiry->user_id))
 									<a href="{{ route('profile.show', $inquiry->user->id) }}" class="text-decoration-none">
@@ -68,21 +69,14 @@
 								@if(isset($inquiry->user_id) && $inquiry->user->role_id == 3)
 									Business
 								@elseif(isset($inquiry->user_id) && $inquiry->user->role_id == 2)
-									User
+									Private
 								@else
 									Guest
 								@endif
 							</td>
-							<td><a href="{{ route('admin.inquiry.detail', $inquiry->id) }}">{{ $inquiry->title }}</a></td>
 							<td class="small">{{ $inquiry->created_at }}</td>
 							<td class="small">{{ $inquiry->updated_at }}</td>
-							<td>
-								@if($inquiry->admin)
-									{{ $inquiry->admin->username }}
-								@else
-									N/A
-								@endif
-							</td>
+							<td>{{ $inquiry->admin->username ?? 'N/A' }}</td>
 							<td>
 								@if($inquiry->status == "Received")
 									<span class="shadow-none badge badge-received">

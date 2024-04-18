@@ -57,6 +57,6 @@ class InquiriesController extends Controller
         $inquiry->history = $request->history;
         $inquiry->save();
 
-        return redirect()->route('admin.inquiry.show');
+        return redirect()->route('admin.inquiries.show');
     }
 }
