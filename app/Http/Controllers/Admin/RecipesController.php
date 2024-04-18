@@ -17,10 +17,49 @@ class RecipesController extends Controller
         $this->recipe = $recipe;
     }
 
-    public function show(){
-        $all_recipes = Recipe::latest()->withTrashed()->paginate(10);
+    public function show(Request $request){
+        $search = $request->input('search');
 
-        foreach ($all_recipes as $recipe) {
+        $recipes = Recipe::query();
+
+        if($search){
+            $recipes->select('recipes.*', 'users.username AS user', 'categories.name AS category', 'countries.name AS country', 'eating_preferences.name AS eating_pref', 'pref_occasions.name AS occasion', 'meal_types.name AS meal_type')
+                ->withTrashed()
+                ->join('users', 'users.id', '=', "recipes.user_id")
+                ->join('categories', 'categories.id', '=', "recipes.category_id")
+                ->join('countries', 'countries.id', '=', 'recipes.country_id')
+                ->join('eating_preferences', 'eating_preferences.id', '=', 'recipes.eating_pref_id')
+                ->join('pref_occasions', 'pref_occasions.id', '=', 'recipes.occasion_id')
+                ->join('meal_types', 'meal_types.id', '=', 'recipes.meal_type_id')
+                ->where(function ($query) use ($search){
+                    $query->orWhere('recipes.title', 'LIKE', "%$search%")
+                    ->orWhere('users.username', 'LIKE', "%$search%")
+                    ->orWhere('recipes.summary', 'LIKE', "%$search%")
+                    ->orWhere('categories.name', 'LIKE', "%$search%")
+                    ->orWhere('countries.name', 'LIKE', "%$search%")
+                    ->orWhere('eating_preferences.name', 'LIKE', "%$search%")
+                    ->orWhere('pref_occasions.name', 'LIKE', "%$search%")
+                    ->orWhere('meal_types.name', 'LIKE', "%$search%")
+                    ->orWhere('recipes.prep_time', 'LIKE', "%$search%")
+                    ->orWhere('recipes.status', 'LIKE', "%$search%");
+            });
+        }else{
+            $recipes = Recipe::withTrashed()
+                ->select('recipes.*', 'users.username AS user', 'categories.name AS category', 'countries.name AS country', 'eating_preferences.name AS eating_pref', 'pref_occasions.name AS occasion', 'meal_types.name AS meal_type')
+                ->join('users', 'users.id', '=', "recipes.user_id")
+                ->join('categories', 'categories.id', '=', "recipes.category_id")
+                ->join('countries', 'countries.id', '=', 'recipes.country_id')
+                ->join('eating_preferences', 'eating_preferences.id', '=', 'recipes.eating_pref_id')
+                ->join('pref_occasions', 'pref_occasions.id', '=', 'recipes.occasion_id')
+                ->join('meal_types', 'meal_types.id', '=', 'recipes.meal_type_id');
+        };
+
+        $recipes = $recipes->paginate(10);
+
+        foreach ($recipes as $recipe) {
+            $recipe->user = $recipe->user_id ? DB::table('users')
+                    ->where('id', $recipe->user_id)
+                    ->value('username') : null;
             $recipe->category = $recipe->category_id ? DB::table('categories')
                     ->where('id', $recipe->category_id)
                     ->value('name') : null;
@@ -30,7 +69,7 @@ class RecipesController extends Controller
             $recipe->eating_pref = $recipe->eating_pref_id ? DB::table('eating_preferences')
                     ->where('id', $recipe->eating_pref_id)
                     ->value('name') : null;
-            $recipe->meal_type = $recipe->meal_type_id ? DB::table('meal_types')  
+            $recipe->meal_type = $recipe->meal_type_id ? DB::table('meal_types')
                     ->where('id', $recipe->meal_type_id)
                     ->value('name') : null;
             $recipe->occasion = $recipe->occasion_id ? DB::table('pref_occasions')
@@ -38,8 +77,10 @@ class RecipesController extends Controller
                     ->value('name') : null;
         }
 
-        return view('admin.list-of-recipes')
-                ->with('all_recipes', $all_recipes);
+        return view('admin.list-of-recipes', [
+            'recipes' => $recipes,
+            'search' => $search,
+        ]);
     }
 
     public function hide($id){
