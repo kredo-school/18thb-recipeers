@@ -24,9 +24,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'avatar',
         'username',
         'email',
         'password',
+        'birthday',
+        'gender_id',
+        'eating_pref_id',
+        'nationality_id',
+        'residence_city_id',
+        'job_status_id',
+        'introduction',
     ];
 
     /**
@@ -48,6 +56,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function eatingPreference()
+    {
+        return $this->belongsTo(EatingPreference::class, 'eating_pref_id');
+    }
+
+
 
     public function recipes(){
         return $this->hasMany(Recipe::class);
