@@ -32,13 +32,13 @@
 					<h3 class="color1 mx-2 mb-3">Users</h3>
 				</div>
 				<div class="col-3 mx-2 mb-1">
-					<form action="#" method="get" class="form-inline mx-auto d-flex">
-					<input type="text" name="search" placeholder="Search for..." class="form-control form-control-sm input-color1">
+					<form action="{{ route('admin.users.show') }}" method="get" class="form-inline mx-auto d-flex">
+						<input type="text" name="search" id="searchInput" value="{{ $search ?? '' }}" placeholder="Search in the table" class="form-control form-control-sm input-color1">
 					</form>
 				</div>
 			</div>
 			{{-- List of users --}}
-			<table class="table table-hover bg-white align-middle border text-center">
+			<table class="table table-hover bg-white align-middle border text-center" id="accountTable">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -56,94 +56,119 @@
 					</tr>
 				</thead>
 				<tbody class="fw-light">
-					@foreach($all_users as $user)
-						<tr class="text-center">
-							<td>{{ $user->id }}</td>
-							<td>
-								<a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none text-dark">
-									@if($user->avatar)
-										<img src="{{ $user->avatar }}" alt="{{ $user->username }}" class="rounded-circle img-sm mx-auto d-block">
-									@else
-										<i class="fa-solid fa-circle-user color1 icon-md d-block text-center"></i>
+					@if ($users->count() > 0)
+						@foreach($users as $user)
+							<tr class="text-center">
+								<td>{{ $user->id }}</td>
+								<td>
+									<a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none text-dark">
+										@if($user->avatar)
+											<img src="{{ $user->avatar }}" alt="{{ $user->username }}" class="rounded-circle img-sm mx-auto d-block">
+										@else
+											<i class="fa-solid fa-circle-user color1 icon-md d-block text-center"></i>
+										@endif
+									</a>
+								</td>
+								<td>
+									<a href="{{ route('profile.show', $user->id) }}">
+										{{ $user->username }}
+									</a>
+								</td>
+								<td>
+									@if($user->role_id == 3)
+										Business
+									@elseif($user->role_id == 2)
+										Private
+									@elseif($user->role_id == 1)
+										Admin
 									@endif
-								</a>
-							</td>
-							<td>
-								<a href="{{ route('profile.show', $user->id) }}">
-									{{ $user->username }}
-								</a>
-							</td>
-							<td>
-								@if($user->role_id == 3)
-									Business
-								@elseif($user->role_id == 2)
-									Private
-								@elseif($user->role_id == 1)
-									Admin
-								@endif
-							</td>
-							<td>{{ $user->eating_pref ?? 'N/A' }}</td>
-							<td>{{ $user->gender ?? 'N/A' }}</td>
-							<td>{{ $user->nationality ?? 'N/A' }}</td>
-							<td>{{ $user->job_status ?? 'N/A' }}</td>
-							<td>{{ $user->recipes->count() }}</td>
-							<td>0</td>
-							<td>0</td>
-							<td>
-								<div class="dropdown">
-									@if($user->status == "active")
-										<span role="button" class="badge badge-active dropdown-toggle px-3" data-bs-toggle="dropdown">
-											<i class="fa-solid fa-circle color1 small"></i> {{ $user->status }}
-										</span>
-										<div class="dropdown-menu">
-											<button class="dropdown-item fw-bold color5" data-bs-toggle="modal" data-bs-target="#deactivate-account-{{ $user->id }}">
-												<i class="fa-solid fa-user-slash"></i> Deactivate
-											</button>
-										</div>
-										@include('modals.list-of-accounts-deactivate')
-									@elseif($user->status == "deactivated")
-										<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
-											<i class="fa-regular fa-circle small"></i> {{ $user->status }}
-										</span>
-										<div class="dropdown-menu">
-											<form action="{{ route('admin.users.activate', $user->id) }}" method="post">
-												@csrf
-												@method('PATCH')
-												
-												<button type="submit" class="dropdown-item fw-bold color1">
-													<i class="fa-solid fa-user-check"></i> Activate
+								</td>
+								<td>{{ $user->eating_pref ?? 'N/A' }}</td>
+								<td>{{ $user->gender ?? 'N/A' }}</td>
+								<td>{{ $user->nationality ?? 'N/A' }}</td>
+								<td>{{ $user->job_status ?? 'N/A' }}</td>
+								<td>{{ $user->recipes->count() }}</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									<div class="dropdown">
+										@if($user->status == "active")
+											<span role="button" class="badge badge-active dropdown-toggle px-3" data-bs-toggle="dropdown">
+												<i class="fa-solid fa-circle color1 small"></i> {{ $user->status }}
+											</span>
+											<div class="dropdown-menu">
+												<button class="dropdown-item fw-bold color5" data-bs-toggle="modal" data-bs-target="#deactivate-account-{{ $user->id }}">
+													<i class="fa-solid fa-user-slash"></i> Deactivate
 												</button>
-											</form>
-										</div>
-									@endif
-								</div>
-								{{-- <div class="dropdown">
-                                    <button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button"
-                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Recipe
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li>
-                                            <a class="dropdown-item" href="{{route('all-recipes')}}">Posts</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{route('bookmarks')}}">Bookmarks</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{route('liked-recipes')}}">Liked Recipes</a>
-                                        </li>
-                                    </ul>
-                                </div> --}}
+											</div>
+											@include('modals.list-of-accounts-deactivate')
+										@elseif($user->status == "deactivated")
+											<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
+												<i class="fa-regular fa-circle small"></i> {{ $user->status }}
+											</span>
+											<div class="dropdown-menu">
+												<form action="{{ route('admin.users.activate', $user->id) }}" method="post">
+													@csrf
+													@method('PATCH')
+													
+													<button type="submit" class="dropdown-item fw-bold color1">
+														<i class="fa-solid fa-user-check"></i> Activate
+													</button>
+												</form>
+											</div>
+										@endif
+									</div>
+									{{-- <div class="dropdown">
+										<button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button"
+											id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+											Recipe
+										</button>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+											<li>
+												<a class="dropdown-item" href="{{route('all-recipes')}}">Posts</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{route('bookmarks')}}">Bookmarks</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{route('liked-recipes')}}">Liked Recipes</a>
+											</li>
+										</ul>
+									</div> --}}
+								</td>
+							</tr>
+						@endforeach
+					@else
+						<tr>
+							<td colspan="11">
+								<p class="text-secondary fw-light fst-italic my-2">No users found matching your search criteria.</p>
 							</td>
 						</tr>
-					@endforeach
+					@endif
 				</tbody>
 			</table>
 			<div class="d-flex justify-content-center">
-				{{ $all_users->links() }}
+				{{ $users->appends(['search' => $search])->links() }}
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function() {
+		function filterTable(searchInput) {
+			var searchText = searchInput.toLowerCase();
+			$('#accountTable tbody tr').each(function() {
+				var rowText = $(this).text().toLowerCase();
+				$(this).toggle(rowText.indexOf(searchText) > -1);
+			});
+		}
+	
+		$('#searchInput').on('keyup', function() {
+			var searchInput = $(this).val();
+			filterTable(searchInput);
+		});
+	});
+</script>
 
 @endsection

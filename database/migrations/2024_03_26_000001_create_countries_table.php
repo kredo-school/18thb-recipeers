@@ -21,9 +21,6 @@ return new class extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('code');
-            $table->softDeletes();
-            $table->timestamps();
         });
 
         $path = resource_path('data/countries.csv');
@@ -36,7 +33,6 @@ return new class extends Migration
         foreach ($data as $row) {
             DB::table('countries')->insert([
                 'name' => $row[0],
-                'code' => $row[1],
             ]);
         }
         

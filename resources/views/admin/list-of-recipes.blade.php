@@ -32,13 +32,13 @@
 					<h3 class="color1 mx-2 mb-3">Recipes</h3>
 				</div>
 				<div class="col-3 mx-2 mb-1">
-					<form action="#" method="get" class="form-inline mx-auto d-flex">
-						<input type="text" name="search" placeholder="Search in the table" class="form-control form-control-sm input-color1">
+					<form action="{{ route('admin.recipes.show') }}" method="get" class="form-inline mx-auto d-flex">
+						<input type="text" name="search" id="searchInput" value="{{ $search ?? '' }}" placeholder="Search in the table" class="form-control form-control-sm input-color1">
 					</form>
 				</div>
 			</div>
 			{{-- List of recipes --}}
-			<table class="table table-hover bg-white align-middle border text-center">
+			<table class="table table-hover bg-white align-middle border text-center" id="recipeTable">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -54,75 +54,98 @@
 					</tr>
 				</thead>
 				<tbody class="fw-light">
-					@foreach($all_recipes as $recipe)
-						<tr class="text-center">
-							<td>{{ $recipe->id }}</td>
-							<td>
-								<a href="{{ route('recipe.show', $recipe->id) }}" class="text-decoration-none">
-									@if($recipe->thumbnail)
-										<img src="{{ $recipe->thumbnail }}" alt="{{ $recipe->title }}" class="img-sm mx-auto d-block">
-									@else
-										<i class="fa-sharp fa-solid fa-image color1 icon-md d-block text-center"></i>
-									@endif
-								</a>
-							</td>
-							<td>
-								<a href="{{ route('recipe.show', $recipe->id) }}">
-									{{ $recipe->title }}
-								</a>
-							</td>
-							<td>
-								<a href="{{ route('profile.show', $recipe->user->id) }}" class="text-decoration-none">
-									{{ $recipe->user->username ?? 'N/A' }}
-								</a>
-							</td>
-							<td>{{ $recipe->category }}</td>
-							<td>{{ $recipe->country }}</td>
-							<td>{{ $recipe->occasion }}</td>
-							<td>{{ $recipe->meal_type }}</td>
-							<td>{{ $recipe->prep_time }} min</td>
-							<td>
-								<div class="dropdown">
-									@if($recipe->status == "visible")
-										<span role="button" class="badge badge-active dropdown-toggle px-2" data-bs-toggle="dropdown">
-											<i class="fa-solid fa-circle color1 small"></i> {{ $recipe->status }}
-										</span>
-										<div class="dropdown-menu">
-											<form action="{{ route('admin.recipes.hide', $recipe->id) }}" method="post">
-												@csrf
-												@method('DELETE')
+					@if ($recipes->count() > 0)
+						@foreach($recipes as $recipe)
+							<tr class="text-center">
+								<td>{{ $recipe->id }}</td>
+								<td>
+									<a href="{{ route('recipe.show', $recipe->id) }}" class="text-decoration-none">
+										@if($recipe->thumbnail)
+											<img src="{{ $recipe->thumbnail }}" alt="{{ $recipe->title }}" class="img-sm mx-auto d-block">
+										@else
+											<i class="fa-sharp fa-solid fa-image color1 icon-md d-block text-center"></i>
+										@endif
+									</a>
+								</td>
+								<td>
+									<a href="{{ route('recipe.show', $recipe->id) }}">
+										{{ $recipe->title }}
+									</a>
+								</td>
+								<td>
+									<a href="{{ route('profile.show', $recipe->user) }}" class="text-decoration-none">
+										{{ $recipe->user ?? 'N/A' }}
+									</a>
+								</td>
+								<td>{{ $recipe->category }}</td>
+								<td>{{ $recipe->country }}</td>
+								<td>{{ $recipe->occasion }}</td>
+								<td>{{ $recipe->meal_type }}</td>
+								<td>{{ $recipe->prep_time }} min</td>
+								<td>
+									<div class="dropdown">
+										@if($recipe->status == "visible")
+											<span role="button" class="badge badge-active dropdown-toggle px-2" data-bs-toggle="dropdown">
+												<i class="fa-solid fa-circle color1 small"></i> {{ $recipe->status }}
+											</span>
+											<div class="dropdown-menu">
+												<form action="{{ route('admin.recipes.hide', $recipe->id) }}" method="post">
+													@csrf
+													@method('DELETE')
 
-												<button type="submit" class="dropdown-item fw-bold color5">
-													<i class="fa-solid fa-eye-slash"></i> Hide
-												</button>
-											</form>
-										</div>
-									@elseif($recipe->status == "hidden")
-										<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
-											<i class="fa-regular fa-circle small"></i> {{ $recipe->status }}
-										</span>
-										<div class="dropdown-menu">
-											<form action="{{ route('admin.recipes.unhide', $recipe->id) }}" method="post">
-												@csrf
-												@method('PATCH')
-												
-												<button type="submit" class="dropdown-item fw-bold color1">
-													<i class="fa-solid fa-eye"></i> Unhide
-												</button>
-											</form>
-										</div>
-									@endif
-								</div>
+													<button type="submit" class="dropdown-item fw-bold color5">
+														<i class="fa-solid fa-eye-slash"></i> Hide
+													</button>
+												</form>
+											</div>
+										@elseif($recipe->status == "hidden")
+											<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
+												<i class="fa-regular fa-circle small"></i> {{ $recipe->status }}
+											</span>
+											<div class="dropdown-menu">
+												<form action="{{ route('admin.recipes.unhide', $recipe->id) }}" method="post">
+													@csrf
+													@method('PATCH')
+													
+													<button type="submit" class="dropdown-item fw-bold color1">
+														<i class="fa-solid fa-eye"></i> Unhide
+													</button>
+												</form>
+											</div>
+										@endif
+									</div>
+								</td>
+							</tr>
+						@endforeach
+					@else
+						<tr>
+							<td colspan="11">
+								<p class="text-secondary fw-light fst-italic my-2">No users found matching your search criteria.</p>
 							</td>
 						</tr>
-					@endforeach
+					@endif
 				</tbody>
 			</table>
 			<div class="d-flex justify-content-center">
-				{{ $all_recipes->links() }}
+				{{ $recipes->appends(['search' => $search])->links() }}
 			</div>
 		</div>
 	</div>
 </div>
-
+<script>
+	$(document).ready(function() {
+		function filterTable(searchInput) {
+			var searchText = searchInput.toLowerCase();
+			$('#recipeTable tbody tr').each(function() {
+				var rowText = $(this).text().toLowerCase();
+				$(this).toggle(rowText.indexOf(searchText) > -1);
+			});
+		}
+	
+		$('#searchInput').on('keyup', function() {
+			var searchInput = $(this).val();
+			filterTable(searchInput);
+		});
+	});
+</script>
 @endsection
