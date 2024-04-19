@@ -80,7 +80,7 @@
 
                     {{-- introduction --}}
                     @if ($user->introduction)
-                        <p class="my-3">{{ $user->introduction }}</p>
+                        <p class="my-2">{{ $user->introduction }}</p>
                     @endif
 
                     {{-- Nos. of recipes/followers/following --}}

@@ -111,7 +111,7 @@ class ProfileController extends Controller
                     }
                     // $request->$user->avatar = $avatarName;
                     $user->update(['avatar' => $avatarName]);
-                    
+
                     // $request->$user()->save();
 
                 } else {

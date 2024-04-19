@@ -73,7 +73,7 @@
                         <label for="gender" class="form-label h5 mt-1">Gender</label>
                     </div>
                     <div class="col-8">
-                        <select name="gender_id" id="gender_id" class="form-select input-color1" value="{{ isset($user) ? $user->gender : old('gender_id') }}">
+                        <select name="gender_id" id="gender_id" class="form-select input-color1" value="{{ isset($user) ? $user->gender_id : old('gender_id') }}">
                             <option value="" selected>Select your gender</option>
                             <option value="1">Male</option>
                             <option value="2">Female</option>
@@ -86,7 +86,7 @@
                         <label for="eating_pref" class="form-label h5 mt-1">Eating Preference</label>
                     </div>
                     <div class="col-8">
-                        <select class="form-select input-color1" name="eating_pref_id" id="eating_pref_id">
+                        <select class="form-select input-color1" name="eating_pref_id" id="eating_pref_id" value="{{ isset($user) ? $user->eating_pref_id : old('eating_pref_id') }}">
                             {{-- * if preference is null null --}}
                             <option value="" selected>Choose your preference</option>
                             {{-- * else pre-select an option --}}
@@ -106,7 +106,7 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the countries --}}
-                        <select name="nationality_id" id="nationality_id" class="form-select input-color1">
+                        <select name="nationality_id" id="nationality_id" class="form-select input-color1" value="{{ isset($user) ? $user->nationality_id : old('nationality_id') }}">
                             <option value="" selected>Select your nationality</option>
                             <?php
                             $csvFile = '/assets/data/all.csv';
@@ -132,7 +132,7 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the major cities --}}
-                        <select name="residence_city_id" id="residence_city_id" class="form-select input-color1">
+                        <select name="residence_city_id" id="residence_city_id" class="form-select input-color1" value="{{ isset($user) ? $user->residence_city_id : old('residence_city_id') }}">
                             <option value="" selected>Select your city of residence</option>
                             <?php
                             $csvFile = '/assets/data/cities.csv';
@@ -156,7 +156,7 @@
                     </div>
                     <div class="col-8">
                         {{-- * get the list of the major cities --}}
-                        <select class="form-select input-color1" name="job_status_id" id="job_status_id" class="form-control">
+                        <select class="form-select input-color1" name="job_status_id" id="job_status_id" class="form-control" value="{{ isset($user) ? $user->job_status_id : old('job_status_id') }}">
                             <option value="" selected>Select your job status</option>
                             <option value="1">Full-time</option>
                             <option value="2">Part-time</option>
@@ -173,7 +173,7 @@
                         <label for="introduction" class="form-label h5 mt-1">Introduction</label>
                     </div>
                     <div class="col-8">
-                        <textarea name="introduction" id="introduction" rows="8" class="form-control input-color1" placeholder="Please introduce yourself."></textarea>
+                        <textarea name="introduction" id="introduction" rows="8" class="form-control input-color1" placeholder="Please introduce yourself." value="{{ isset($user) ? $user->introduction : old('introduction') }}"></textarea>
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
