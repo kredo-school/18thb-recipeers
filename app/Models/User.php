@@ -62,5 +62,9 @@ class User extends Authenticatable
         return $this->belongsTo(EatingPreference::class, 'eating_pref_id');
     }
 
-    
+
+
+    public function recipes(){
+        return $this->hasMany(Recipe::class);
+    }
 }

@@ -5,31 +5,31 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<!-- admin menu -->
+		{{-- Admin menu --}}
 		<div class="col-lg-2 col-md-2 col-12 my-5 mr-2">
 			<div class="list-group">
-				<button class="btn btn-sub list-group-item mb-3">
+				<a href="{{ route('admin.home') }}" class="btn btn-sub list-group-item mb-3">
 					Admin Home
-				</button>
-				<button class="btn btn-main list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.users.show') }}" class="btn btn-main list-group-item mb-3">
 					All Users
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.recipes.show') }}" class="btn btn-sub list-group-item mb-3">
 					All Recipes
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				<a href="{{ route('admin.inquiries.show') }}" class="btn btn-sub list-group-item mb-3">
 					All Inquiries
-				</button>
-				<button class="btn btn-sub list-group-item mb-3">
+				</a>
+				{{-- <a href="{{ route('admin.') }}" class="btn btn-sub list-group-item mb-3">
 					All Ads
-				</button>
+				</a> --}}
 			</div>
 		</div>
-
+		{{-- Title and search box --}}
 		<div class="col-lg-10 col-md-10 col-12 my-5">
 			<div class="row align-items-center mb-2">
 				<div class="col">
-					<h3 class="color1 mx-2 mb-0">Users</h3>
+					<h3 class="color1 mx-2 mb-3">Users</h3>
 				</div>
 				<div class="col-3 mx-2 mb-1">
 					<form action="#" method="get" class="form-inline mx-auto d-flex">
@@ -37,6 +37,7 @@
 					</form>
 				</div>
 			</div>
+			{{-- List of users --}}
 			<table class="table table-hover bg-white align-middle border text-center">
 				<thead>
 					<tr>
@@ -54,85 +55,93 @@
 						<th>Status</th>
 					</tr>
 				</thead>
-				<tbody>
-					<!-- User1 -->
-					<tr class="text-center">
-						<td>1</td>
-						<td>
-							<a href="#" class="text-decoration-none text-dark">
-							<img src="../assets/images/user.jpg" alt="user avatar" class="rounded-circle img-sm mx-auto d-block">
-							</a>
-						</td>
-						<td>
-							<a href="#" class="text-decoration-none text-dark">
-							User1
-							</a>
-						</td>
-						<td>Private</td>
-						<td>Vegan</td>
-						<td>Female</td>
-						<td>Japan</td>
-						<td>Teacher</td>
-						<td>0</td>
-						<td>2</td>
-						<td>7</td>
-						<td>
-							<div class="dropdown">
-								<button class="btn shadow-none badge badge-active" data-bs-toggle="dropdown">
-								<i class="fa-solid fa-circle text-success"></i> Active
-								</button>
-								<div class="dropdown-menu">
-								  <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-user">
-								  <i class="fa-solid fa-user-slash"></i> Deactivate
-								</button>
-								<button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#activate-user">
-								<i class="fa-solid fa-user-check"></i> Activate
-								</button>
+				<tbody class="fw-light">
+					@foreach($all_users as $user)
+						<tr class="text-center">
+							<td>{{ $user->id }}</td>
+							<td>
+								<a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none text-dark">
+									@if($user->avatar)
+										<img src="{{ $user->avatar }}" alt="{{ $user->username }}" class="rounded-circle img-sm mx-auto d-block">
+									@else
+										<i class="fa-solid fa-circle-user color1 icon-md d-block text-center"></i>
+									@endif
+								</a>
+							</td>
+							<td>
+								<a href="{{ route('profile.show', $user->id) }}">
+									{{ $user->username }}
+								</a>
+							</td>
+							<td>
+								@if($user->role_id == 3)
+									Business
+								@elseif($user->role_id == 2)
+									Private
+								@elseif($user->role_id == 1)
+									Admin
+								@endif
+							</td>
+							<td>{{ $user->eating_pref ?? 'N/A' }}</td>
+							<td>{{ $user->gender ?? 'N/A' }}</td>
+							<td>{{ $user->nationality ?? 'N/A' }}</td>
+							<td>{{ $user->job_status ?? 'N/A' }}</td>
+							<td>{{ $user->recipes->count() }}</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+								<div class="dropdown">
+									@if($user->status == "active")
+										<span role="button" class="badge badge-active dropdown-toggle px-3" data-bs-toggle="dropdown">
+											<i class="fa-solid fa-circle color1 small"></i> {{ $user->status }}
+										</span>
+										<div class="dropdown-menu">
+											<button class="dropdown-item fw-bold color5" data-bs-toggle="modal" data-bs-target="#deactivate-account-{{ $user->id }}">
+												<i class="fa-solid fa-user-slash"></i> Deactivate
+											</button>
+										</div>
+										@include('modals.list-of-accounts-deactivate')
+									@elseif($user->status == "deactivated")
+										<span role="button" class="badge badge-deactive dropdown-toggle" data-bs-toggle="dropdown">
+											<i class="fa-regular fa-circle small"></i> {{ $user->status }}
+										</span>
+										<div class="dropdown-menu">
+											<form action="{{ route('admin.users.activate', $user->id) }}" method="post">
+												@csrf
+												@method('PATCH')
+												
+												<button type="submit" class="dropdown-item fw-bold color1">
+													<i class="fa-solid fa-user-check"></i> Activate
+												</button>
+											</form>
+										</div>
+									@endif
 								</div>
-							</div>
-						</td>
-					</tr>
-
-					<!-- User2 -->
-					<tr class="text-center">
-						<td>2</td>
-						<td>
-							<a href="#" class="text-decoration-none text-dark">
-							<i class="fa-solid fa-circle-user text-secondary icon-md d-block text-center"></i>
-							</a>
-						</td>
-						<td>
-							<a href="#" class="text-decoration-none text-dark">
-							User2
-							</a>
-						</td>
-						<td>Business</td>
-						<td>Vegan</td>
-						<td>Male</td>
-						<td>Canada</td>
-						<td>Engineer</td>
-						<td>0</td>
-						<td>2</td>
-						<td>7</td>
-						<td>
-							<div class="dropdown">
-							<button class="btn shadow-none badge badge-deactive" data-bs-toggle="dropdown">
-							<i class="fa-regular fa-circle"></i>
-								Inactive
-							</button>
-							<div class="dropdown-menu">
-								<button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-user">
-								<i class="fa-solid fa-user-slash"></i> Deactivate
-								</button>
-								<button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#activate-user">
-								<i class="fa-solid fa-user-check"></i> Activate
-								</button>
-							</div>
-						</div>
-						</td>
-					</tr>
+								{{-- <div class="dropdown">
+                                    <button class="btn dropdown-toggle dropdown-menu-togglebtn" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Recipe
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('all-recipes')}}">Posts</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('bookmarks')}}">Bookmarks</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('liked-recipes')}}">Liked Recipes</a>
+                                        </li>
+                                    </ul>
+                                </div> --}}
+							</td>
+						</tr>
+					@endforeach
 				</tbody>
 			</table>
+			<div class="d-flex justify-content-center">
+				{{ $all_users->links() }}
+			</div>
 		</div>
 	</div>
 </div>

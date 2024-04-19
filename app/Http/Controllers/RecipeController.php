@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
 use Illuminate\Http\Request;
+use App\Models\Recipe;
+use App\Models\User;
 
 class RecipeController extends Controller
 {
@@ -21,6 +22,11 @@ class RecipeController extends Controller
     public function create()
     {
         return view('users.recipe.createRecipe');
+    }
+
+    public function show($id){
+        $recipe = $this->recipe->findOrFail($id);
+        return view('users.recipe.recipe-detail');
     }
 
     public function edit()
