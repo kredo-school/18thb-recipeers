@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
 use App\Http\Controllers\Admin\UsersController;
@@ -59,7 +59,7 @@ Route::get('/user/reset-password', [UserController::class, 'reset_password_show'
 Route::delete('/user/account/{id}/delete', [UserController::class, 'softDelete'])->name('user.account.delete');
 
 // AdminController
-Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');
+Route::get('/admin/home', [AdminController::class, 'show'])->name('admin.home');
 
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
