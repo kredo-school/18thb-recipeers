@@ -91,7 +91,7 @@ class ProfileController extends Controller
                 'residence_city_id' => 'nullable',
                 'job_status_id' => 'nullable|integer',
                 'introduction' => 'nullable|max:255',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ];
             $request->validate($rules);
 
