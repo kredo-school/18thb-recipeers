@@ -353,3 +353,12 @@ td .dropdown-item {
     background-color: #93D579;
     border: none;
 }
+
+/* profile pageでavatarが楕円表示だったので正円に */
+
+.rounded-circle{
+    border-radius: 50%;
+    width: 230px;
+    height: 200px;
+    object-fit: cover;
+}

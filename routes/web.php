@@ -64,7 +64,7 @@ Route::get('/admin/home', [AdminController::class, 'show'])->name('admin.home');
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 // InquiryController
 Route::get('/inquiry', [InquiryController::class, 'index'])->name('inquiry');
