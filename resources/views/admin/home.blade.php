@@ -26,15 +26,12 @@
                     </a> --}}
                 </div>
             </div>
-
             <div class="col-lg-10 col-md-10 col-12 ps-5 my-5">
-                {{-- Display total number --}}
+                {{-- Upper half --}}
                 <div class="mb-5">
                     <h3 class="color1 h3 my-3">
                         <i class="fa-solid fa-person fs-3"></i>&nbsp;Total Numbers
                     </h3>
-
-                    {{-- Number Contents --}}
                     <div class="d-flex justify-content-between">
                         {{-- Users count --}}
                         <div class="card input-color1 w-25 text-center py-3">
@@ -45,7 +42,6 @@
                                 <i class="fa-solid fa-people-group fa-3x color1"></i>
                             </div>
                         </div>
-
                         {{-- Recipes count --}}
                         <div class="card input-color1 w-25 text-center py-3">
                             <div class="card-header bg-white border-0">
@@ -55,7 +51,6 @@
                                 <i class="fa-solid fa-utensils fa-3x color1"></i>
                             </div>
                         </div>
-
                         {{-- Inquiries count --}}
                         <div class="card input-color1 w-25 text-center py-3">
                             <div class="card-header bg-white border-0">
@@ -65,22 +60,21 @@
                                 <i class="fa-regular fa-envelope fa-3x color1"></i>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                {{-- Sales and Map --}}
+                {{-- Lower half --}}
                 <div class="row g-5">
-                    {{-- Sales --}}
+                    {{-- Sales graph --}}
                     <div class="col">
                         <h3 class="color1 h3 my-3">
                             <i class="fa-solid fa-chart-line fs-3"></i>&nbsp;Sales
                         </h3>
-                        <div class="img my-2">
-                            <img src="{{ asset('/assets/images/Sales_Graph.jpg') }}" alt="Sales Image" class="img-fluid">
+                        <div>
+                            <canvas id="salesChart" width="400" height="200"></canvas>
                         </div>
                     </div>
-                    {{-- Map --}}
+                    {{-- World map --}}
                     <div class="col">
                         <h3 class="color1 h3 my-3">
                             <i class="fa-solid fa-map fs-3"></i>&nbsp;Map
@@ -95,4 +89,33 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2"></script>
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
+        const data = {
+          labels,
+          datasets: [{
+            label: 'Sales (k USD)',
+            data: [7.4, 8.9, 10.7, 14.2, 17.3, 21.4, 27.5, 35.1, 36.4, 37.2, 38.8, 39.7],
+            backgroundColor: 'rgba(255, 181, 52, 0.2)',
+            borderColor: 'rgba(255, 181, 52, 1)',
+            borderWidth: 1
+          }]
+        };
+        
+        const config = {
+            type: 'line',
+            data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+        
+        new Chart(ctx, config);
+    </script>
 @endsection
