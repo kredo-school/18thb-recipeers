@@ -16,11 +16,35 @@ class InquiriesController extends Controller
         $this->user = $admin;
     }
 
-    public function show(){
-        $all_inquiries = $this->inquiry->latest()->paginate(10);
+    public function show(Request $request){
+        $search = $request->input('search');
 
-        return view('admin.list-of-inquiries')
-                ->with('all_inquiries', $all_inquiries);
+        $inquiries = Inquiry::query();
+
+        if($search){
+            $inquiries->select('inquiries.*', 'user.username AS inquirer', 'admin.username AS admin')
+                ->leftJoin('users as user', 'user.id', '=', 'inquiries.user_id')
+                ->leftJoin('users as admin', 'admin.id', '=', 'inquiries.admin_id')
+                ->where(function ($query) use ($search){
+                    $query->orWhere('user.username', 'LIKE', "%$search%")
+                        ->orWhere('inquiries.inquirer_name', 'LIKE', "%$search%")
+                        ->orWhere('inquiries.email', 'LIKE', "%$search%")
+                        ->orWhere('inquiries.title', 'LIKE', "%$search%")
+                        ->orWhere('admin.username', 'LIKE', "%$search%")
+                        ->orWhere('inquiries.status', 'LIKE', "%$search%");
+            });
+        }else{
+            $inquiries = Inquiry::select('inquiries.*', 'user.username AS inquirer', 'admin.username AS admin')
+                ->leftJoin('users as user', 'user.id', '=', 'inquiries.user_id')
+                ->leftJoin('users as admin', 'admin.id', '=', 'inquiries.admin_id');
+        }
+
+        $inquiries = $inquiries->paginate(10);
+
+        return view('admin.list-of-inquiries', [
+            'inquiries' => $inquiries,
+            'search' => $search,
+        ]);
     }
 
     public function detail($id){
@@ -57,6 +81,6 @@ class InquiriesController extends Controller
         $inquiry->history = $request->history;
         $inquiry->save();
 
-        return redirect()->route('admin.inquiry.show');
+        return redirect()->route('admin.inquiries.show');
     }
 }

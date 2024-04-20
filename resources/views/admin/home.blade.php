@@ -9,21 +9,21 @@
             <!-- admin menu -->
             <div class="col-2 my-5 pe-4">
                 <div class="list-group">
-                    <button class="btn btn-main list-group-item mb-3">
+                    <a href="{{ route('admin.home') }}" class="btn btn-main list-group-item mb-3">
                         Admin Home
-                    </button>
-                    <button class="btn btn-sub list-group-item mb-3">
+                    </a>
+                    <a href="{{ route('admin.users.show') }}" class="btn btn-sub list-group-item mb-3">
                         All Users
-                    </button>
-                    <button class="btn btn-sub list-group-item mb-3">
+                    </a>
+                    <a href="{{ route('admin.recipes.show') }}" class="btn btn-sub list-group-item mb-3">
                         All Recipes
-                    </button>
-                    <button class="btn btn-sub list-group-item mb-3">
+                    </a>
+                    <a href="{{ route('admin.inquiries.show') }}" class="btn btn-sub list-group-item mb-3">
                         All Inquiries
-                    </button>
-                    <button class="btn btn-sub list-group-item mb-3">
+                    </a>
+                    {{-- <a href="{{ route('admin.') }}" class="btn btn-sub list-group-item mb-3">
                         All Ads
-                    </button>
+                    </a> --}}
                 </div>
             </div>
 

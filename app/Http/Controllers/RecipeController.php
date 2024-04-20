@@ -9,6 +9,7 @@ use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Auth;
+use App\Models\User;
 
 class RecipeController extends Controller
 {
@@ -106,13 +107,18 @@ class RecipeController extends Controller
             }
         }
 
-        
+
 
         return view('users.recipe.recipe-detail');
     }
 
     public function show() {
 
+        return view('users.recipe.recipe-detail');
+    }
+
+    public function show($id){
+        $recipe = $this->recipe->findOrFail($id);
         return view('users.recipe.recipe-detail');
     }
 

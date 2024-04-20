@@ -10,9 +10,10 @@ use App\Models\Recipe;
 class EatingPreference extends Model
 {
     use HasFactory;
-    
+    protected $fillable = ['name'];
+    public $timestamps = false;
+
     public function recipes() {
         return $this->belongsToMany(Recipe::class);
     }
-
 }
