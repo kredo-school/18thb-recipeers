@@ -66,22 +66,20 @@
                 {{-- Lower half --}}
                 <div class="row g-5">
                     {{-- Sales graph --}}
-                    <div class="col">
+                    <div class="col-6">
                         <h3 class="color1 h3 my-3">
                             <i class="fa-solid fa-chart-line fs-3"></i>&nbsp;Sales
                         </h3>
                         <div>
-                            <canvas id="salesChart" width="400" height="300"></canvas>
+                            <canvas id="sales-chart" height=300></canvas>
                         </div>
                     </div>
                     {{-- World map --}}
-                    <div class="col">
+                    <div class="col-6">
                         <h3 class="color1 h3 my-3">
                             <i class="fa-solid fa-map fs-3"></i>&nbsp;Map
                         </h3>
-                        <div class="img my-2">
-                            <img src="{{ asset('/assets/images/World_Map.png') }}" alt="world map" class="img-fluid">
-                        </div>
+                        <div id="user-map" style="height: 400px;"></div>
                     </div>
 
                 </div>
@@ -89,10 +87,51 @@
             </div>
         </div>
     </div>
+
+    {{-- World map --}}
+    <script>
+        // Initialize the map
+        var map = L.map('user-map').setView([0, 0], 2);
+
+        // Add the base map tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Fetch GeoJSON data
+        fetch('/data/countries.geojson')
+        .then(response => response.json())
+        .then(data => {
+            // Loop through features in GeoJSON data
+            data.features.forEach(function(country) {
+                // Fetch user count for this country (replace with your actual endpoint)
+                fetch(`/api/user-count?country=${country.properties.iso_a2}`)
+                .then(response => response.json())
+                .then(userCount => {
+                    // Add user count property to GeoJSON data
+                    country.properties.userCount = userCount;
+
+                    // Create a marker for the country
+                    var marker = L.marker([country.geometry.coordinates[1], country.geometry.coordinates[0]])
+                        .bindPopup('<b>' + country.properties.name + '</b><br>User Count: ' + userCount)
+                        .addTo(map);
+                })
+                .catch(error => {
+                    console.error('Error fetching user count:', error);
+                });
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching GeoJSON data:', error);
+        });
+    </script>
+ 
+
+    {{-- Sales graph --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
     <script>
-        const ctx = document.getElementById('salesChart').getContext('2d');
+        const ctx = document.getElementById('sales-chart').getContext('2d');
         const labels = ['May', 'June', 'July', 'August', 'September', 'Octber', 'November', 'December', 'January', 'Febuary', 'March', 'April'];
         const data = {
             labels,
