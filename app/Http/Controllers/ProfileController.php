@@ -80,17 +80,17 @@ class ProfileController extends Controller
         Log::info('Update request data: ' . json_encode($request->all()));
             $user = User::findOrFail(Auth::id());
             $rules = [
-                'avatar' => 'nullable|image|max:1048|mimes:jpeg,jpg,png,gif',
-                'username' => 'required|string|max:255',
-                'email' => 'string|email|max:255|unique:users,email,' . $user->id,
+                'avatar' => 'nullable|image|max:2048|mimes:jpeg,jpg,png,gif',
+                'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+                'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
                 'password' => 'required|string|min:8|confirmed',
                 'birthday' => 'nullable|date',
                 'gender_id' => 'nullable|integer',
                 'eating_pref_id' => 'nullable|integer',
-                'nationality_id' => 'nullable',
-                'residence_city_id' => 'nullable',
+                'nationality_id' => 'nullable|integer',
+                'residence_city_id' => 'nullable|integer',
                 'job_status_id' => 'nullable|integer',
-                'introduction' => 'nullable|max:255',
+                'introduction' => 'nullable|string|max:255',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ];
             $request->validate($rules);
