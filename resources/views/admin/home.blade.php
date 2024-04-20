@@ -34,32 +34,32 @@
                     </h3>
                     <div class="d-flex justify-content-between">
                         {{-- Users count --}}
-                        <div class="card input-color1 w-25 text-center py-3">
+                        <a href="{{ route('admin.users.show') }}"  class="card input-color1 w-25 text-center py-3">
                             <div class="card-header bg-white border-0">
                                 <span class="count fs-1">{{ $userCount }}</span>&nbsp; Users
                             </div>
                             <div class="card-body p-0 mb-2">
                                 <i class="fa-solid fa-people-group fa-3x color1"></i>
                             </div>
-                        </div>
+                        </a>
                         {{-- Recipes count --}}
-                        <div class="card input-color1 w-25 text-center py-3">
+                        <a href="{{ route('admin.recipes.show') }}" class="card input-color1 w-25 text-center py-3">
                             <div class="card-header bg-white border-0">
                                 <span class="count fs-1">{{ $recipeCount }}</span>&nbsp; Recipes
                             </div>
                             <div class="card-body p-0 mb-2">
                                 <i class="fa-solid fa-utensils fa-3x color1"></i>
                             </div>
-                        </div>
+                        </a>
                         {{-- Inquiries count --}}
-                        <div class="card input-color1 w-25 text-center py-3">
+                        <a href="{{ route('admin.inquiries.show') }}" class="card input-color1 w-25 text-center py-3">
                             <div class="card-header bg-white border-0">
                                 <span class="count fs-1">{{ $inquiryCount }}</span>&nbsp; Inquiries
                             </div>
                             <div class="card-body p-0 mb-2">
                                 <i class="fa-regular fa-envelope fa-3x color1"></i>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
