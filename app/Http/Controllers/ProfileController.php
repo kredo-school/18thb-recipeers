@@ -75,7 +75,9 @@ class ProfileController extends Controller
     // }
 
     public function update(Request $request){
+
         // dd($request->all());
+
         try {
         Log::info('Update request data: ' . json_encode($request->all()));
             $user = User::findOrFail(Auth::id());
@@ -101,7 +103,9 @@ class ProfileController extends Controller
 
                 $avatarName = $request->file('image')->getClientOriginalName();
                 $stored = $request->file('image')->storeAs('assets/avatars', $avatarName, 'public');
+
                 // Log::info('Uploaded file path: ' . $request->file('image')->path());
+
                 if ($stored) {
                     Log::info('File stored successfully');
 
@@ -109,16 +113,17 @@ class ProfileController extends Controller
                         Log::info('Deleting old avatar: ' . $request->user()->avatar);
                         Storage::disk('public')->delete('assets/avatars/' . $request->user()->avatar);
                     }
+
                     // $request->$user->avatar = $avatarName;
                     $user->update(['avatar' => $avatarName]);
 
                     // $request->$user()->save();
-
+                    
                 } else {
                     Log::error('Failed to store file');
                 }
-
             }
+
             if (!$request->filled('password')) {
                 unset($rules['password']);
             }
@@ -130,16 +135,21 @@ class ProfileController extends Controller
             //     $avatar->move(public_path('avatars'), $avatarName);
             //     $user->avatar = 'avatars/' . $avatarName;
             // }
+
             $fieldsToUpdate = ['username', 'email', 'password', 'birthday', 'gender_id', 'eating_pref_id', 'nationality_id', 'residence_city_id', 'job_status_id', 'introduction'];
+
             foreach ($fieldsToUpdate as $field) {
                 if ($request->filled($field)) {
                     $user->$field = $request->input($field);
                 }
             }
+
             // dd($user->toArray());
+
             $user->save();
 
             return redirect()->route('profile.show', $user->id);
+
         } catch (\Exception $e) {
             Log::error('Error updating profile: ' . $e->getMessage());
             return back()->with('error', 'An error occurred while updating profile. Please try again.');
