@@ -10,10 +10,11 @@ use App\Models\Recipe;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-    //
+
     private $user;
 
     public function __construct(User $user){
@@ -95,7 +96,12 @@ class ProfileController extends Controller
                 'introduction' => 'nullable|string|max:255',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ];
-            $request->validate($rules);
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator->errors());
+            }
 
             if ($request->hasFile('image')) {
                 Log::info('Attempting to store file');
@@ -118,7 +124,7 @@ class ProfileController extends Controller
                     $user->update(['avatar' => $avatarName]);
 
                     // $request->$user()->save();
-                    
+
                 } else {
                     Log::error('Failed to store file');
                 }
