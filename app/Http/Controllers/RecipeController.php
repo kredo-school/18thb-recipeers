@@ -13,14 +13,12 @@ use Auth;
 class RecipeController extends Controller
 {
     private $recipe;
-    private $category;
-    private $eat_pref;
+    public $ingName = [];
+    public $amoName = [];
 
-    public function __construct(Recipe $recipe, Category $category, EatingPreference $eat_pref)
+    public function __construct(Recipe $recipe)
     {
         $this->recipe = $recipe;
-        $this->category = $category;
-        $this->eat_pref = $eat_pref;
     }
 
     public function index()
@@ -79,17 +77,36 @@ class RecipeController extends Controller
         $this->recipe->eatPrefs()->attach($eat_pref->id);
 
         // getting ingredient
-        $ingName = $request->input('ing_input0');
-        $amoName = $request->input('amount_input0');
-        $ingredient = Ingredient::where('name', $ingName)->first();
-        $ingredient = Ingredient::where('amount', $amoName)->first();
-        if(!$ingredient) {
-            $ingredient = new Ingredient();
-            $ingredient->name = $ingName;
-            $ingredient->amount = $amoName;
-            $ingredient->save();
+        $requestData = $request->input('ingData');
+        $ingData = json_decode($requestData, true);
+
+        // log::debug($ingData);
+
+        for ($i=0; $i<100; $i++) {
+            if(isset($ingData['ing_input' . $i])) {
+                log::debug($ingData);
+
+                $ingName[] = $ingData['ing_input' . $i];
+
+                $ingredient = new Ingredient();
+                $ingredient = Ingredient::where('name', $ingName[$i])->first();
+
+                if(!$ingredient) {
+                    $ingredient = new Ingredient();
+                    $ingredient->name = $ingName;
+                    $ingredient->save();
+                }
+
+                $this->recipe->ingredients()->attach($ingredient->id);
+
+                log::debug($ingName);
+                log::debug($ingredient);
+            } else {
+                break;
+            }
         }
-        $this->recipe->ingredients()->attach($ingredient->id);
+
+        
 
         return view('users.recipe.recipe-detail');
     }

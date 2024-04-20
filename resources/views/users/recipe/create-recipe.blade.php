@@ -13,7 +13,7 @@
 
             {{-- Input Recipe Title --}}
             <div class="row">
-                <input type="text" name="title" id="title" class="form-control w-100 input-color1" placeholder="Enter the recipe title.">
+                <input type="text" name="title" id="title" class="form-control w-100 input-color1" placeholder="Enter the recipe title." required>
             </div>
 
             <div class="row mt-3">
@@ -44,7 +44,7 @@
                             <h6>Category:</h6>
                         </div>
                         <div id="tagContainer1" class="col-3 d-flex flex-wrap align-item-center">
-                            <input type="text" name="category" id="category" class="form-control form-control-sm input-color1">
+                            <input type="text" name="category" id="category" class="form-control form-control-sm input-color1" required>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                             <h6>Preference:</h6>
                         </div>
                         <div id="tagContainer2" class="col-3 d-flex flex-wrap align-item-center">
-                            <input type="text" id="eat_pref" name="eat_pref" class="form-control form-control-sm input-color1">
+                            <input type="text" id="eat_pref" name="eat_pref" class="form-control form-control-sm input-color1" required>
                         </div>
                     </div>
 
@@ -97,7 +97,7 @@
                     <input type="text" name="ing_input0" id="ing_input0" placeholder="Ingredient" class="form-control input-color1">
                 </div>
                 <div class="col-4">
-                    <input type="text" name="amount_input0" id="amount_input0" placeholder="amount" class="form-control input-color1">
+                    <input type="text" name="amo_input0" id="amo_input0" placeholder="Amount" class="form-control input-color1">
                 </div>
             </div>
 

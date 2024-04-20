@@ -94,15 +94,14 @@
                                     <li>
                                         <a href="{{route('admin.home')}}" class="dropdown-item">
                                         Admin
-                                        {{-- <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item"> --}}
+                                        <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">
                                             <i class="fa-solid fa-circle-user"></i> Profile
                                         </a>
                                     </li>
                                     @endcan
 
                                     <li>
-                                        {{-- <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">Profile --}}
-                                        </a>
+                                        <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}" class="dropdown-item">Profile</a>
                                     </li>
                                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -209,16 +208,65 @@
                 document.querySelector('#recipe_save').addEventListener('click', (e) => {
                     // e.preventDefault();
 
-                    $.ajax ({
-                        url: "{{ route('recipe.store') }}",
+                    const ingData = {};
+
+                    let inputNum = 0;
+
+                    while (true) {
+                        const ingInput = document.querySelector('#ing_input' + inputNum);
+                        const amoInput = document.querySelector('#amo_input' + inputNum);
+
+                        if (!ingInput || !amoInput) {
+                            break;
+                        }
+
+                        ingData['ing_input' + inputNum] = ingInput.value;
+                        ingData['amo_input' + inputNum] = amoInput.value;
+
+                        inputNum++;
+                    }
+
+                    // const data = $("#recipe_form").serialize() + "&ingData=" + JSON.stringify(ingData);
+                    const data = $("#recipe_form").serializeArray();
+
+                    data.push(({ name: 'ingData', value: JSON.stringify(ingData) }));
+
+                    console.log(data);
+
+                    // It store category with asynchronous
+                    $.ajax({
                         url: "{{ route('category.store') }}",
+                        type: "POST",
+                        data: data,
+                        success: function(res){console.log(res);},
+                        fail: function(err){console.log(err);}
+                    });
+
+                    // It store eat_pref with asynchronous
+                    $.ajax({
                         url: "{{ route('eat_pref.store') }}",
+                        type: "POST",
+                        data: data,
+                        success: function(res){console.log(res);},
+                        fail: function(err){console.log(err);}
+                    });
+
+                    // It store ingredient with asynchronous
+                    $.ajax({
                         url: "{{ route('ingredient.store') }}",
                         type: "POST",
-                        data: $("#recipe_form").serialize(),
-                        success:function(response){
-                            console.log($("#recipe_form").serialize());
-                        }
+                        data: data,
+                        success: function(res){console.log(res);},
+                        fail: function(err){console.log(err);}
+                    });
+
+                    // It store recipe data with asynchronous
+                    $.ajax({
+                        url: "{{ route('recipe.store') }}",
+                        type: "POST",
+                        data: data,
+                        success: function(res){console.log(res);},
+                        fail: function(err){console.log(err);}
                     });
                 });
             });

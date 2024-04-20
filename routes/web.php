@@ -64,7 +64,7 @@ Route::delete('/user/account/{id}/delete', [UserController::class, 'softDelete']
 Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('Admin.home');
 
 // ProfileController
-// Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
