@@ -71,7 +71,7 @@
                             <i class="fa-solid fa-chart-line fs-3"></i>&nbsp;Sales
                         </h3>
                         <div>
-                            <canvas id="salesChart" width="400" height="200"></canvas>
+                            <canvas id="salesChart" width="400" height="300"></canvas>
                         </div>
                     </div>
                     {{-- World map --}}
@@ -90,17 +90,18 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
     <script>
         const ctx = document.getElementById('salesChart').getContext('2d');
-        const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
+        const labels = ['May', 'June', 'July', 'August', 'September', 'Octber', 'November', 'December', 'January', 'Febuary', 'March', 'April'];
         const data = {
-          labels,
-          datasets: [{
-            label: 'Sales (k USD)',
-            data: [7.4, 8.9, 10.7, 14.2, 17.3, 21.4, 27.5, 35.1, 36.4, 37.2, 38.8, 39.7],
-            backgroundColor: 'rgba(255, 181, 52, 0.2)',
-            borderColor: 'rgba(255, 181, 52, 1)',
-            borderWidth: 1
+            labels,
+            datasets: [{
+                label: 'Sales (k USD)',
+                data: [7.4, 8.9, 10.7, 14.2, 17.3, 21.4, 27.5, 35.1, 36.4, 37.2, 38.8, 39.7],
+                backgroundColor: 'rgba(255, 181, 52, 0.2)',
+                borderColor: 'rgba(255, 181, 52, 1)',
+                borderWidth: 1.5
           }]
         };
         
@@ -110,7 +111,39 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        position: 'left',
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return value;
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.parsed.y.toFixed(1);
+                                return `Sales: $${value}k`;
+                            }
+                        },
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        borderColor: '#93D579',
+                        borderWidth: 1,
+                        titleColor: '#65B741',
+                        titleFont: {
+                            size: '16rem'
+                        },
+                        bodyColor: '#050505',
+                        bodyFont: {
+                            size: '14rem',
+                            weight: 'normal'
+                        },
+                        displayColors: false,
+                        padding: 10,
+                        cornerRadius: 10,
                     }
                 }
             }
