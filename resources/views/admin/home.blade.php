@@ -27,19 +27,19 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 col-md-10 col-12 ps-3 my-5">
+            <div class="col-lg-10 col-md-10 col-12 ps-5 my-5">
                 {{-- Display total number --}}
                 <div class="mb-5">
-                    <h3 class="color1 h4 my-3">
+                    <h3 class="color1 h3 my-3">
                         <i class="fa-solid fa-person fs-3"></i>&nbsp;Total Numbers
                     </h3>
 
                     {{-- Number Contents --}}
                     <div class="d-flex justify-content-between">
                         {{-- Users count --}}
-                        <div class="card input-color1 w-25 text-center rounded-0 py-3">
+                        <div class="card input-color1 w-25 text-center py-3">
                             <div class="card-header bg-white border-0">
-                                <span class="fs-2 fw-bold">{{ $userCount }}</span>&nbsp; Users
+                                <span class="count fs-1">{{ $userCount }}</span>&nbsp; Users
                             </div>
                             <div class="card-body p-0 mb-2">
                                 <i class="fa-solid fa-people-group fa-3x color1"></i>
@@ -47,9 +47,9 @@
                         </div>
 
                         {{-- Recipes count --}}
-                        <div class="card input-color1 w-25 text-center rounded-0 py-3">
+                        <div class="card input-color1 w-25 text-center py-3">
                             <div class="card-header bg-white border-0">
-                                <span class="fs-2 fw-bold">{{ $recipeCount }}</span>&nbsp; Recipes
+                                <span class="count fs-1">{{ $recipeCount }}</span>&nbsp; Recipes
                             </div>
                             <div class="card-body p-0 mb-2">
                                 <i class="fa-solid fa-utensils fa-3x color1"></i>
@@ -57,9 +57,9 @@
                         </div>
 
                         {{-- Inquiries count --}}
-                        <div class="card input-color1 w-25 text-center rounded-0 py-3">
+                        <div class="card input-color1 w-25 text-center py-3">
                             <div class="card-header bg-white border-0">
-                                <span class="fs-2 fw-bold">{{ $inquiryCount }}</span>&nbsp; Inquiries
+                                <span class="count fs-1">{{ $inquiryCount }}</span>&nbsp; Inquiries
                             </div>
                             <div class="card-body p-0 mb-2">
                                 <i class="fa-regular fa-envelope fa-3x color1"></i>
@@ -73,7 +73,7 @@
                 <div class="row g-5">
                     {{-- Sales --}}
                     <div class="col">
-                        <h3 class="color1 h4 my-3">
+                        <h3 class="color1 h3 my-3">
                             <i class="fa-solid fa-chart-line fs-3"></i>&nbsp;Sales
                         </h3>
                         <div class="img my-2">
@@ -82,7 +82,7 @@
                     </div>
                     {{-- Map --}}
                     <div class="col">
-                        <h3 class="color1 h4 my-3">
+                        <h3 class="color1 h3 my-3">
                             <i class="fa-solid fa-map fs-3"></i>&nbsp;Map
                         </h3>
                         <div class="img my-2">
