@@ -47,9 +47,24 @@ class RecipeController extends Controller
 
         // getting thumbnail
         if($request->hasFile('thumbnail')) {
-            $recipe_thumb = uniqid().'.'.$request->thumbnail->extension();
-            $request->thumbnail->move(public_path('/public/assets/images'), $recipe_thumb);
-            $this->recipe->thumbnail = $recipe_thumb;
+            Log::info('Attempting to store file');
+            Storage::disk('public')->makeDirectory('assets/thumbanail');
+
+            $thumbName = $request->file('thumbnail')->getClientOriginalName();
+            $stored = $request->file('thumbnail')->storeAs('assets/thumbnail', $thumbName, 'public');
+
+            if($stored) {
+                Log::debug('File stored successfully');
+
+                if($request->thumbnail) {
+                    Log::debug('Deleting old avatar: ' . $request->thumbnail);
+                    Storage::disk('public')->delete('assets/thumbnail' . $request->thumbnail);
+                }
+
+                $recipe->update(['thumbnail' => $thumbName]);
+            } else {
+                Log::error('Failed to store file');
+            }
         }
 
         $this->recipe->summary = $request->input('summary');
@@ -106,13 +121,6 @@ class RecipeController extends Controller
                 break;
             }
         }
-
-
-
-        return view('users.recipe.recipe-detail');
-    }
-
-    public function show() {
 
         return view('users.recipe.recipe-detail');
     }
