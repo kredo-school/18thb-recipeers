@@ -8,6 +8,7 @@ use App\Models\EatingPreference;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 use App\Models\User;
 
@@ -49,6 +50,7 @@ class RecipeController extends Controller
         if($request->hasFile('thumbnail')) {
             Log::info('Attempting to store file');
             Storage::disk('public')->makeDirectory('assets/thumbanail');
+            Log::debug($request->file('thumbnail'));
 
             $thumbName = $request->file('thumbnail')->getClientOriginalName();
             $stored = $request->file('thumbnail')->storeAs('assets/thumbnail', $thumbName, 'public');
@@ -61,7 +63,7 @@ class RecipeController extends Controller
                     Storage::disk('public')->delete('assets/thumbnail' . $request->thumbnail);
                 }
 
-                $recipe->update(['thumbnail' => $thumbName]);
+                $recipe->thumbnail = $thumbName;
             } else {
                 Log::error('Failed to store file');
             }
