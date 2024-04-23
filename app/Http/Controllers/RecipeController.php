@@ -39,6 +39,7 @@ class RecipeController extends Controller
     }
 
     public function store(Request $request) {
+        Log::debug('Request Data');
         Log::debug($request);
 
         $request->validate([

@@ -21,7 +21,7 @@
                 {{-- Input Image --}}
                 <div class="col-4 previews">
                     <p>Select recipe image</p>
-                    <input type="file" name="thumbnail" id="thumbnail" class="form-control" aria-describedby="image-info">
+                    <input type="file" name="thumbnail" id="thumbnail" class="form-control input-color1" aria-describedby="image-info">
                 </div>
 
                 {{-- Recipe Input form --}}
@@ -106,7 +106,7 @@
         <input type="button" id="add_ing_btn" value="Add Ingredient" class="btn btn-sub mt-3 w-25">
 
         {{-- Input Steps Form --}}
-        <div class="bottom_form mt-3" id="bottom_form">
+        <div class="add_step_form mt-3" id="add_step_form">
             <div class="row mt-5 mb-3">
                 <h3 class="color1">Steps</h3>
             </div>
@@ -117,15 +117,15 @@
             </div>
             <div class="row">
                 <div class="col-4">
-                    <input type="file" id="step_file0">
+                    <input type="file" class="form-control input-color1" id="file_input0">
                 </div>
                 <div class="col-8">
-                    <textarea rows="5" id="step_text0" class="form-control input-color1"></textarea>
+                    <textarea rows="5" id="text_input0" class="form-control input-color1"></textarea>
                 </div>
             </div>
 
         </div>
-        <input type="button" value="Add Steps" id="Add_step0" class="btn btn-sub mt-3 w-25">
+        <input type="button" id="add_step_btn" value="Add Steps" id="Add_step0" class="btn btn-sub mt-3 w-25">
 
         {{-- Save & Cancel Button --}}
         <div class="row justify-content-center mt-5">

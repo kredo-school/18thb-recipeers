@@ -171,10 +171,10 @@
 {{-------------------------jQuery---------------------------}}
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    {{-- Add Ingredients Form Function --}}
     <script>
         'use strict';
 
+        // Add Ingredients Form Function
         {
             document.addEventListener('DOMContentLoaded', () => {
                 let i = 1;
@@ -206,34 +206,93 @@
             });
         }
 
+        // Add Steps Form Function
+        {
+            document.addEventListener('DOMContentLoaded', () => {
+                let i = 1;
+                let j = 2;
+                document.querySelector('#add_step_btn').addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const stepElement = document.createElement('h5');
+                    const divRowElement = document.createElement('div');
+                    const divImageColElement = document.createElement('div');
+                    const divTextColElement = document.createElement('div');
+                    const fileInputElement = document.createElement('input');
+                    const textInputElement = document.createElement('textarea');
+
+                    stepElement.textContent = 'Step' + j;
+                    stepElement.classList.add('color1');
+                    divRowElement.classList.add('row', 'mb-2');
+                    divImageColElement.classList.add('col-4');
+                    divTextColElement.classList.add('col-8');
+                    fileInputElement.classList.add('form-control', 'input-color1');
+                    fileInputElement.type = 'file';
+                    textInputElement.classList.add('form-control', 'input-color1');
+                    textInputElement.rows = '5';
+                    fileInputElement.id = 'file_input' + i;
+                    textInputElement.id = 'text_input' + i;
+
+                    const parent = document.querySelector('#add_step_form');
+
+                    parent.appendChild(stepElement);
+
+                    parent.appendChild(divRowElement).appendChild(divImageColElement).appendChild(fileInputElement);
+                    divRowElement.appendChild(divTextColElement).appendChild(textInputElement);
+                    i++;
+                    j++;
+                });
+            });
+        }
+
         // Confirm all input infomation
         {
             document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector('#recipe_save').addEventListener('click', (e) => {
-                    // e.preventDefault();
+                    e.preventDefault();
 
                     const ingData = {};
 
-                    let inputNum = 0;
+                    let ingNum = 0;
 
                     while (true) {
-                        const ingInput = document.querySelector('#ing_input' + inputNum);
-                        const amoInput = document.querySelector('#amo_input' + inputNum);
+                        const ingInput = document.querySelector('#ing_input' + ingNum);
+                        const amoInput = document.querySelector('#amo_input' + ingNum);
 
                         if (!ingInput || !amoInput) {
                             break;
                         }
 
-                        ingData['ing_input' + inputNum] = ingInput.value;
-                        ingData['amo_input' + inputNum] = amoInput.value;
+                        ingData['ing_input' + ingNum] = ingInput.value;
+                        ingData['amo_input' + ingNum] = amoInput.value;
 
-                        inputNum++;
+                        ingNum++;
+                    }
+
+
+                    const stepData = {};
+
+                    let stepNum = 0;
+
+                    while (true) {
+                        const fileInput = document.querySelector('#file_input' + stepNum);
+                        const textInput = document.querySelector('#text_input' + stepNum);
+
+                        if (!fileInput || !textInput) {
+                            break;
+                        }
+
+                        stepData['file_input' + stepNum] = fileInput.value;
+                        stepData['text_input' + stepNum] = textInput.value;
+
+                        stepNum++;
                     }
 
                     // const data = $("#recipe_form").serialize() + "&ingData=" + JSON.stringify(ingData);
                     const data = $("#recipe_form").serializeArray();
 
                     data.push(({ name: 'ingData', value: JSON.stringify(ingData) }));
+                    data.push(({ name: 'stepData', value: JSON.stringify(stepData) }));
 
                     console.log(data);
 
@@ -258,6 +317,14 @@
                     // It store ingredient with asynchronous
                     $.ajax({
                         url: "{{ route('ingredient.store') }}",
+                        type: "POST",
+                        data: data,
+                        success: function(res){console.log(res);},
+                        fail: function(err){console.log(err);}
+                    });
+
+                    $.ajax({
+                        url: "{{ route('step.store') }}",
                         type: "POST",
                         data: data,
                         success: function(res){console.log(res);},
