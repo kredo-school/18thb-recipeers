@@ -39,12 +39,18 @@ class RecipeController extends Controller
     }
 
     public function store(Request $request) {
+        Log::debug($request);
+
         $request->validate([
             'thumbnail' => 'image|mimes:jpeg, png, jpg, gif|max:2048'
         ]);
 
-        $this->recipe->user_id = 1;
+        $this->recipe->user_id = Auth::User()->id;
         $this->recipe->title = $request->input('title');
+
+        if($this->recipe->thumbnail === null) {
+            $this->recipe->thumbnail = "";
+        }
 
         // getting thumbnail
         if($request->hasFile('thumbnail')) {
@@ -63,7 +69,7 @@ class RecipeController extends Controller
                     Storage::disk('public')->delete('assets/thumbnail' . $request->thumbnail);
                 }
 
-                $recipe->thumbnail = $thumbName;
+                $this->recipe->thumbnail = $thumbName;
             } else {
                 Log::error('Failed to store file');
             }
