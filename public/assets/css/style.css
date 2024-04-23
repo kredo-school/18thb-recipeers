@@ -356,7 +356,7 @@ td .dropdown-item {
 
 /* profile pageでavatarが楕円表示だったので正円に */
 
-.rounded-circle{
+.img-lg-avatar{
     border-radius: 50%;
     width: 230px;
     height: 200px;
