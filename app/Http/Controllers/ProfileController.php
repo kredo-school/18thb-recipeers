@@ -93,7 +93,7 @@ class ProfileController extends Controller
                 'nationality_id' => 'nullable|integer',
                 'residence_city_id' => 'nullable|integer',
                 'job_status_id' => 'nullable|integer',
-                'introduction' => 'nullable|string|max:255',
+                'introduction' => 'nullable|string|max:500',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ];
 
@@ -161,4 +161,64 @@ class ProfileController extends Controller
             return back()->with('error', 'An error occurred while updating profile. Please try again.');
         }
     }
+
+
+
+    // public function updateBusinessInfo(Request $request){
+    //     try {
+    //     Log::info('Update request data: ' . json_encode($request->all()));
+    //         $user = User::findOrFail(Auth::id());
+    //         $rules = [
+    //             'business_name' => 'string|max:255',
+    //             'location' => 'string|max:255',
+    //             'pic' => 'string|max:255',
+    //             'hp_url' => 'url|max:255',
+    //             'delivery_url' => 'url|max:255',
+    //         ];
+    //         $request->validate($rules);
+
+    //         if ($request->hasFile('image')) {
+    //             Log::info('Attempting to store file');
+    //             Storage::disk('public')->makeDirectory('assets/avatars');
+
+    //             $avatarName = $request->file('image')->getClientOriginalName();
+    //             $stored = $request->file('image')->storeAs('assets/avatars', $avatarName, 'public');
+    //             // Log::info('Uploaded file path: ' . $request->file('image')->path());
+    //             if ($stored) {
+    //                 Log::info('File stored successfully');
+
+    //                 if ($request->user()->avatar) {
+    //                     Log::info('Deleting old avatar: ' . $request->user()->avatar);
+    //                     Storage::disk('public')->delete('assets/avatars/' . $request->user()->avatar);
+    //                 }
+    //                 // $request->$user->avatar = $avatarName;
+    //                 $user->update(['avatar' => $avatarName]);
+
+    //                 // $request->$user()->save();
+
+    //             } else {
+    //                 Log::error('Failed to store file');
+    //             }
+
+    //         }
+    //         if (!$request->filled('password')) {
+    //             unset($rules['password']);
+    //         }
+
+    //         $fieldsToUpdate = ['business_name', 'location', 'pic', 'hp_url', 'delivery_url'];
+    //         foreach ($fieldsToUpdate as $field) {
+    //             if ($request->filled($field)) {
+    //                 $user->$field = $request->input($field);
+    //             }
+    //         }
+
+    //         $user->save();
+
+    //         return redirect()->route('profile.show', $user->id);
+    //     } catch (\Exception $e) {
+    //         Log::error('Error updating profile: ' . $e->getMessage());
+    //         return back()->with('error', 'An error occurred while updating profile. Please try again.');
+    //     }
+    // }
+    
 }
