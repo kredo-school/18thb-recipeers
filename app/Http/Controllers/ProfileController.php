@@ -83,7 +83,7 @@ class ProfileController extends Controller
         Log::info('Update request data: ' . json_encode($request->all()));
             $user = User::findOrFail(Auth::id());
             $rules = [
-                'avatar' => 'nullable|image|max:2048|mimes:jpeg,jpg,png,gif',
+                'avatar' => 'nullable|image|max:2048|mimes:jpeg,jpg,png',
                 'username' => 'required|string|max:255|unique:users,username,' . $user->id,
                 'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
                 'password' => 'required|string|min:8|confirmed',
@@ -94,7 +94,7 @@ class ProfileController extends Controller
                 'residence_city_id' => 'nullable|integer',
                 'job_status_id' => 'nullable|integer',
                 'introduction' => 'nullable|string|max:500',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -220,5 +220,5 @@ class ProfileController extends Controller
     //         return back()->with('error', 'An error occurred while updating profile. Please try again.');
     //     }
     // }
-    
+
 }
