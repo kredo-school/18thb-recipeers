@@ -13,7 +13,7 @@
                     {{-- Avatar --}}
                     <div class="row">
                         @if($user->avatar)
-                            <img src="{{ asset('storage/assets/avatars/' . $user->avatar) }}" alt="avatar" class="rounded-circle img-lg mb-3">
+                            <img src="{{ asset('storage/assets/avatars/' . $user->avatar) }}" alt="avatar" class="img-lg-avatar mb-3">
                         @else
                             <i class="fa-solid fa-circle-user icon-lg color1 mb-3"></i>
                         @endif
