@@ -58,6 +58,8 @@ Route::get('/user/reset-password', [UserController::class, 'reset_password_show'
 
 Route::delete('/user/account/{id}/delete', [UserController::class, 'softDelete'])->name('user.account.delete');
 
+Route::get('/user/account/{id}/paymentInfo', [UserController::class, 'showPaymentInfo'])->name('paymentInfo.show');
+
 // AdminController
 Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');
 
