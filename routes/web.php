@@ -8,6 +8,7 @@ use App\Http\Controllers\EatingPreferenceController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\StepController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\InquiriesController;
 use App\Http\Controllers\Admin\UsersController;
@@ -61,8 +62,10 @@ Route::get('/user/reset-password', [App\Http\Controllers\UserController::class, 
 
 Route::delete('/user/account/{id}/delete', [UserController::class, 'softDelete'])->name('user.account.delete');
 
+Route::get('/user/account/{id}/paymentInfo', [UserController::class, 'showPaymentInfo'])->name('paymentInfo.show');
+
 // AdminController
-Route::get('/admin/home', [App\Http\Controllers\AdminController::class, 'Home'])->name('Admin.home');
+Route::get('/admin/home', [AdminController::class, 'show'])->name('admin.home');
 
 // ProfileController
 Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');

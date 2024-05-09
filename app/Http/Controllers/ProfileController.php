@@ -10,10 +10,11 @@ use App\Models\Recipe;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-    //
+
     private $user;
 
     public function __construct(User $user){
@@ -75,25 +76,32 @@ class ProfileController extends Controller
     // }
 
     public function update(Request $request){
+
         // dd($request->all());
+
         try {
         Log::info('Update request data: ' . json_encode($request->all()));
             $user = User::findOrFail(Auth::id());
             $rules = [
-                'avatar' => 'nullable|image|max:1048|mimes:jpeg,jpg,png,gif',
-                'username' => 'required|string|max:255',
-                'email' => 'string|email|max:255|unique:users,email,' . $user->id,
+                'avatar' => 'nullable|image|max:2048|mimes:jpeg,jpg,png',
+                'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+                'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
                 'password' => 'required|string|min:8|confirmed',
                 'birthday' => 'nullable|date',
                 'gender_id' => 'nullable|integer',
                 'eating_pref_id' => 'nullable|integer',
-                'nationality_id' => 'nullable',
-                'residence_city_id' => 'nullable',
+                'nationality_id' => 'nullable|integer',
+                'residence_city_id' => 'nullable|integer',
                 'job_status_id' => 'nullable|integer',
-                'introduction' => 'nullable|max:255',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'introduction' => 'nullable|string|max:500',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ];
-            $request->validate($rules);
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator->errors());
+            }
 
             if ($request->hasFile('image')) {
                 Log::info('Attempting to store file');
@@ -101,7 +109,9 @@ class ProfileController extends Controller
 
                 $avatarName = $request->file('image')->getClientOriginalName();
                 $stored = $request->file('image')->storeAs('assets/avatars', $avatarName, 'public');
+
                 // Log::info('Uploaded file path: ' . $request->file('image')->path());
+
                 if ($stored) {
                     Log::info('File stored successfully');
 
@@ -109,6 +119,7 @@ class ProfileController extends Controller
                         Log::info('Deleting old avatar: ' . $request->user()->avatar);
                         Storage::disk('public')->delete('assets/avatars/' . $request->user()->avatar);
                     }
+
                     // $request->$user->avatar = $avatarName;
                     $user->update(['avatar' => $avatarName]);
 
@@ -117,8 +128,8 @@ class ProfileController extends Controller
                 } else {
                     Log::error('Failed to store file');
                 }
-
             }
+
             if (!$request->filled('password')) {
                 unset($rules['password']);
             }
@@ -130,19 +141,84 @@ class ProfileController extends Controller
             //     $avatar->move(public_path('avatars'), $avatarName);
             //     $user->avatar = 'avatars/' . $avatarName;
             // }
+
             $fieldsToUpdate = ['username', 'email', 'password', 'birthday', 'gender_id', 'eating_pref_id', 'nationality_id', 'residence_city_id', 'job_status_id', 'introduction'];
+
             foreach ($fieldsToUpdate as $field) {
                 if ($request->filled($field)) {
                     $user->$field = $request->input($field);
                 }
             }
+
             // dd($user->toArray());
+
             $user->save();
 
             return redirect()->route('profile.show', $user->id);
+
         } catch (\Exception $e) {
             Log::error('Error updating profile: ' . $e->getMessage());
             return back()->with('error', 'An error occurred while updating profile. Please try again.');
         }
     }
+
+
+
+    // public function updateBusinessInfo(Request $request){
+    //     try {
+    //     Log::info('Update request data: ' . json_encode($request->all()));
+    //         $user = User::findOrFail(Auth::id());
+    //         $rules = [
+    //             'business_name' => 'string|max:255',
+    //             'location' => 'string|max:255',
+    //             'pic' => 'string|max:255',
+    //             'hp_url' => 'url|max:255',
+    //             'delivery_url' => 'url|max:255',
+    //         ];
+    //         $request->validate($rules);
+
+    //         if ($request->hasFile('image')) {
+    //             Log::info('Attempting to store file');
+    //             Storage::disk('public')->makeDirectory('assets/avatars');
+
+    //             $avatarName = $request->file('image')->getClientOriginalName();
+    //             $stored = $request->file('image')->storeAs('assets/avatars', $avatarName, 'public');
+    //             // Log::info('Uploaded file path: ' . $request->file('image')->path());
+    //             if ($stored) {
+    //                 Log::info('File stored successfully');
+
+    //                 if ($request->user()->avatar) {
+    //                     Log::info('Deleting old avatar: ' . $request->user()->avatar);
+    //                     Storage::disk('public')->delete('assets/avatars/' . $request->user()->avatar);
+    //                 }
+    //                 // $request->$user->avatar = $avatarName;
+    //                 $user->update(['avatar' => $avatarName]);
+
+    //                 // $request->$user()->save();
+
+    //             } else {
+    //                 Log::error('Failed to store file');
+    //             }
+
+    //         }
+    //         if (!$request->filled('password')) {
+    //             unset($rules['password']);
+    //         }
+
+    //         $fieldsToUpdate = ['business_name', 'location', 'pic', 'hp_url', 'delivery_url'];
+    //         foreach ($fieldsToUpdate as $field) {
+    //             if ($request->filled($field)) {
+    //                 $user->$field = $request->input($field);
+    //             }
+    //         }
+
+    //         $user->save();
+
+    //         return redirect()->route('profile.show', $user->id);
+    //     } catch (\Exception $e) {
+    //         Log::error('Error updating profile: ' . $e->getMessage());
+    //         return back()->with('error', 'An error occurred while updating profile. Please try again.');
+    //     }
+    // }
+
 }

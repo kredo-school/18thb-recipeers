@@ -9,7 +9,6 @@
         <a href="#" class="btn btn-sub"><i class="fa-regular fa-credit-card me-2"></i>Add Payment Information</a>
     </div>
 
-    {{-- * add error messages to each input field --}}
     <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
@@ -17,15 +16,23 @@
         {{-- TOP HALF --}}
         <div class="row">
 
-            {{-- * put variables to the old helpers and values --}}
             {{-- LEFT SIDE --}}
             <div class="col-6 me-5">
                 <div class="row form-group align-items-center mb-3">
                     <div class="col-4 text-end">
-                        <label for="avatar" class="form-label h5 mt-1">Avatar</label>
+                        <label for="image" class="form-label h5 mt-1">Avatar</label>
                     </div>
                     <div class="col-8">
                         <input type="file" name="image" id="image" class="form-control input-color1">
+
+                        @if ($errors->has('image'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('image') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -34,6 +41,15 @@
                     </div>
                     <div class="col-8">
                         <input type="text" name="username" id="username" class="form-control input-color1" placeholder="Username" value="{{ isset($user) ? $user->username : old('username') }}">
+
+                        @if ($errors->has('username'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('username') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -42,6 +58,15 @@
                     </div>
                     <div class="col-8">
                         <input type="email" name="email" id="email" class="form-control input-color1" placeholder="user@email.com" value="{{ isset($user) ? $user->email : old('email') }}">
+
+                        @if ($errors->has('email'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('email') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -49,7 +74,16 @@
                         <label for="password" class="form-label h5 mt-1">Password</label>
                     </div>
                     <div class="col-8">
-                        <input type="password" name="password" id="password" class="form-control input-color1" required autocomplete="new-password">
+                        <input type="password" name="password" id="password" class="form-control input-color1" autocomplete="new-password">
+
+                        @if ($errors->has('password'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('password') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -57,7 +91,16 @@
                         <label for="password_confirmation" class="form-label h5 mt-1">Confirm Password</label>
                     </div>
                     <div class="col-8">
-                        <input type="password" name="password_confirmation" id="password_confirmation" required class="form-control input-color1">
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-color1">
+
+                        @if ($errors->has('password'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('password') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -66,6 +109,15 @@
                     </div>
                     <div class="col-8">
                         <input type="date" name="birthday" id="birthday" class="form-control input-color1" placeholder="YYYY/MM/DD" value="{{ isset($user) ? $user->birthday : old('birtyday') }}">
+
+                        @if ($errors->has('birthday'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('birthday') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -79,6 +131,15 @@
                             <option value="2">Female</option>
                             <option value="3">Prefer not to say</option>
                         </select>
+
+                        @if ($errors->has('gender_id'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('gender_id') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -95,6 +156,15 @@
                             <option value="3">Halal</option>
                             <option value="4">Hindi Diet</option>
                         </select>
+
+                        @if ($errors->has('eating_pref_id'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('eating_pref_id') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -124,6 +194,15 @@
                             }
                             ?>
                         </select>
+
+                        @if ($errors->has('nationality_id'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('nationality_id') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -148,6 +227,15 @@
                             }
                             ?>
                         </select>
+
+                        @if ($errors->has('residence_city_id'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('residence_city_id') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-3">
@@ -166,6 +254,15 @@
                             <option value="6">Student</option>
                             <option value="7">None of the above</option>
                         </select>
+
+                        @if ($errors->has('job_status_id'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('job_status_id') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row form-group align-items-center mb-4">
@@ -174,6 +271,15 @@
                     </div>
                     <div class="col-8">
                         <textarea name="introduction" id="introduction" rows="8" class="form-control input-color1" placeholder="Please introduce yourself." value="{{ isset($user) ? $user->introduction : old('introduction') }}"></textarea>
+
+                        @if ($errors->has('introduction'))
+                            <div class="text-danger small">
+                                <ul>
+                                    <li>{{ $errors->first('introduction') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
@@ -186,6 +292,7 @@
                 </div>
             </div>
         </div>
+        
         {{-- BOTTOM HALF --}}
         {{-- * when the user clicks the checkbox as the business account --}}
         <div id="businessInfoContainer" style="display: none;">

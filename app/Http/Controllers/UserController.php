@@ -28,4 +28,9 @@ class UserController extends Controller
 
         return view('home');
     }
+
+    public function showPaymentInfo($id)
+    {
+        return view('users.account.payment-info');
+    }
 }
