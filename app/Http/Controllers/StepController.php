@@ -16,22 +16,23 @@ class StepController extends Controller
     }
 
     public function store(Request $request) {
-        log::debug('Request Data of store method in StepController');
-        log::debug($request);
+        // log::info('Request Data of store method in StepController');
+        // log::debug($request);
 
         $requestData = $request->stepData;
         $stepData = json_decode($requestData, true);
 
-        log::debug('Step Data');
-        log::debug($stepData);
+        // log::info('Step Data');
+        // log::debug($stepData);
 
         // getting thumbnail
         for($i=0; $i<100; $i++) {
-            log::debug(isset($stepData['file_input' . $i]));
+            // log::info('make sure to for loop');
+            // log::debug(isset($stepData['file_input' . $i]));
 
             if(isset($stepData['file_input' . $i])) {
-
-                log::debug($request->hasFile('file_input' . $i));
+                log::info('check to have file');
+                // log::debug(dd($request->stepData->hasFile('file_input' . $i)));
                 if($request->hasFile('file_input' . $i)) {
                     log::debug('Confirm existing step data');
                     log::debug($request->file('file_input' . $i));

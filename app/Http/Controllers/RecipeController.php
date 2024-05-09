@@ -39,8 +39,8 @@ class RecipeController extends Controller
     }
 
     public function store(Request $request) {
-        Log::debug('Request Data');
-        Log::debug($request);
+        // Log::debug('Request Data');
+        // Log::debug($request);
 
         $request->validate([
             'thumbnail' => 'image|mimes:jpeg, png, jpg, gif|max:2048'

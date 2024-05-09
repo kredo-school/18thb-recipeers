@@ -19,7 +19,7 @@
 
     {{-- jquery & popper --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js" integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js" integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -251,6 +251,8 @@
                 document.querySelector('#recipe_save').addEventListener('click', (e) => {
                     e.preventDefault();
 
+                    console.log(document.querySelector('#file_input1'));
+
                     const ingData = {};
 
                     let ingNum = 0;
@@ -269,7 +271,6 @@
                         ingNum++;
                     }
 
-
                     const stepData = {};
 
                     let stepNum = 0;
@@ -282,11 +283,22 @@
                             break;
                         }
 
-                        stepData['file_input' + stepNum] = fileInput.value;
+                        console.log('Check the file of fileInput');
+                        console.log(fileInput.files);
+
+                        console.log('Check the value of textInput');
+                        console.log(textInput);
+
+                        if(fileInput.files.length > 0) {
+                            stepData['file_input' + stepNum] = fileInput.files[stepNum];
+                        }
                         stepData['text_input' + stepNum] = textInput.value;
 
                         stepNum++;
                     }
+
+                    console.log('Check the stepData');
+                    console.log(stepData);
 
                     // const data = $("#recipe_form").serialize() + "&ingData=" + JSON.stringify(ingData);
                     const data = $("#recipe_form").serializeArray();
@@ -294,7 +306,7 @@
                     data.push(({ name: 'ingData', value: JSON.stringify(ingData) }));
                     data.push(({ name: 'stepData', value: JSON.stringify(stepData) }));
 
-                    console.log(data);
+                    // console.log(data);
 
                     // It store category with asynchronous
                     $.ajax({

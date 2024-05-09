@@ -117,7 +117,7 @@
             </div>
             <div class="row">
                 <div class="col-4">
-                    <input type="file" class="form-control input-color1" id="file_input0">
+                    <input type="file" class="form-control input-color1" id="file_input0" multiple>
                 </div>
                 <div class="col-8">
                     <textarea rows="5" id="text_input0" class="form-control input-color1"></textarea>
